@@ -1,10 +1,11 @@
 package com.crazyt.gmod;
 import com.crazyt.gmod.*;
+import com.crazyt.mcf.BasicFunctions;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.MetaCommand;
 @External
-public class Functions {
+public abstract class Functions extends BasicFunctions{
 	/**
 	Adds simple Get/Set accessor functions on the specified table.<br />
 	*/

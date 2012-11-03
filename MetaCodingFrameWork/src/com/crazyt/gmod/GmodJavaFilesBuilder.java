@@ -160,7 +160,7 @@ public class GmodJavaFilesBuilder {
 		p.println("import com.crazyt.mcf.MetaVar;");
 		p.println("import com.crazyt.mcf.MetaCommand;");
 		p.println("@External");
-		p.println("public class "+name+" {");
+		p.println("public class abstract "+name+" {");
 	}
 	private static void parseFunctions(PrintStream p,String urlStr){
 		String pat="\\<td\\> *\\<a +href=\"[^\"]+\" +title=\"[^\"]+\">[^<]+\\</a\\>\r?\n\\</td\\>\r?\n\\<td\\> *(\\<b\\>([^<]+)\\</b\\>:)?\\<a +href=\"([^\"]+)\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>";

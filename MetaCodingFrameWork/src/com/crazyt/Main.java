@@ -28,8 +28,7 @@ public class Main extends Functions implements Builder{
 		
 		
 		
-		metaCommand
-		.call(EyeAngles())
+		 call(EyeAngles())
 		.call(AddConsoleCommand(TEXT("test"), TEXT("test"), NUM(1)))
 		.set(v1,"test")
 		.set(v3,1)
@@ -57,8 +56,6 @@ public class Main extends Functions implements Builder{
 
 	@CustomMetaCommand
 	public MetaVar blah(){
-		
-		metaCommand.
 		call(blah2(TEXT("blah")));
 		return null;
 	}
@@ -72,10 +69,14 @@ public class Main extends Functions implements Builder{
 	@CustomMetaCommand
 	public MetaVar blah3(MetaVarString blah){
 		MetaVarString v = new MetaVarString("v");
-		
-		metaCommand
-		.var(v, "test")
+
+		var(v, "test")
 		.print(v);
 		return null;
+	}
+
+	@Override
+	protected MetaCommand getMetaCommand() {
+		return metaCommand;
 	}
 }

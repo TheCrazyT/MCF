@@ -58,10 +58,15 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 				
 				Builder builder = (Builder)constr.newInstance((Object[])null);
 
+				Boolean nonefound = true;
 				for(Field f:clazz.getDeclaredFields()){
 					if(f.isAnnotationPresent(BuildClass.class)){
 						f.set(builder, instance);
+						nonefound = false;
 					}
+				}
+				if(nonefound){
+					throw new RuntimeException("Unable to build, no @BuildClass annotation found!");
 				}
 				
 				instance.init(builder);
