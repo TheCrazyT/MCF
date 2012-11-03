@@ -1,7 +1,4 @@
 package com.crazyt;
-//JavaProxyFactory
-//import java.lang.reflect.Proxy;
-//      return (T) Proxy.newProxyInstance(toMock.getClassLoader(), new Class[] { toMock }, handler);
 import com.crazyt.gmod.Functions;
 import com.crazyt.gmod.MetaVarNumber;
 import com.crazyt.gmod.MetaVarString;
@@ -12,8 +9,9 @@ import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.MetaCondMode;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.MetaVarInt;
+import com.crazyt.mcf.SimpleName;
 
-
+@SimpleName("init")
 public class Main extends Functions implements Builder{
 	@BuildClass
 	public MetaCommand metaCommand;

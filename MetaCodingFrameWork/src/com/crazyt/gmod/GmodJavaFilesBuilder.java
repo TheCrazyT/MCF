@@ -167,11 +167,14 @@ public class GmodJavaFilesBuilder {
 		String pat2="\\<p\\>[^<]+\\<b\\>([^<]+)\\</b\\> *\\(<a href=\"([^\"]+)\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>\\)";
 		String pat3="\\<tr\\>\r?\n\\<td\\>\\<strong\\>Name:\\</strong\\>\\</td\\>\r?\n\\<td\\>([^<]+)\\</td\\>";
 		String pat4="\\<b\\>Returns:\\</b\\> \\<a href=\"[^\"]+\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>";
+		String pat5="\\<p\\>\\<b\\>Description:\\</b\\>(([^<]|\r?\n)+)\\</p\\>";
 
+		
 		Pattern pattern = Pattern.compile(pat);
 		Pattern pattern2 = Pattern.compile(pat2);
 		Pattern pattern3 = Pattern.compile(pat3);
 		Pattern pattern4 = Pattern.compile(pat4);
+		Pattern pattern5 = Pattern.compile(pat5);
 
 		String content = getContent(urlStr);
 		
@@ -194,6 +197,12 @@ public class GmodJavaFilesBuilder {
 				}
 				if(!functions.contains(funcName.toLowerCase())){
 					functions.add(funcName.toLowerCase());
+					Matcher matcher5 = pattern5.matcher(content2);
+					if(matcher5.find()){
+						p.println("\t/**");
+						p.println("\t"+matcher5.group(1).trim());
+						p.println("\t*/");
+					}
 					if(!disallowedFuncs.contains(funcName.toLowerCase())){
 						p.println("\t@External");
 					}

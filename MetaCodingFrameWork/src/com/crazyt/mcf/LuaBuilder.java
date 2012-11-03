@@ -1,14 +1,18 @@
 package com.crazyt.mcf;
 
+import java.io.File;
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import com.crazyt.mcf.SimpleName;
 
 import org.aspectj.lang.reflect.MethodSignature;
 
@@ -32,6 +36,10 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 		try {
 			try {
 				Class<?> clazz = Class.forName(clazzName);
+				String fileName = clazz.getName() + ".lua";
+				if(clazz.isAnnotationPresent(SimpleName.class)){
+					fileName = clazz.getAnnotation(SimpleName.class).value() + ".lua";
+				}
 				Constructor<?> dbconstr = LuaBuilder.class.getConstructor(new Class<?>[]{PrintStream.class});
 				LuaBuilder instance=null;
 				PrintStream outStream = null;
@@ -39,6 +47,10 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 						&& System.getenv().get("DEBUG").equals("1")) {
 					outStream = System.out; 
 				} else {
+					File out = new File("build/out/lua/"+fileName);
+					out.getParentFile().mkdirs();
+					out.createNewFile();
+					outStream = new PrintStream(out);
 				}
 				instance = (LuaBuilder) dbconstr
 						.newInstance(new Object[]{ outStream});
