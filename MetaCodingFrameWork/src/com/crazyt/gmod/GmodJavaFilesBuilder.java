@@ -159,15 +159,16 @@ public class GmodJavaFilesBuilder {
 		p.println("import com.crazyt.mcf.External;");
 		p.println("import com.crazyt.mcf.MetaVar;");
 		p.println("import com.crazyt.mcf.MetaCommand;");
+		p.println("import com.crazyt.mcf.BasicFunctions;");
 		p.println("@External");
-		p.println("public class abstract "+name+" {");
+		p.println("public abstract class "+name+" extends BasicFunctions {");
 	}
 	private static void parseFunctions(PrintStream p,String urlStr){
-		String pat="\\<td\\> *\\<a +href=\"[^\"]+\" +title=\"[^\"]+\">[^<]+\\</a\\>\r?\n\\</td\\>\r?\n\\<td\\> *(\\<b\\>([^<]+)\\</b\\>:)?\\<a +href=\"([^\"]+)\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>";
-		String pat2="\\<p\\>[^<]+\\<b\\>([^<]+)\\</b\\> *\\(<a href=\"([^\"]+)\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>\\)";
-		String pat3="\\<tr\\>\r?\n\\<td\\>\\<strong\\>Name:\\</strong\\>\\</td\\>\r?\n\\<td\\>([^<]+)\\</td\\>";
-		String pat4="\\<b\\>Returns:\\</b\\> \\<a href=\"[^\"]+\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>";
-		String pat5="\\<p\\>\\<b\\>Description:\\</b\\>(.+)(?!\\</p)+";
+		String pat = "\\<td\\> *\\<a +href=\"[^\"]+\" +title=\"[^\"]+\">([^<]+)\\</a\\>\r?\n\\</td\\>\r?\n\\<td\\> *(\\<b\\>([^<]+)\\</b\\>:)?\\<a +href=\"([^\"]+)\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>";
+		String pat2 = "\\<p\\>[^<]+\\<b\\>([^<]+)\\</b\\> *\\(<a href=\"([^\"]+)\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>\\)";
+		String pat3 = "\\<tr\\>\r?\n\\<td\\>\\<strong\\>Name:\\</strong\\>\\</td\\>\r?\n\\<td\\>([^<]+)\\</td\\>";
+		String pat4 = "\\<b\\>Returns:\\</b\\> \\<a href=\"[^\"]+\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>";
+		String pat5 = "\\<p\\>\\<b\\>Description:\\</b\\>(.+)(?!\\</p)+";
 
 		
 		Pattern pattern = Pattern.compile(pat);
@@ -182,9 +183,10 @@ public class GmodJavaFilesBuilder {
 		Matcher matcher = pattern.matcher(content);
 		Set<String> functions = new HashSet<String>();
 		while (matcher.find()) {
-			String entity = matcher.group(2);
-			String methodPath = matcher.group(3);
-			System.out.println(entity+":"+methodPath+":"+matcher.group(4));
+			String state = matcher.group(1);
+			String entity = matcher.group(3);
+			String methodPath = matcher.group(4);
+			System.out.println(entity+":"+methodPath+":"+matcher.group(5));
 			String path ="";
 			path += methodPath;
 			String content2 = getContent("http://wiki.garrysmod.com"+path);
@@ -207,6 +209,7 @@ public class GmodJavaFilesBuilder {
 					}
 					if(!disallowedFuncs.contains(funcName.toLowerCase())){
 						p.println("\t@External");
+						p.println("\t@"+state+"Func");
 					}
 					p.print("\t");
 					if(disallowedFuncs.contains(funcName.toLowerCase())){

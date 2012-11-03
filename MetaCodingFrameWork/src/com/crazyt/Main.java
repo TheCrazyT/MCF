@@ -1,7 +1,8 @@
 package com.crazyt;
-import com.crazyt.gmod.Functions;
+import com.crazyt.gmod.GMODBuilder;
 import com.crazyt.gmod.MetaVarNumber;
 import com.crazyt.gmod.MetaVarString;
+import com.crazyt.gmod.SourceInfo;
 import com.crazyt.mcf.BuildClass;
 import com.crazyt.mcf.Builder;
 import com.crazyt.mcf.CustomMetaCommand;
@@ -11,8 +12,11 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.MetaVarInt;
 import com.crazyt.mcf.SimpleName;
 
+@SourceInfo(
+		folder = "gamemode",
+		info = "info.txt")
 @SimpleName("init")
-public class Main extends Functions implements Builder{
+public class Main extends GMODBuilder implements Builder{
 	@BuildClass
 	public MetaCommand metaCommand;
 	
@@ -20,6 +24,8 @@ public class Main extends Functions implements Builder{
 	 * @param args
 	 */
 	public void build() {
+		super.build();
+		
 		MetaVarString v1 = new MetaVarString("v1");
 		MetaVarInt from = new MetaVarInt("from");
 		MetaVarInt to = new MetaVarInt("to");
