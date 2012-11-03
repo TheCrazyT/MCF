@@ -167,7 +167,7 @@ public class GmodJavaFilesBuilder {
 		String pat2="\\<p\\>[^<]+\\<b\\>([^<]+)\\</b\\> *\\(<a href=\"([^\"]+)\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>\\)";
 		String pat3="\\<tr\\>\r?\n\\<td\\>\\<strong\\>Name:\\</strong\\>\\</td\\>\r?\n\\<td\\>([^<]+)\\</td\\>";
 		String pat4="\\<b\\>Returns:\\</b\\> \\<a href=\"[^\"]+\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>";
-		String pat5="\\<p\\>\\<b\\>Description:\\</b\\>(([^<]|\r?\n)+)\\</p\\>";
+		String pat5="\\<p\\>\\<b\\>Description:\\</b\\>(.+)(?!\\</p)+";
 
 		
 		Pattern pattern = Pattern.compile(pat);
@@ -199,8 +199,10 @@ public class GmodJavaFilesBuilder {
 					functions.add(funcName.toLowerCase());
 					Matcher matcher5 = pattern5.matcher(content2);
 					if(matcher5.find()){
+						String description = matcher5.group(1).trim();
+						description = description.replaceAll(" href=\"/page/"," href=\"http://wiki.garrysmod.com/page/" );
 						p.println("\t/**");
-						p.println("\t"+matcher5.group(1).trim());
+						p.println("\t"+description);
 						p.println("\t*/");
 					}
 					if(!disallowedFuncs.contains(funcName.toLowerCase())){

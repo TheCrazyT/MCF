@@ -76,6 +76,9 @@ public class MetaVarVector extends MetaVarImpl implements IMetaVarAny{
 	*/
 	@External
 	public MetaVarNumber Length2D(){return null;};
+	/**
+	Returns the squared length of the vector, this is faster than <a href="http://wiki.garrysmod.com/page/Classes/Vector" title="Classes/Vector">Vector</a>:<a href="http://wiki.garrysmod.com/page/Classes/Vector/Length" title="Classes/Vector/Length">Length</a> as calculating the square root is an expensive process.
+	*/
 	@External
 	public MetaVarNumber LengthSqr(){return null;};
 	/**
@@ -158,6 +161,9 @@ public class MetaVarVector extends MetaVarImpl implements IMetaVarAny{
 	*/
 	@External
 	public MetaVarVector __sub(MetaVarVector rhsVar){return null;};
+	/**
+	Called whenever <a href="http://wiki.garrysmod.com/page/Global/tostring" title="Global/tostring">tostring</a> is used on a vector object, the output form is as following: "%.6f&#160;%.6f&#160;%.6f".
+	*/
 	@External
 	public MetaVar __tostring(){return null;};
 	/**

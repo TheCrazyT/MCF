@@ -86,6 +86,9 @@ public class MetaVarAngle extends MetaVarImpl implements IMetaVarAny{
 	*/
 	@External
 	public MetaVarAngle __sub(MetaVarAngle rhsVar){return null;};
+	/**
+	Called whenever <a href="http://wiki.garrysmod.com/page/Global/tostring" title="Global/tostring">tostring</a> is used on an angle object, the output form is as following: "%.3f&#160;%.3f&#160;%.3f".
+	*/
 	@External
 	public MetaVarString __tostring(){return null;};
 	/**

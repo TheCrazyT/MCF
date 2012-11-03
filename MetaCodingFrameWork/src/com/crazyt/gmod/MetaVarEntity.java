@@ -17,7 +17,7 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	@External
 	public MetaVar Active(){return null;};
 	/**
-	Adds a blinking effect to an entity.
+	Applies engine effects to an entity, see <a href="http://wiki.garrysmod.com/page/Enums/EF" title="Enums/EF">EF_ Enums</a>.
 	*/
 	@External
 	public MetaVar AddEffects(MetaVarNumber effectEnumVar){return null;};
@@ -50,7 +50,7 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	*/
 	//public MetaVar DispatchTraceAttack(MetaVarCTakeDamageInfo damageInfoVar,MetaVarVector traceStartVar,MetaVarVector traceEndVar){return null;};
 	/**
-	If a player is hurt by a friendly NPC, announce it.
+	Returns the way one entity "feels" about another. Only used for NPCs. The returned value corresponds to a <a href="http://wiki.garrysmod.com/page/Enums/D" title="Enums/D">D_ Enums</a>.
 	*/
 	@External
 	public MetaVarNumber Disposition(MetaVarEntity entVar){return null;};
@@ -59,6 +59,9 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	*/
 	@External
 	public MetaVar DontDeleteOnRemove(MetaVarEntity entityToUnremoveVar){return null;};
+	/**
+	Running this function will draw the model of the attached entity. This can only be used in 3d rendering hooks, such as <a href="http://wiki.garrysmod.com/page/Events/Entity/Draw" title="Events/Entity/Draw">Draw</a>
+	*/
 	@External
 	public MetaVar DrawModel(){return null;};
 	/**
@@ -77,7 +80,7 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	@External
 	public MetaVar EmitSound(MetaVarString soundNameVar,MetaVarNumber soundLevelVar,MetaVarNumber pitchPercentVar){return null;};
 	/**
-	Creates a mesh table, and assigns it as the entity's collisions
+	Flags an entity as using custom lua defined collisions. Fixes entities having spongy player collisions or not hitting traces, such as after <a href="http://wiki.garrysmod.com/page/Classes/Entity" title="Classes/Entity">Entity</a>:<a href="http://wiki.garrysmod.com/page/Classes/Entity/PhysicsFromMesh" title="Classes/Entity/PhysicsFromMesh">PhysicsFromMesh</a>
 	*/
 	@External
 	public MetaVar EnableCustomCollisions(MetaVarBoolean useCustomVar){return null;};
@@ -125,10 +128,19 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	*/
 	@External
 	public MetaVar GetAttachment(MetaVarNumber attachmentIdVar){return null;};
+	/**
+	Returns a table with <a href="http://wiki.garrysmod.com/page/Classes/AttachmentData" title="Classes/AttachmentData" class="mw-redirect">AttachmentData</a> sets.
+	*/
 	@External
 	public MetaVarTable GetAttachments(){return null;};
+	/**
+	Returns the blood color this entity uses, which corresponds to a <a href="http://wiki.garrysmod.com/page/Enums/BLOOD" title="Enums/BLOOD">BLOOD_ Enums</a>
+	*/
 	@External
 	public MetaVarNumber GetBloodColor(){return null;};
+	/**
+	Returns a list of all attachments of the entity, a table containing <a href="http://wiki.garrysmod.com/page/Classes/BodyGroupData" title="Classes/BodyGroupData" class="mw-redirect">BodyGroupData</a> sets.
+	*/
 	@External
 	public MetaVarTable GetBodyGroups(){return null;};
 	/**
@@ -151,6 +163,9 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	*/
 	@External
 	public MetaVarString GetClass(){return null;};
+	/**
+	Returns the entity's collision group, which corresponds to a <a href="http://wiki.garrysmod.com/page/Enums/COLLISION" title="Enums/COLLISION">COLLISION_ Enums</a>
+	*/
 	@External
 	public MetaVarNumber GetCollisionGroup(){return null;};
 	/**
@@ -197,6 +212,9 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	*/
 	@External
 	public MetaVarString GetModel(){return null;};
+	/**
+	Returns the entity's movetype, which corresponds to a <a href="http://wiki.garrysmod.com/page/Enums/MOVETYPE" title="Enums/MOVETYPE">MOVETYPE_ Enums</a>
+	*/
 	@External
 	public MetaVarNumber GetMoveType(){return null;};
 	/**
@@ -422,6 +440,9 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	*/
 	@External
 	public MetaVar SetBloodColor(MetaVarNumber bloodColorVar){return null;};
+	/**
+	Sets the entity's collision group. It takes an integer that corresponds to a <a href="http://wiki.garrysmod.com/page/Enums/COLLISION" title="Enums/COLLISION">COLLISION_ Enums</a>
+	*/
 	@External
 	public MetaVar SetCollisionGroup(MetaVarNumber groupVar){return null;};
 	/**
@@ -464,6 +485,9 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	*/
 	@External
 	public MetaVar SetModelScale(MetaVarNumber scaleVar,MetaVarNumber deltaTimeVar){return null;};
+	/**
+	Sets the entity's movetype. It takes an integer that corresponds to a <a href="http://wiki.garrysmod.com/page/Enums/MOVETYPE" title="Enums/MOVETYPE">MOVETYPE_ Enums</a>
+	*/
 	@External
 	public MetaVar SetMoveType(MetaVarNumber movetypeVar){return null;};
 	/**

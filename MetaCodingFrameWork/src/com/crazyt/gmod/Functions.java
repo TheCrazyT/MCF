@@ -5,6 +5,9 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.MetaCommand;
 @External
 public class Functions {
+	/**
+	Adds simple Get/Set accessor functions on the specified table.<br />
+	*/
 	@External
 	public MetaVar AccessorFunc(MetaVarTable tabVar,com.crazyt.gmod.IMetaVarAny keyVar,MetaVarString nameVar,MetaVarNumber iForceVar){return null;};
 	/**
@@ -17,6 +20,9 @@ public class Functions {
 	*/
 	@External
 	public MetaVar AddCSLuaFile(MetaVarString fileVar){return null;};
+	/**
+	Tells the engine to register a console command. If the command was ran, the engine calls <a href="http://wiki.garrysmod.com/page/Libraries/concommand" title="Libraries/concommand">concommand</a>.<a href="/index.php?title=Libraries/concommand/Run&amp;action=edit&amp;redlink=1" class="new" title="Libraries/concommand/Run (page does not exist)">Run</a>. If you want to add a console command use <a href="http://wiki.garrysmod.com/page/Libraries/concommand" title="Libraries/concommand">concommand</a>.<a href="http://wiki.garrysmod.com/page/Libraries/concommand/Add" title="Libraries/concommand/Add">Add</a>.
+	*/
 	@External
 	public MetaVar AddConsoleCommand(MetaVarString nameVar,MetaVarString helpTextVar,MetaVarNumber flagsVar){return null;};
 	/**
@@ -29,9 +35,12 @@ public class Functions {
 	*/
 	@External
 	public MetaVar Add_NPC_Class(MetaVarString nameVar){return null;};
+	/**
+	Loads the specified material from the /cache folder, usually used in combination <a href="http://wiki.garrysmod.com/page/Libraries/steamworks" title="Libraries/steamworks">steamworks</a>.<a href="http://wiki.garrysmod.com/page/Libraries/steamworks/Download" title="Libraries/steamworks/Download">Download</a>.
+	*/
 	//public MetaVarIMaterial AddonMaterial(MetaVarString nameVar){return null;};
 	/**
-	Creates an angle and prints the value to the console.
+	Creates an <a href="http://wiki.garrysmod.com/page/Classes/Angle" title="Classes/Angle">Angle</a> object.
 	*/
 	@External
 	public MetaVarAngle Angle(MetaVarNumber pitchVar,MetaVarNumber yawVar,MetaVarNumber rollVar){return null;};
@@ -60,14 +69,17 @@ public class Functions {
 	*/
 	//public MetaVarCSEnt ClientsideScene(MetaVarString nameVar,MetaVarEntity targetEntVar){return null;};
 	/**
-	Creates a color and prints the components to the console.
+	Creates a <a href="http://wiki.garrysmod.com/page/Classes/Color" title="Classes/Color" class="mw-redirect">Color</a> object.
 	*/
 	@External
 	public MetaVar Color(MetaVarNumber rVar,MetaVarNumber gVar,MetaVarNumber bVar,MetaVarNumber aVar){return null;};
+	/**
+	Returns a new <a href="http://wiki.garrysmod.com/page/Classes/Color" title="Classes/Color" class="mw-redirect">Color</a> with the RGB components of the given <a href="http://wiki.garrysmod.com/page/Classes/Color" title="Classes/Color" class="mw-redirect">Color</a> and the alpha value specified.
+	*/
 	@External
 	public MetaVar ColorAlpha(MetaVarNumber alphaVar){return null;};
 	/**
-	Creates a color and prints the HSV values to the console.
+	Converts a <a href="http://wiki.garrysmod.com/page/Structures/Color" title="Structures/Color">Color</a> object into HSV color space.
 	*/
 	@External
 	public MetaVarNumber ColorToHSV(){return null;};
@@ -76,6 +88,9 @@ public class Functions {
 	*/
 	@External
 	public MetaVar CompileFile(MetaVarString pathVar){return null;};
+	/**
+	Compiles the string of Lua code as a function and returns it.<br /> If there is an error, it will print the error to the console and return nil.<br /> If HandleError is set to false, it will return an error string on failure, instead of nil.
+	*/
 	@External
 	public MetaVarFunction CompileString(MetaVarString codeVar,MetaVarString identifierVar,MetaVarBoolean HandleErrorVar){return null;};
 	/**
@@ -156,7 +171,7 @@ public class Functions {
 	@External
 	public MetaVar DrawSobel(MetaVarNumber ThresholdVar){return null;};
 	/**
-	Draws the texturize shader with a pattern texture.
+	Draws the texturize shader, which replaces each pixel on your screen with a different part of the texture depending on its brightness.  See <a href="http://wiki.garrysmod.com/page/Misc/Shaders/g_texturize" title="Misc/Shaders/g texturize">g_textureize</a> for information on making the texture.
 	*/
 	@External
 	public MetaVar DrawTexturize(MetaVarNumber ScaleVar,MetaVarNumber BaseTextureVar){return null;};
@@ -174,6 +189,9 @@ public class Functions {
 	Creates or replaces a dynamic light with the given id
 	*/
 	//public MetaVarDlight_t DynamicLight(MetaVarNumber indexVar){return null;};
+	/**
+	Creates a new effect data object to be used with <a href="http://wiki.garrysmod.com/page/Libraries/util" title="Libraries/util">util</a>.<a href="http://wiki.garrysmod.com/page/Libraries/util/Effect" title="Libraries/util/Effect">Effect</a>.
+	*/
 	//public MetaVarCEffectData EffectData(){return null;};
 	/**
 	An 'if then else'
@@ -201,17 +219,17 @@ public class Functions {
 	@External
 	public MetaVar ErrorNoHalt(MetaVarVararg argumentsVar){return null;};
 	/**
-	Print the view angles
+	Returns the angles of the players view calculated by <a href="http://wiki.garrysmod.com/page/Hooks/Base/CalcView" title="Hooks/Base/CalcView">Base:CalcView</a>.
 	*/
 	@External
 	public MetaVarAngle EyeAngles(){return null;};
 	/**
-	Print the view position
+	Returns the position of the players view point calculated by <a href="http://wiki.garrysmod.com/page/Hooks/Base/CalcView" title="Hooks/Base/CalcView">Base:CalcView</a>.
 	*/
 	@External
 	public MetaVarVector EyePos(){return null;};
 	/**
-	Print the view angles
+	Returns the normal of the players view calculated by <a href="http://wiki.garrysmod.com/page/Hooks/Base/CalcView" title="Hooks/Base/CalcView">Base:CalcView</a> similar to <a href="http://wiki.garrysmod.com/page/Global/EyeAngles" title="Global/EyeAngles">EyeAngles</a>.
 	*/
 	@External
 	public MetaVarVector EyeVector(){return null;};
@@ -298,6 +316,9 @@ public class Functions {
 	Creates or gets the rendertarget with the given name.
 	*/
 	//public MetaVarITexture GetRenderTarget(MetaVarString nameVar,MetaVarNumber widthVar,MetaVarNumber heightVar,MetaVarBoolean additiveVar){return null;};
+	/**
+	Creates or gets the rendertarget with the given name, this function allows to adjust the creation of a rendertarget more than <a href="http://wiki.garrysmod.com/page/Global/GetRenderTarget" title="Global/GetRenderTarget">GetRenderTarget</a>
+	*/
 	//public MetaVarITexture GetRenderTargetEx(MetaVarString nameVar,MetaVarNumber widthVar,MetaVarNumber heightVar,MetaVarNumber indexVar,MetaVarNumber sizeModeVar,MetaVarNumber textureFlagsVar,MetaVarNumber rtFlagsVar,MetaVarNumber imageFormatVar){return null;};
 	/**
 	Converts a color from HSV color space into RGB color space and returns a color object.
@@ -329,6 +350,9 @@ public class Functions {
 	*/
 	@External
 	public MetaVarBoolean IsMounted(){return null;};
+	/**
+	Checks if a table or class is valid<br />Checks that an object is not nil, has an IsValid method and if this method returns true.
+	*/
 	@External
 	public MetaVarBoolean IsValid(com.crazyt.gmod.IMetaVarAny toBeValidatedVar){return null;};
 	/**
@@ -368,24 +392,27 @@ public class Functions {
 	*/
 	//public MetaVarIMesh Mesh(){return null;};
 	/**
-	From entities/gmod_cameraprop.lua
+	Runs <a href="http://wiki.garrysmod.com/page/Libraries/util" title="Libraries/util">util</a>.<a href="http://wiki.garrysmod.com/page/Libraries/util/PrecacheModel" title="Libraries/util/PrecacheModel">PrecacheModel</a> and returns the string
 	*/
 	@External
 	public MetaVarString Model(MetaVarString modelVar){return null;};
 	/**
-	Prints "Hello World!" to the console.
+	Writes every given argument to the console.<br />
 	*/
 	@External
 	public MetaVar Msg(MetaVarVararg argsVar){return null;};
+	/**
+	Works exactly like <a href="http://wiki.garrysmod.com/page/Global/Msg" title="Global/Msg">Msg</a> except that, if called on the server, will print to all players consoles plus the server console.
+	*/
 	@External
 	public MetaVar MsgAll(MetaVarVararg argsVar){return null;};
 	/**
-	Prints "Hello World!" in red to the console.
+	Just like <a href="http://wiki.garrysmod.com/page/Global/Msg" title="Global/Msg">Msg</a>, except the text color is decided by the first argument.
 	*/
 	@External
 	public MetaVar MsgC(MetaVarVararg argsVar){return null;};
 	/**
-	Prints "Hello, World!" in two lines to the console.
+	Just like <a href="http://wiki.garrysmod.com/page/Global/Msg" title="Global/Msg">Msg</a>, except it adds a newline (<i>"\n"</i>) at the end.
 	*/
 	@External
 	public MetaVar MsgN(MetaVarVararg argsVar){return null;};
@@ -462,7 +489,7 @@ public class Functions {
 	@External
 	public MetaVar SetGlobalInt(MetaVarString IndexVar,MetaVarNumber ValueVar){return null;};
 	/**
-	From entities/sent_ball.lua
+	Runs <a href="http://wiki.garrysmod.com/page/Libraries/util" title="Libraries/util">util</a>.<a href="http://wiki.garrysmod.com/page/Libraries/util/PrecacheSound" title="Libraries/util/PrecacheSound">PrecacheSound</a> and returns the string
 	*/
 	@External
 	public MetaVarString Sound(MetaVarString soundPathVar){return null;};
@@ -497,7 +524,7 @@ public class Functions {
 	@External
 	public MetaVarBoolean ValidPanel(MetaVarPanel panelVar){return null;};
 	/**
-	Creates a vector and prints the value to the console.
+	Creates a <a href="http://wiki.garrysmod.com/page/Classes/Vector" title="Classes/Vector">Vector</a> object.
 	*/
 	@External
 	public MetaVarVector Vector(MetaVarNumber xVar,MetaVarNumber yVar,MetaVarNumber zVar){return null;};
@@ -512,8 +539,7 @@ public class Functions {
 	@External
 	public MetaVarVector WorldToLocal(MetaVarVector newSystemOriginVar,MetaVarAngle newSystemAnglesVar,MetaVarVector positionVar,MetaVarAngle angleVar){return null;};
 	/**
-	Throws an error if the first argument evaluates to false, the second argument can be used to specify the error, otherwise "assertion failed". 
-Otherwise returns all argument passed to the function
+	Throws an error if the first argument evaluates to false, the second argument can be used to specify the error, otherwise "assertion failed".
 	*/
 	//public MetaVarVararg assert(com.crazyt.gmod.IMetaVarAny expressionVar,MetaVarString errorMessageVar){return null;};
 	/**
@@ -526,6 +552,9 @@ Otherwise returns all argument passed to the function
 	*/
 	@External
 	public MetaVarTable getfenv(){return null;};
+	/**
+	Gets a table's metatable.<br />
+	*/
 	@External
 	public MetaVarTable getmetatable(MetaVarTable TabVar){return null;};
 	/**
@@ -584,7 +613,7 @@ Otherwise returns all argument passed to the function
 	@External
 	public com.crazyt.gmod.IMetaVarAny next(MetaVarTable tabVar,com.crazyt.gmod.IMetaVarAny prevKeyVar){return null;};
 	/**
-	Prints the name of all players
+	Returns an iterator function(<a href="http://wiki.garrysmod.com/page/Global/next" title="Global/next">next</a>) for a for loop that will return the values of the specified table in an arbitrary order.
 	*/
 	@External
 	public MetaVarFunction pairs(MetaVarTable tabVar){return null;};
@@ -594,7 +623,7 @@ Otherwise returns all argument passed to the function
 	@External
 	public MetaVarBoolean pcall(MetaVarFunction funcVar,MetaVarVararg argumentsVar){return null;};
 	/**
-	Prints "Hello World!" to the console.
+	Writes every given argument to the console.<br />
 	*/
 	@External
 	public MetaVar print(MetaVarVararg argsVar){return null;};
@@ -625,7 +654,6 @@ Otherwise returns all argument passed to the function
 	public MetaVarFunction setfenv(MetaVarTable enviromentVar){return null;};
 	/**
 	Sets, changes or removes a table's metatable.
-Returns Tab (first argument).
 	*/
 	@External
 	public MetaVarTable setmetatable(MetaVarTable TabVar,MetaVarTable MetatableVar){return null;};
@@ -640,7 +668,7 @@ Returns Tab (first argument).
 	@External
 	public MetaVarNumber tonumber(MetaVarNumber baseVar){return null;};
 	/**
-	Convert a number to a string.
+	Attempts to convert an object to a string, if defined, it will call the <a href="http://wiki.garrysmod.com/page/Lua/Tutorials/Using_Metatables#tostring" title="Lua/Tutorials/Using Metatables">__tostring</a> method for the given object's metatable, <a href="http://wiki.garrysmod.com/page/Global/print" title="Global/print">print</a> also uses this functionality.
 	*/
 	@External
 	public MetaVarString tostring(com.crazyt.gmod.IMetaVarAny VarVar){return null;};
@@ -655,7 +683,7 @@ Returns Tab (first argument).
 	@External
 	public MetaVarVararg unpack(MetaVarTable tblVar,MetaVarNumber startIndexVar,MetaVarNumber endIndexVar){return null;};
 	/**
-	Catch an error.
+	Attempts to call the first function, if the execution fails, the second function is called with the error message, unlike in <a href="http://wiki.garrysmod.com/page/Global/pcall" title="Global/pcall">Global/pcall</a> the stack is not unwinded and can therefor be used to stack analyses using <a href="http://wiki.garrysmod.com/page/Libraries/debug" title="Libraries/debug">debug</a>.<a href="/index.php?title=Libraries/debug/getinfo&amp;action=edit&amp;redlink=1" class="new" title="Libraries/debug/getinfo (page does not exist)">getinfo</a>, the disadvantage of this function is, that it does not allow passing argument to the to be called function.
 	*/
 	@External
 	public MetaVarBoolean xpcall(MetaVarFunction funcVar,MetaVarFunction errorCallbackVar){return null;};
