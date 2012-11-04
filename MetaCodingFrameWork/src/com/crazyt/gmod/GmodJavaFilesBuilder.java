@@ -72,7 +72,7 @@ public class GmodJavaFilesBuilder {
 		disallowedFuncs.add("clearkeys");
 		disallowedFuncs.add("getname");
 		
-		propertySubst.put("name","name_p");
+//		propertySubst.put("name","name_p");
 		
 		customExtension.put("string","com.crazyt.mcf.MetaVarString");
 		customExtension.put("number","com.crazyt.mcf.MetaVarInt");
@@ -196,11 +196,16 @@ public class GmodJavaFilesBuilder {
 		String content = getContent(urlStr);
 
 		Matcher propMatcher = propPattern.matcher(content);
+		Set<String> propertiesDefined = new HashSet<String>();
 		while (propMatcher.find()) {
 			String propType = propMatcher.group(1).trim();
 			propType = propType.toUpperCase().substring(0, 1)
 					+ propType.substring(1);
 			String orgPropName = propMatcher.group(2).trim();
+			if(propertiesDefined.contains(orgPropName)){
+				continue;
+			}
+			propertiesDefined.add(orgPropName);
 			String propName = orgPropName;
 			if(propertySubst.containsKey(orgPropName.toLowerCase())){
 				propName = propertySubst.get(orgPropName.toLowerCase());

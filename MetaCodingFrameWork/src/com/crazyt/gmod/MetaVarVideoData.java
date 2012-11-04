@@ -38,11 +38,11 @@ public class MetaVarVideoData extends MetaVarImpl implements IMetaVarAny{
 	public MetaVarNumber getFps(){ return fps;}
 	@SimpleName("fps")
 	public void setFps(MetaVarNumber value){ fps=value;}
-	private MetaVarString name_p;
+	private MetaVarString name;
 	@SimpleName("name")
-	public MetaVarString getName_p(){ return name_p;}
+	public MetaVarString getName(){ return name;}
 	@SimpleName("name")
-	public void setName_p(MetaVarString value){ name_p=value;}
+	public void setName(MetaVarString value){ name=value;}
 	private MetaVarNumber width;
 	@SimpleName("width")
 	public MetaVarNumber getWidth(){ return width;}

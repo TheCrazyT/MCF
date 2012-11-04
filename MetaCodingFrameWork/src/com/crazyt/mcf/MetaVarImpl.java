@@ -8,13 +8,13 @@ public class MetaVarImpl implements MetaVar {
 	/* (non-Javadoc)
 	 * @see com.crazyt.mcf.MetaVar#getName()
 	 */
-	public String getName() {
+	public String _getName() {
 		return name;
 	}
 	/* (non-Javadoc)
 	 * @see com.crazyt.mcf.MetaVar#setName(java.lang.String)
 	 */
-	public void setName(String name) {
+	public void _setName(String name) {
 		this.name = name;
 	}
 }

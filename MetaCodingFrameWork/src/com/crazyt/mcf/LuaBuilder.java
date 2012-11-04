@@ -129,7 +129,7 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 	}
 
 	public MetaCommand forCmd(MetaVarInt v, MetaVarInt from, MetaVarInt to) {
-		println("for "+v.getName()+"="+from.getName()+","+to.getName()+",1 do");
+		println("for "+v._getName()+"="+from._getName()+","+to._getName()+",1 do");
 		increaseTab();
 		return this;
 	}
@@ -156,7 +156,7 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 			default:
 				break;
 		}
-		println("if "+v1.getName()+c+v2.getName()+" then");
+		println("if "+v1._getName()+c+v2._getName()+" then");
 		increaseTab();
 		return this;
 	}
@@ -173,31 +173,31 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 	}
 
 	public MetaCommand add(MetaVarInt v1, MetaVarInt v2) {
-		println(v1.getName()+"="+v1.getName()+"+"+v2.getName());
+		println(v1._getName()+"="+v1._getName()+"+"+v2._getName());
 		return this;
 	}
 
 	public MetaCommand sub(MetaVarInt v1, MetaVarInt v2) {
-		println(v1.getName()+"="+v1.getName()+"-"+v2.getName());
+		println(v1._getName()+"="+v1._getName()+"-"+v2._getName());
 		return this;
 	}
 
 	public MetaCommand var(MetaVarString v, String s) {
-		println(v.getName()+" = \""+s+"\"");
+		println(v._getName()+" = \""+s+"\"");
 		return this;
 	}
 
 	public MetaCommand set(MetaVarString v, String s) {
-		println(v.getName()+" = \""+s+"\"");
+		println(v._getName()+" = \""+s+"\"");
 		return this;
 	}
 
 	public MetaCommand set(MetaVarInt v, int i) {
-		println(v.getName()+" = "+i);
+		println(v._getName()+" = "+i);
 		return this;
 	}
 	public MetaCommand var(MetaVarInt v, int i) {
-		println(v.getName()+" = "+i);
+		println(v._getName()+" = "+i);
 		return this;
 	}
 
@@ -206,15 +206,15 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 	}
 
 	public MetaCommand print(MetaVar v) {
-		println("print("+v.getName()+")");
+		println("print("+v._getName()+")");
 		return this;
 	}
 	
-	public String getName() {
+	public String _getName() {
 		return commandName;
 	}
 
-	public void setName(String name) {
+	public void _setName(String name) {
 		commandName = name;
 	}
 	
@@ -223,7 +223,7 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 			return (String)o;
 		}
 		if(o instanceof MetaVar){
-			return ((MetaVar)o).getName();
+			return ((MetaVar)o)._getName();
 		}
 		return "";
 	}
@@ -241,7 +241,7 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 			name = name.substring(0, name.length() - 1);
 		}
 		name += ")";
-		setName(name);
+		_setName(name);
 		
 		Method m = sig.getMethod();
 		methodRecorder.add(m);
@@ -249,7 +249,7 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 
 	@Override
 	public MetaCommand call(MetaVar mc) {
-		println(mc.getName());
+		println(mc._getName());
 		return this;
 	}
 
@@ -282,6 +282,6 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 			name = name.substring(0, name.length() - 1);
 		}
 		name += ")";
-		setName(name);
+		_setName(name);
 	}
 }

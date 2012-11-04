@@ -6,12 +6,12 @@ public abstract class BasicFunctions implements MetaCommand{
 
 	protected abstract MetaCommand getMetaCommand();
 	
-	public String getName() {
-		return getMetaCommand().getName();
+	public String _getName() {
+		return getMetaCommand()._getName();
 	}
 
-	public void setName(String name) {
-		getMetaCommand().setName(name);
+	public void _setName(String name) {
+		getMetaCommand()._setName(name);
 	}
 
 	public MetaCommand forCmd(MetaVarInt v, MetaVarInt from, MetaVarInt to) {

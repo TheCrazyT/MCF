@@ -55,7 +55,7 @@ public static boolean executeMode = false;
 				returnType = MetaVarImpl.class;
 			}
 			Constructor<?> cons = returnType.getConstructor(String.class);
-			return cons.newInstance(cp.getName());
+			return cons.newInstance(cp._getName());
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -106,7 +106,7 @@ public static boolean executeMode = false;
 				returnType = MetaVarImpl.class;
 			}
 			Constructor<?> cons = returnType.getConstructor(String.class);
-			return cons.newInstance(cp.getName());
+			return cons.newInstance(cp._getName());
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

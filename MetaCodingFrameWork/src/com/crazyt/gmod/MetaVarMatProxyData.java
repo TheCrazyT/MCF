@@ -8,11 +8,11 @@ import com.crazyt.mcf.SimpleName;
 @External
 @SimpleName("MatProxyData")
 public class MetaVarMatProxyData extends MetaVarImpl implements IMetaVarAny{
-	private MetaVarString name_p;
+	private MetaVarString name;
 	@SimpleName("name")
-	public MetaVarString getName_p(){ return name_p;}
+	public MetaVarString getName(){ return name;}
 	@SimpleName("name")
-	public void setName_p(MetaVarString value){ name_p=value;}
+	public void setName(MetaVarString value){ name=value;}
 	private MetaVarFunction init;
 	@SimpleName("init")
 	public MetaVarFunction getInit(){ return init;}
