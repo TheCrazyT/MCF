@@ -271,9 +271,7 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 	@Override
 	public void _addExternalFunctionCall(MethodSignature sig,
 			String functionName, Object[] args) {
-		int lio = functionName.lastIndexOf('.');
-		String name = "";
-		name += functionName.substring(lio + 1) + "(";
+		String name = functionName + "(";
 		for (Object o : args) {
 			// println("\tArg:"+o.getClass().getCanonicalName()+":"+getVarName(o));
 			name += getVarName(o) + ",";

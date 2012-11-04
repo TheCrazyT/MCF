@@ -5,9 +5,21 @@ import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Library;
+import com.crazyt.mcf.BasicFunctions;
+import com.crazyt.mcf.BuildClass;
 @External
-@SimpleName("mesh")
-public class LibMesh{
+@Library("mesh")
+public class LibMesh extends BasicFunctions{
+	@BuildClass
+	public MetaCommand metaCommand;
+	@Override
+	protected MetaCommand getMetaCommand() {
+		return metaCommand;
+	};
+	public LibMesh(MetaCommand mc){
+		this.metaCommand = mc;
+	}
 	/**
 	Pushes the new vertex data onto the render stack.
 	*/

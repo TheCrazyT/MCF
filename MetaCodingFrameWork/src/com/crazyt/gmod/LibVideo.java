@@ -5,9 +5,21 @@ import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Library;
+import com.crazyt.mcf.BasicFunctions;
+import com.crazyt.mcf.BuildClass;
 @External
-@SimpleName("video")
-public class LibVideo{
+@Library("video")
+public class LibVideo extends BasicFunctions{
+	@BuildClass
+	public MetaCommand metaCommand;
+	@Override
+	protected MetaCommand getMetaCommand() {
+		return metaCommand;
+	};
+	public LibVideo(MetaCommand mc){
+		this.metaCommand = mc;
+	}
 	/**
 	Attempts to create an <a href="http://wiki.garrysmod.com/page/Classes/IVideoWriter" title="Classes/IVideoWriter">IVideoWriter</a>.
 	*/

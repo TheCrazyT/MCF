@@ -5,9 +5,21 @@ import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Library;
+import com.crazyt.mcf.BasicFunctions;
+import com.crazyt.mcf.BuildClass;
 @External
-@SimpleName("system")
-public class LibSystem{
+@Library("system")
+public class LibSystem extends BasicFunctions{
+	@BuildClass
+	public MetaCommand metaCommand;
+	@Override
+	protected MetaCommand getMetaCommand() {
+		return metaCommand;
+	};
+	public LibSystem(MetaCommand mc){
+		this.metaCommand = mc;
+	}
 	/**
 	Returns the total uptime of the current application.
 	*/

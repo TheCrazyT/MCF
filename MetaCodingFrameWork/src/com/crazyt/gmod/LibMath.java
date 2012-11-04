@@ -5,9 +5,21 @@ import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Library;
+import com.crazyt.mcf.BasicFunctions;
+import com.crazyt.mcf.BuildClass;
 @External
-@SimpleName("math")
-public class LibMath{
+@Library("math")
+public class LibMath extends BasicFunctions{
+	@BuildClass
+	public MetaCommand metaCommand;
+	@Override
+	protected MetaCommand getMetaCommand() {
+		return metaCommand;
+	};
+	public LibMath(MetaCommand mc){
+		this.metaCommand = mc;
+	}
 	/**
 	Calculates the absolute value of a number (effectively removes any negative sign).
 	*/

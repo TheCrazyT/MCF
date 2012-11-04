@@ -5,9 +5,21 @@ import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Library;
+import com.crazyt.mcf.BasicFunctions;
+import com.crazyt.mcf.BuildClass;
 @External
-@SimpleName("player")
-public class LibPlayer{
+@Library("player")
+public class LibPlayer extends BasicFunctions{
+	@BuildClass
+	public MetaCommand metaCommand;
+	@Override
+	protected MetaCommand getMetaCommand() {
+		return metaCommand;
+	};
+	public LibPlayer(MetaCommand mc){
+		this.metaCommand = mc;
+	}
 	/**
 	Gets all the current players in the server (not including connecting clients).
 	*/

@@ -14,6 +14,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.crazyt.mcf.MetaCommand;
 public class GmodJavaFilesBuilder {
 	private final static Set<String> disallowedFuncs;
 	private final static HashMap<String,String> customExtension = new HashMap<String,String>();
@@ -239,7 +241,7 @@ public class GmodJavaFilesBuilder {
 			libraries.add(name);
 			librariesPaths.put(name.toLowerCase(),path);
 			
-			p.println("\t@Library(\"+name+\")");
+			p.println("\t@Library(\""+name+"\")");
 
 			name = name.toUpperCase().substring(0, 1) + name.substring(1);
 			p.println("\tpublic Lib" + name + " get" + name + "(){return null;};");
@@ -382,10 +384,23 @@ public class GmodJavaFilesBuilder {
 			p2.println("import com.crazyt.mcf.MetaCommand;");
 			p2.println("import com.crazyt.mcf.External;");
 			p2.println("import com.crazyt.mcf.SimpleName;");
+			p2.println("import com.crazyt.mcf.Library;");
+			p2.println("import com.crazyt.mcf.BasicFunctions;");
+			p2.println("import com.crazyt.mcf.BuildClass;");
 			
 			p2.println("@External");
-			p2.println("@SimpleName(\"" + k + "\")");
-			p2.println("public class Lib" + libName + "{");
+			p2.println("@Library(\"" + k + "\")");
+			p2.println("public class Lib" + libName	+ " extends BasicFunctions{");
+			p2.println("	@BuildClass");
+			p2.println("	public MetaCommand metaCommand;");
+			p2.println("	@Override");
+			p2.println("	protected MetaCommand getMetaCommand() {");
+			p2.println("		return metaCommand;");
+			p2.println("	};");
+			p2.println("	public Lib" + libName + "(MetaCommand mc){");
+			p2.println("		this.metaCommand = mc;");
+			p2.println("	}");
+
 			parseFunctions(p2,
 					"http://wiki.garrysmod.com" + librariesPaths.get(k.toLowerCase()));
 			p2.println("}");

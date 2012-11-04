@@ -818,172 +818,172 @@ Returns Tab (first argument).
 	@External
 	@SharedFunc
 	public MetaVarBoolean xpcall(MetaVarFunction funcVar,MetaVarFunction errorCallbackVar){return null;};
-	@Library("+name+")
+	@Library("ai")
 	public LibAi getAi(){return null;};
-	@Library("+name+")
+	@Library("ai_schedule")
 	public LibAi_schedule getAi_schedule(){return null;};
-	@Library("+name+")
+	@Library("ai_task")
 	public LibAi_task getAi_task(){return null;};
-	@Library("+name+")
+	@Library("constraint")
 	public LibConstraint getConstraint(){return null;};
-	@Library("+name+")
+	@Library("construct")
 	public LibConstruct getConstruct(){return null;};
-	@Library("+name+")
+	@Library("gmsave")
 	public LibGmsave getGmsave(){return null;};
-	@Library("+name+")
+	@Library("hammer")
 	public LibHammer getHammer(){return null;};
-	@Library("+name+")
+	@Library("navmesh")
 	public LibNavmesh getNavmesh(){return null;};
-	@Library("+name+")
+	@Library("numpad")
 	public LibNumpad getNumpad(){return null;};
-	@Library("+name+")
+	@Library("umsg")
 	public LibUmsg getUmsg(){return null;};
-	@Library("+name+")
+	@Library("achievements")
 	public LibAchievements getAchievements(){return null;};
-	@Library("+name+")
+	@Library("cam")
 	public LibCam getCam(){return null;};
-	@Library("+name+")
+	@Library("chat")
 	public LibChat getChat(){return null;};
-	@Library("+name+")
+	@Library("controlpanel")
 	public LibControlpanel getControlpanel(){return null;};
-	@Library("+name+")
+	@Library("cookie")
 	public LibCookie getCookie(){return null;};
-	@Library("+name+")
+	@Library("derma")
 	public LibDerma getDerma(){return null;};
-	@Library("+name+")
+	@Library("dragndrop")
 	public LibDragndrop getDragndrop(){return null;};
-	@Library("+name+")
+	@Library("draw")
 	public LibDraw getDraw(){return null;};
-	@Library("+name+")
+	@Library("effects")
 	public LibEffects getEffects(){return null;};
-	@Library("+name+")
+	@Library("frame_blend")
 	public LibFrame_blend getFrame_blend(){return null;};
-	@Library("+name+")
+	@Library("gui")
 	public LibGui getGui(){return null;};
-	@Library("+name+")
+	@Library("GWEN")
 	public LibGWEN getGWEN(){return null;};
-	@Library("+name+")
+	@Library("halo")
 	public LibHalo getHalo(){return null;};
-	@Library("+name+")
+	@Library("input")
 	public LibInput getInput(){return null;};
-	@Library("+name+")
+	@Library("killicon")
 	public LibKillicon getKillicon(){return null;};
-	@Library("+name+")
+	@Library("language")
 	public LibLanguage getLanguage(){return null;};
-	@Library("+name+")
+	@Library("matproxy")
 	public LibMatproxy getMatproxy(){return null;};
-	@Library("+name+")
+	@Library("markup")
 	public LibMarkup getMarkup(){return null;};
-	@Library("+name+")
+	@Library("menubar")
 	public LibMenubar getMenubar(){return null;};
-	@Library("+name+")
+	@Library("menu")
 	public LibMenu getMenu(){return null;};
-	@Library("+name+")
+	@Library("mesh")
 	public LibMesh getMesh(){return null;};
-	@Library("+name+")
+	@Library("notification")
 	public LibNotification getNotification(){return null;};
-	@Library("+name+")
+	@Library("presets")
 	public LibPresets getPresets(){return null;};
-	@Library("+name+")
+	@Library("render")
 	public LibRender getRender(){return null;};
-	@Library("+name+")
+	@Library("search")
 	public LibSearch getSearch(){return null;};
-	@Library("+name+")
+	@Library("spawnmenu")
 	public LibSpawnmenu getSpawnmenu(){return null;};
-	@Library("+name+")
+	@Library("steamworks")
 	public LibSteamworks getSteamworks(){return null;};
-	@Library("+name+")
+	@Library("surface")
 	public LibSurface getSurface(){return null;};
-	@Library("+name+")
+	@Library("vgui")
 	public LibVgui getVgui(){return null;};
-	@Library("+name+")
+	@Library("video")
 	public LibVideo getVideo(){return null;};
-	@Library("+name+")
+	@Library("bit")
 	public LibBit getBit(){return null;};
-	@Library("+name+")
+	@Library("baseclass")
 	public LibBaseclass getBaseclass(){return null;};
-	@Library("+name+")
+	@Library("cleanup")
 	public LibCleanup getCleanup(){return null;};
-	@Library("+name+")
+	@Library("concommand")
 	public LibConcommand getConcommand(){return null;};
-	@Library("+name+")
+	@Library("coroutine")
 	public LibCoroutine getCoroutine(){return null;};
-	@Library("+name+")
+	@Library("cvars")
 	public LibCvars getCvars(){return null;};
-	@Library("+name+")
+	@Library("debugoverlay")
 	public LibDebugoverlay getDebugoverlay(){return null;};
-	@Library("+name+")
+	@Library("debug")
 	public LibDebug getDebug(){return null;};
-	@Library("+name+")
+	@Library("drive")
 	public LibDrive getDrive(){return null;};
-	@Library("+name+")
+	@Library("duplicator")
 	public LibDuplicator getDuplicator(){return null;};
-	@Library("+name+")
+	@Library("engine")
 	public LibEngine getEngine(){return null;};
-	@Library("+name+")
+	@Library("ents")
 	public LibEnts getEnts(){return null;};
-	@Library("+name+")
+	@Library("file")
 	public LibFile getFile(){return null;};
-	@Library("+name+")
+	@Library("gameevent")
 	public LibGameevent getGameevent(){return null;};
-	@Library("+name+")
+	@Library("gamemode")
 	public LibGamemode getGamemode(){return null;};
-	@Library("+name+")
+	@Library("game")
 	public LibGame getGame(){return null;};
-	@Library("+name+")
+	@Library("gmod")
 	public LibGmod getGmod(){return null;};
-	@Library("+name+")
+	@Library("hook")
 	public LibHook getHook(){return null;};
-	@Library("+name+")
+	@Library("http")
 	public LibHttp getHttp(){return null;};
-	@Library("+name+")
+	@Library("jit")
 	public LibJit getJit(){return null;};
-	@Library("+name+")
+	@Library("list")
 	public LibList getList(){return null;};
-	@Library("+name+")
+	@Library("math")
 	public LibMath getMath(){return null;};
-	@Library("+name+")
+	@Library("net")
 	public LibNet getNet(){return null;};
-	@Library("+name+")
+	@Library("os")
 	public LibOs getOs(){return null;};
-	@Library("+name+")
+	@Library("package")
 	public LibPackage getPackage(){return null;};
-	@Library("+name+")
+	@Library("physenv")
 	public LibPhysenv getPhysenv(){return null;};
-	@Library("+name+")
+	@Library("player_manager")
 	public LibPlayer_manager getPlayer_manager(){return null;};
-	@Library("+name+")
+	@Library("player")
 	public LibPlayer getPlayer(){return null;};
-	@Library("+name+")
+	@Library("properties")
 	public LibProperties getProperties(){return null;};
-	@Library("+name+")
+	@Library("resource")
 	public LibResource getResource(){return null;};
-	@Library("+name+")
+	@Library("saverestore")
 	public LibSaverestore getSaverestore(){return null;};
-	@Library("+name+")
+	@Library("scripted_ents")
 	public LibScripted_ents getScripted_ents(){return null;};
-	@Library("+name+")
+	@Library("sound")
 	public LibSound getSound(){return null;};
-	@Library("+name+")
+	@Library("sql")
 	public LibSql getSql(){return null;};
-	@Library("+name+")
+	@Library("string")
 	public LibString getString(){return null;};
-	@Library("+name+")
+	@Library("system")
 	public LibSystem getSystem(){return null;};
-	@Library("+name+")
+	@Library("table")
 	public LibTable getTable(){return null;};
-	@Library("+name+")
+	@Library("team")
 	public LibTeam getTeam(){return null;};
-	@Library("+name+")
+	@Library("timer")
 	public LibTimer getTimer(){return null;};
-	@Library("+name+")
+	@Library("undo")
 	public LibUndo getUndo(){return null;};
-	@Library("+name+")
+	@Library("usermessage")
 	public LibUsermessage getUsermessage(){return null;};
-	@Library("+name+")
+	@Library("util")
 	public LibUtil getUtil(){return null;};
-	@Library("+name+")
+	@Library("weapons")
 	public LibWeapons getWeapons(){return null;};
-	@Library("+name+")
+	@Library("widgets")
 	public LibWidgets getWidgets(){return null;};
 }

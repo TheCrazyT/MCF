@@ -82,6 +82,50 @@ public static boolean executeMode = false;
     pointcut externalCommands(): 
     execution( @External * * (..)) && within(@External *);
     
+    pointcut libraryAccess(): 
+    execution( @Library * * (..)) && within(@External *);
+    
+    Object around():libraryAccess() {
+    	Class<?> returnType = null;
+    	MetaCommand cp = null;
+		try {
+			cp = getCommandProcessor(thisJoinPoint.getThis());
+			if(cp==null){
+				throw new RuntimeException("command processor not found!");
+			}
+	    	MethodSignature ms = (MethodSignature)thisJoinPoint.getSignature();
+	    	returnType = ms.getReturnType();
+		} catch (Throwable t) {
+			System.out.println("some aspect error happened");
+			throw new RuntimeException(t);
+		}
+    	
+		try {
+			Constructor<?> cons = returnType.getConstructor(MetaCommand.class);
+			return cons.newInstance(cp);
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+		return null;
+    }
+    
     Object around():externalCommands() {
     	if(executeMode){
     		executeMode = false;
@@ -91,9 +135,20 @@ public static boolean executeMode = false;
     	MetaCommand cp = null;
 		try {
 			cp = getCommandProcessor(thisJoinPoint.getThis());
+			if(cp==null){
+				throw new RuntimeException("command processor not found!");
+			}
 //	    	System.out.println("ext command:" + thisJoinPoint.getThis().getClass().getCanonicalName()+"."+thisJoinPoint.getSignature().getName());
 	    	MethodSignature ms = (MethodSignature)thisJoinPoint.getSignature();
-			cp._addExternalFunctionCall(ms,thisJoinPoint.getThis().getClass().getCanonicalName()+"."+thisJoinPoint.getSignature().getName(),thisJoinPoint.getArgs());
+	    	String name = thisJoinPoint.getSignature().getName();
+	    	if(thisJoinPoint.getThis().getClass().isAnnotationPresent(Library.class)){
+				name = thisJoinPoint.getThis().getClass().getAnnotation(Library.class)
+						.value()
+						+ "." + name;
+//				System.out.println("Found library call:"+name);
+	    	}
+	    	
+			cp._addExternalFunctionCall(ms,name,thisJoinPoint.getArgs());
 	    	returnType = ms.getReturnType();
 		} catch (Throwable t) {
 			System.out.println("some aspect error happened");

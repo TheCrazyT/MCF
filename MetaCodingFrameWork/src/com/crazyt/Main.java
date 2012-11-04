@@ -33,8 +33,8 @@ public class Main extends GMODBuilder implements Builder{
 		MetaVarInt v3 = new MetaVarInt("v3");
 		
 		
-		
-		 call(EyeAngles())
+		call(getPlayer().GetAll())
+		.call(EyeAngles())
 		.call(AddConsoleCommand(TEXT("test"), TEXT("test"), NUM(1)))
 		.set(v1,"test")
 		.set(v3,1)
