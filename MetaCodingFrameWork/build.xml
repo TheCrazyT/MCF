@@ -17,7 +17,7 @@
   <target name="compile" depends="init"
         description="compile the source " >
      <javac srcdir="${src}" destdir="${build}"/>
-     <java classname="com.crazyt.mcf.JavaBuilder">
+     <java classname="com.crazyt.mcf.LuaBuilder">
      	<arg value="com.crazyt.Main"/>
         <classpath>
            <pathelement path="${java.class.path}"/>
