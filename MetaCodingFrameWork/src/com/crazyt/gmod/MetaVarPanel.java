@@ -8,6 +8,12 @@ import com.crazyt.mcf.SimpleName;
 @External
 @SimpleName("Panel")
 public class MetaVarPanel extends MetaVarImpl implements IMetaVarAny{
+	private MetaVarNumber x;
+	public MetaVarNumber getX(){ return x;}
+	public void setX(MetaVarNumber value){ x=value;}
+	private MetaVarNumber y;
+	public MetaVarNumber getY(){ return y;}
+	public void setY(MetaVarNumber value){ y=value;}
 	public MetaVarPanel(String n) {
 		super(n);
 	}

@@ -163,43 +163,66 @@ public class GmodJavaFilesBuilder {
 		p.println("@External");
 		p.println("public abstract class "+name+" extends BasicFunctions {");
 	}
-	private static void parseFunctions(PrintStream p,String urlStr){
-		String pat = "\\<td\\> *\\<a +href=\"[^\"]+\" +title=\"[^\"]+\">([^<]+)\\</a\\>\r?\n\\</td\\>\r?\n\\<td\\> *(\\<b\\>([^<]+)\\</b\\>:)?\\<a +href=\"([^\"]+)\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>";
-		String pat2 = "\\<p\\>[^<]+\\<b\\>([^<]+)\\</b\\> *\\(<a href=\"([^\"]+)\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>\\)";
-		String pat3 = "\\<tr\\>\r?\n\\<td\\>\\<strong\\>Name:\\</strong\\>\\</td\\>\r?\n\\<td\\>([^<]+)\\</td\\>";
-		String pat4 = "\\<b\\>Returns:\\</b\\> \\<a href=\"[^\"]+\" title=\"[^\"]+\"\\>([^<]+)\\</a\\>";
-		String pat5 = "\\<p\\>\\<b\\>Description:\\</b\\>(.+)(?!\\</p)+";
+	private static void parseProperties(PrintStream p,String urlStr){
+		String propPat = "(?s)<tr>\r?\n<td> <a href=\"/page/Classes[^\"]+\" title=\"[^\"]+\">([^<]+)</a>\r?\n</td>\r?\n<td>(.+?)\r?\n</td>\r?\n<td>(.+?\r?\n)</td></tr>";
 
+		Pattern propPattern = Pattern.compile(propPat);
+
+		String content = getContent(urlStr);
+
+		Matcher propMatcher = propPattern.matcher(content);
+		while (propMatcher.find()) {
+			String propType = propMatcher.group(1).trim();
+			propType = propType.toUpperCase().substring(0, 1)
+					+ propType.substring(1);
+			String propName = propMatcher.group(2).trim();
+			String propName2 = propName.toUpperCase().substring(0, 1)
+					+ propName.substring(1);
+
+			p.println("\tprivate MetaVar" + propType + " " + propName + ";");
+
+			p.println("\tpublic MetaVar" + propType + " get" + propName2
+					+ "(){ return " + propName + ";}");
+			p.println("\tpublic void set" + propName2 + "(MetaVar" + propType
+					+ " value){ " + propName + "=value;}");
+		}
 		
-		Pattern pattern = Pattern.compile(pat);
-		Pattern pattern2 = Pattern.compile(pat2);
-		Pattern pattern3 = Pattern.compile(pat3);
-		Pattern pattern4 = Pattern.compile(pat4);
-		Pattern pattern5 = Pattern.compile(pat5);
+	}
+	private static void parseFunctions(PrintStream p,String urlStr){
+		String funcUrlPat = "(?s)<td> *<a +href=\"[^\"]+\" +title=\"[^\"]+\">([^<]+)</a>\r?\n\\</td>\r?\n<td> *(?:<b>(?:[^<]+)</b>:)?\\<a +href=\"([^\"]+)\" title=\"[^\"]+\">([^<]+)</a>";
+		String argPat = "(?s)<p>[^<]+<b>([^<]+)</b> *\\(<a href=\"([^\"]+)\" title=\"[^\"]+\">([^<]+)</a>\\)";
+		String namePat = "(?s)<tr>\r?\n<td><strong>Name:</strong></td>\r?\n<td>([^<]+)</td>";
+		String returnPat = "(?s)<b>Returns:</b> <a href=\"[^\"]+\" title=\"[^\"]+\">([^<]+)</a>";
+		String descPat = "(?s)<p><b>Description:</b>(.+?)</p";
+		
+		Pattern funcUrlPattern = Pattern.compile(funcUrlPat);
+		Pattern argPattern = Pattern.compile(argPat);
+		Pattern namePattern = Pattern.compile(namePat);
+		Pattern returnPattern = Pattern.compile(returnPat);
+		Pattern descPattern = Pattern.compile(descPat);
 
 		String content = getContent(urlStr);
 		
-		
-		Matcher matcher = pattern.matcher(content);
+		Matcher funcUrlMatcher = funcUrlPattern.matcher(content);
 		Set<String> functions = new HashSet<String>();
-		while (matcher.find()) {
-			String state = matcher.group(1);
-			String entity = matcher.group(3);
-			String methodPath = matcher.group(4);
-			System.out.println(entity+":"+methodPath+":"+matcher.group(5));
+		while (funcUrlMatcher.find()) {
+			String state = funcUrlMatcher.group(1);
+			String entity = funcUrlMatcher.group(3);
+			String methodPath = funcUrlMatcher.group(2);
+			System.out.println(entity+":"+methodPath+":"+entity);
 			String path ="";
 			path += methodPath;
 			String content2 = getContent("http://wiki.garrysmod.com"+path);
-			Matcher matcher3 = pattern3.matcher(content2);			
-			Matcher matcher2 = pattern2.matcher(content2);
-			if(matcher3.find()){
-				String funcName = matcher3.group(1);
+			Matcher nameMatcher = namePattern.matcher(content2);			
+			Matcher argMatcher = argPattern.matcher(content2);
+			if(nameMatcher.find()){
+				String funcName = nameMatcher.group(1);
 				if(funcName.lastIndexOf(":")>0){
 					funcName = funcName.substring(funcName.lastIndexOf(":")+1);
 				}
 				if(!functions.contains(funcName.toLowerCase())){
 					functions.add(funcName.toLowerCase());
-					Matcher matcher5 = pattern5.matcher(content2);
+					Matcher matcher5 = descPattern.matcher(content2);
 					if(matcher5.find()){
 						String description = matcher5.group(1).trim();
 						description = description.replaceAll(" href=\"/page/"," href=\"http://wiki.garrysmod.com/page/" );
@@ -216,7 +239,7 @@ public class GmodJavaFilesBuilder {
 						p.print("//");
 					}
 					String retType = "MetaVar";
-					Matcher matcher4 = pattern4.matcher(content2);
+					Matcher matcher4 = returnPattern.matcher(content2);
 					if(matcher4.find()){
 						retType = matcher4.group(1);
 						if (metaVarSubst.containsKey(retType.toLowerCase())) {
@@ -228,11 +251,11 @@ public class GmodJavaFilesBuilder {
 						}
 					}
 					p.print("public "+retType+" "+funcName+"(");
-					boolean found = matcher2.find();
+					boolean found = argMatcher.find();
 					while (found) {
-						String argName = matcher2.group(1);
-						String typePath = matcher2.group(2);
-						String argType = matcher2.group(3);
+						String argName = argMatcher.group(1);
+						String typePath = argMatcher.group(2);
+						String argType = argMatcher.group(3);
 						String attName = argType;
 						attName = attName.toUpperCase().substring(0, 1) + attName.substring(1);
 						attributeTypes.add(argType);
@@ -245,7 +268,7 @@ public class GmodJavaFilesBuilder {
 						{
 							p.print("MetaVar"+attName+" "+argName+"Var");
 						}
-						found = matcher2.find();
+						found = argMatcher.find();
 						if(found){
 							p.print(",");						
 						}
@@ -278,11 +301,11 @@ public class GmodJavaFilesBuilder {
 			return;
 		}
 		
-//		String content = getContent("http://wiki.garrysmod.com/page/Global");
-
+		//parse functions
 		writeMainPackages(p,"Functions");
 		parseFunctions(p,"http://wiki.garrysmod.com/page/Global");
 		
+		//parse Attributes with their functions
 		for(String k:attributeTypes){
 			if(metaVarSubst.containsKey(k)) {
 				continue;
@@ -307,6 +330,7 @@ public class GmodJavaFilesBuilder {
 			p2.println("@External");
 			p2.println("@SimpleName(\""+k+"\")");
 			p2.println("public class MetaVar"+attName+" extends "+ext+" implements IMetaVarAny{");
+			parseProperties(p2,"http://wiki.garrysmod.com"+attributePaths.get(k));
 			p2.println("	public MetaVar"+attName+"(String n) {");
 			p2.println("		super(n);");
 			p2.println("	}");

@@ -8,6 +8,15 @@ import com.crazyt.mcf.SimpleName;
 @External
 @SimpleName("Vector")
 public class MetaVarVector extends MetaVarImpl implements IMetaVarAny{
+	private MetaVarNumber x;
+	public MetaVarNumber getX(){ return x;}
+	public void setX(MetaVarNumber value){ x=value;}
+	private MetaVarNumber y;
+	public MetaVarNumber getY(){ return y;}
+	public void setY(MetaVarNumber value){ y=value;}
+	private MetaVarNumber z;
+	public MetaVarNumber getZ(){ return z;}
+	public void setZ(MetaVarNumber value){ z=value;}
 	public MetaVarVector(String n) {
 		super(n);
 	}

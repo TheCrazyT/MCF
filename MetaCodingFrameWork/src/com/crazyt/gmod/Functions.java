@@ -8,6 +8,7 @@ import com.crazyt.mcf.BasicFunctions;
 public abstract class Functions extends BasicFunctions {
 	/**
 	Adds simple Get/Set accessor functions on the specified table.<br />
+Can also force the value to be set to a number, bool or string.
 	*/
 	@External
 	@SharedFunc
@@ -466,6 +467,9 @@ public abstract class Functions extends BasicFunctions {
 	public MetaVarString Model(MetaVarString modelVar){return null;};
 	/**
 	Writes every given argument to the console.<br />
+Automatically attempts to convert each argument to a string. (See <a href="http://wiki.garrysmod.com/page/Global/tostring" title="Global/tostring">tostring</a>)<br />
+Unlike <a href="http://wiki.garrysmod.com/page/Global/print" title="Global/print">print</a>, arguments are not separated by anything. They are simply concatenated.<br />
+The text is colored depending on the realm where the function is called from (see the notes below).
 	*/
 	@External
 	@SharedFunc
@@ -633,7 +637,8 @@ public abstract class Functions extends BasicFunctions {
 	@SharedFunc
 	public MetaVarVector WorldToLocal(MetaVarVector newSystemOriginVar,MetaVarAngle newSystemAnglesVar,MetaVarVector positionVar,MetaVarAngle angleVar){return null;};
 	/**
-	Throws an error if the first argument evaluates to false, the second argument can be used to specify the error, otherwise "assertion failed".
+	Throws an error if the first argument evaluates to false, the second argument can be used to specify the error, otherwise "assertion failed". 
+Otherwise returns all argument passed to the function
 	*/
 	//public MetaVarVararg assert(com.crazyt.gmod.IMetaVarAny expressionVar,MetaVarString errorMessageVar){return null;};
 	/**
@@ -650,6 +655,7 @@ public abstract class Functions extends BasicFunctions {
 	public MetaVarTable getfenv(){return null;};
 	/**
 	Gets a table's metatable.<br />
+Has <a href="http://wiki.garrysmod.com/page/Lua/Tutorials/Using_Metatables#metatable" title="Lua/Tutorials/Using Metatables">certain limitations</a>.<br />
 	*/
 	@External
 	@SharedFunc
@@ -734,6 +740,8 @@ public abstract class Functions extends BasicFunctions {
 	public MetaVarBoolean pcall(MetaVarFunction funcVar,MetaVarVararg argumentsVar){return null;};
 	/**
 	Writes every given argument to the console.<br />
+Automatically attempts to convert each argument to a string. (See <a href="http://wiki.garrysmod.com/page/Global/tostring" title="Global/tostring">tostring</a>)<br />
+Separates arguments with a tab character (<i>"\t"</i>).
 	*/
 	@External
 	@SharedFunc
@@ -770,6 +778,7 @@ public abstract class Functions extends BasicFunctions {
 	public MetaVarFunction setfenv(MetaVarTable enviromentVar){return null;};
 	/**
 	Sets, changes or removes a table's metatable.
+Returns Tab (first argument).
 	*/
 	@External
 	@SharedFunc
