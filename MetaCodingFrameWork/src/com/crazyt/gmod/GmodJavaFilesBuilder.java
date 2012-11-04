@@ -16,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.crazyt.mcf.MetaCommand;
+import com.crazyt.mcf.MetaVar;
 public class GmodJavaFilesBuilder {
 	private final static Set<String> disallowedFuncs;
 	private final static HashMap<String,String> customExtension = new HashMap<String,String>();
@@ -27,6 +28,9 @@ public class GmodJavaFilesBuilder {
 	private static Set<String> libraries = new HashSet<String>();
 	private static HashMap<String,String> librariesPaths = new HashMap<String,String>();
 	
+	private static String path;
+	
+	private final static String BASE_URL = "http://wiki.garrysmod.com";
 	static {
 		disallowedFuncs = new HashSet<String>();
 		//currently not parseable functions:
@@ -108,7 +112,7 @@ public class GmodJavaFilesBuilder {
 		URL url2 = classLoader.getResource("com/crazyt/gmod/cache");
 		File f;
 		try {
-			f = new File(url2.toURI().getPath().replace("/bin/", "/src/")
+			f = new File(url2.toURI().getPath().replace("/build/", "/src/")
 					+ path+"Cache");
 			f.getParentFile().mkdirs();
 			f.createNewFile();
@@ -284,7 +288,7 @@ public class GmodJavaFilesBuilder {
 					Matcher matcher5 = descPattern.matcher(content2);
 					if(matcher5.find()){
 						String description = matcher5.group(1).trim();
-						description = description.replaceAll(" href=\"/page/"," href=\"http://wiki.garrysmod.com/page/" );
+						description = description.replaceAll(" href=\"/page/"," href=\"" + BASE_URL + "/page/" );
 						p.println("\t/**");
 						p.println("\t"+description);
 						p.println("\t*/");
@@ -342,6 +346,55 @@ public class GmodJavaFilesBuilder {
 			}
 		}
 	}
+	private static void parseEnums(String urlStr){
+		String enumPat = "<a href=\"(/page/Enums/[^\"]+)\" title=\"[^\"]+\">([^<]+)_ Enums</a>";
+		String enumListPat = "\r?\n<tr>\r?\n<td> ([^<]+)\r?\n</td>\r?\n<td> ";
+		
+		Pattern enumPattern = Pattern.compile(enumPat);
+		Pattern enumListPattern = Pattern.compile(enumListPat);
+		
+		String content = getContent(urlStr);
+
+		Matcher enumMatcher = enumPattern.matcher(content);
+		
+		while(enumMatcher.find()){
+			String url = enumMatcher.group(1);
+			String name = enumMatcher.group(2);
+			
+			String content2 = getContent(BASE_URL + url);
+			Matcher enumListMatcher = enumListPattern.matcher(content2);
+			if(!content2.equals("")){
+				PrintStream p = newFile(path + name + ".java");
+				if(p==null){
+					return;
+				}
+	
+				
+				p.println("package com.crazyt.gmod;");
+				p.println("import com.crazyt.mcf.MetaVar;");
+				p.println("public enum " + name + " implements MetaVar {");
+				while(enumListMatcher.find()){
+					p.println(enumListMatcher.group(1)+"(\""+enumListMatcher.group(1)+"\"),");
+				}
+
+				p.println(";");
+				p.println("\tprivate String name;");
+				p.println("\tprivate "+name+"(String name){");
+				p.println("\t\tthis.name = name;");
+				p.println("\t}");
+				p.println("\t@Override");
+				p.println("\tpublic String _getName() {");
+				p.println("\t\treturn name;");
+				p.println("\t}");
+				p.println("\t@Override");
+				p.println("\tpublic void _setName(String name) {}");
+				p.println("}");
+				
+				p.close();
+			}
+		}
+	}
+	
 	/**
 	 * @param args
 	 */
@@ -351,9 +404,9 @@ public class GmodJavaFilesBuilder {
 		if (url == null) {
 			return;
 		}
-		String path = "";
+		path = "";
 		try {
-			path = url.toURI().getPath().replace("/bin/", "/src/");
+			path = url.toURI().getPath().replace("/build/", "/src/");
 		} catch (URISyntaxException e) {
 			return;
 		}
@@ -365,8 +418,8 @@ public class GmodJavaFilesBuilder {
 		
 		//parse functions
 		writeMainPackages(p,"Functions");
-		parseFunctions(p,"http://wiki.garrysmod.com/page/Global");
-		parseLibraries(p,"http://wiki.garrysmod.com/page/Libraries");
+		parseFunctions(p,BASE_URL + "/page/Global");
+		parseLibraries(p,BASE_URL + "/page/Libraries");
 		p.println("}");
 		p.close();
 
@@ -446,15 +499,15 @@ public class GmodJavaFilesBuilder {
 				p2.println("	public MetaVar" + attName + "(String n) {");
 				p2.println("		super(n);");
 				p2.println("	}");
-				// parseFunctions(p2,"http://wiki.garrysmod.com/page/Classes/"+attName);
+				// parseFunctions(p2,BASE_URL + "/page/Classes/"+attName);
 				parseFunctions(p2,
-						"http://wiki.garrysmod.com" + attributePaths.get(k.toLowerCase()));
+						BASE_URL + attributePaths.get(k.toLowerCase()));
 				p2.println("}");
 				p2.close();
 				attributeTypesBasicClone.add(k);
 			}
 		}
 		
-
+		parseEnums(BASE_URL + "/page/Enums");
 	}
 }
