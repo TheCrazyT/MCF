@@ -4,6 +4,7 @@ import com.crazyt.mcf.External;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.BasicFunctions;
+import com.crazyt.mcf.Library;
 @External
 public abstract class Functions extends BasicFunctions {
 	/**
@@ -92,13 +93,13 @@ Can also force the value to be set to a number, bool or string.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar ColorAlpha(MetaVarNumber alphaVar){return null;};
+	public MetaVar ColorAlpha(MetaVarColor colorVar,MetaVarNumber alphaVar){return null;};
 	/**
 	Converts a <a href="http://wiki.garrysmod.com/page/Structures/Color" title="Structures/Color">Color</a> object into HSV color space.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber ColorToHSV(){return null;};
+	public MetaVarNumber ColorToHSV(MetaVarColor colorVar){return null;};
 	/**
 	Compiles the file, and returns a function on success or nil on failure.
 	*/
@@ -388,7 +389,7 @@ Can also force the value to be set to a number, bool or string.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar HTTP(){return null;};
+	public MetaVar HTTP(MetaVarHTTPRequest parametersVar){return null;};
 	/**
 	Returns true if the bonename is in a list of bones that the bone editor does not like to modify
 	*/
@@ -485,7 +486,7 @@ The text is colored depending on the realm where the function is called from (se
 	*/
 	@External
 	@SharedFunc
-	public MetaVar MsgC(MetaVarVararg argsVar){return null;};
+	public MetaVar MsgC(MetaVarColor colorVar,MetaVarVararg argsVar){return null;};
 	/**
 	Just like <a href="http://wiki.garrysmod.com/page/Global/Msg" title="Global/Msg">Msg</a>, except it adds a newline (<i>"\n"</i>) at the end.
 	*/
@@ -798,9 +799,7 @@ Returns Tab (first argument).
 	/**
 	Attempts to convert an object to a string, if defined, it will call the <a href="http://wiki.garrysmod.com/page/Lua/Tutorials/Using_Metatables#tostring" title="Lua/Tutorials/Using Metatables">__tostring</a> method for the given object's metatable, <a href="http://wiki.garrysmod.com/page/Global/print" title="Global/print">print</a> also uses this functionality.
 	*/
-	@External
-	@SharedFunc
-	public MetaVarString tostring(com.crazyt.gmod.IMetaVarAny VarVar){return null;};
+	//public MetaVarString tostring(com.crazyt.gmod.IMetaVarAny VarVar){return null;};
 	/**
 	Returns a string representing the name of the type of the passed object.
 	*/
@@ -819,4 +818,172 @@ Returns Tab (first argument).
 	@External
 	@SharedFunc
 	public MetaVarBoolean xpcall(MetaVarFunction funcVar,MetaVarFunction errorCallbackVar){return null;};
+	@Library("+name+")
+	public LibAi getAi(){return null;};
+	@Library("+name+")
+	public LibAi_schedule getAi_schedule(){return null;};
+	@Library("+name+")
+	public LibAi_task getAi_task(){return null;};
+	@Library("+name+")
+	public LibConstraint getConstraint(){return null;};
+	@Library("+name+")
+	public LibConstruct getConstruct(){return null;};
+	@Library("+name+")
+	public LibGmsave getGmsave(){return null;};
+	@Library("+name+")
+	public LibHammer getHammer(){return null;};
+	@Library("+name+")
+	public LibNavmesh getNavmesh(){return null;};
+	@Library("+name+")
+	public LibNumpad getNumpad(){return null;};
+	@Library("+name+")
+	public LibUmsg getUmsg(){return null;};
+	@Library("+name+")
+	public LibAchievements getAchievements(){return null;};
+	@Library("+name+")
+	public LibCam getCam(){return null;};
+	@Library("+name+")
+	public LibChat getChat(){return null;};
+	@Library("+name+")
+	public LibControlpanel getControlpanel(){return null;};
+	@Library("+name+")
+	public LibCookie getCookie(){return null;};
+	@Library("+name+")
+	public LibDerma getDerma(){return null;};
+	@Library("+name+")
+	public LibDragndrop getDragndrop(){return null;};
+	@Library("+name+")
+	public LibDraw getDraw(){return null;};
+	@Library("+name+")
+	public LibEffects getEffects(){return null;};
+	@Library("+name+")
+	public LibFrame_blend getFrame_blend(){return null;};
+	@Library("+name+")
+	public LibGui getGui(){return null;};
+	@Library("+name+")
+	public LibGWEN getGWEN(){return null;};
+	@Library("+name+")
+	public LibHalo getHalo(){return null;};
+	@Library("+name+")
+	public LibInput getInput(){return null;};
+	@Library("+name+")
+	public LibKillicon getKillicon(){return null;};
+	@Library("+name+")
+	public LibLanguage getLanguage(){return null;};
+	@Library("+name+")
+	public LibMatproxy getMatproxy(){return null;};
+	@Library("+name+")
+	public LibMarkup getMarkup(){return null;};
+	@Library("+name+")
+	public LibMenubar getMenubar(){return null;};
+	@Library("+name+")
+	public LibMenu getMenu(){return null;};
+	@Library("+name+")
+	public LibMesh getMesh(){return null;};
+	@Library("+name+")
+	public LibNotification getNotification(){return null;};
+	@Library("+name+")
+	public LibPresets getPresets(){return null;};
+	@Library("+name+")
+	public LibRender getRender(){return null;};
+	@Library("+name+")
+	public LibSearch getSearch(){return null;};
+	@Library("+name+")
+	public LibSpawnmenu getSpawnmenu(){return null;};
+	@Library("+name+")
+	public LibSteamworks getSteamworks(){return null;};
+	@Library("+name+")
+	public LibSurface getSurface(){return null;};
+	@Library("+name+")
+	public LibVgui getVgui(){return null;};
+	@Library("+name+")
+	public LibVideo getVideo(){return null;};
+	@Library("+name+")
+	public LibBit getBit(){return null;};
+	@Library("+name+")
+	public LibBaseclass getBaseclass(){return null;};
+	@Library("+name+")
+	public LibCleanup getCleanup(){return null;};
+	@Library("+name+")
+	public LibConcommand getConcommand(){return null;};
+	@Library("+name+")
+	public LibCoroutine getCoroutine(){return null;};
+	@Library("+name+")
+	public LibCvars getCvars(){return null;};
+	@Library("+name+")
+	public LibDebugoverlay getDebugoverlay(){return null;};
+	@Library("+name+")
+	public LibDebug getDebug(){return null;};
+	@Library("+name+")
+	public LibDrive getDrive(){return null;};
+	@Library("+name+")
+	public LibDuplicator getDuplicator(){return null;};
+	@Library("+name+")
+	public LibEngine getEngine(){return null;};
+	@Library("+name+")
+	public LibEnts getEnts(){return null;};
+	@Library("+name+")
+	public LibFile getFile(){return null;};
+	@Library("+name+")
+	public LibGameevent getGameevent(){return null;};
+	@Library("+name+")
+	public LibGamemode getGamemode(){return null;};
+	@Library("+name+")
+	public LibGame getGame(){return null;};
+	@Library("+name+")
+	public LibGmod getGmod(){return null;};
+	@Library("+name+")
+	public LibHook getHook(){return null;};
+	@Library("+name+")
+	public LibHttp getHttp(){return null;};
+	@Library("+name+")
+	public LibJit getJit(){return null;};
+	@Library("+name+")
+	public LibList getList(){return null;};
+	@Library("+name+")
+	public LibMath getMath(){return null;};
+	@Library("+name+")
+	public LibNet getNet(){return null;};
+	@Library("+name+")
+	public LibOs getOs(){return null;};
+	@Library("+name+")
+	public LibPackage getPackage(){return null;};
+	@Library("+name+")
+	public LibPhysenv getPhysenv(){return null;};
+	@Library("+name+")
+	public LibPlayer_manager getPlayer_manager(){return null;};
+	@Library("+name+")
+	public LibPlayer getPlayer(){return null;};
+	@Library("+name+")
+	public LibProperties getProperties(){return null;};
+	@Library("+name+")
+	public LibResource getResource(){return null;};
+	@Library("+name+")
+	public LibSaverestore getSaverestore(){return null;};
+	@Library("+name+")
+	public LibScripted_ents getScripted_ents(){return null;};
+	@Library("+name+")
+	public LibSound getSound(){return null;};
+	@Library("+name+")
+	public LibSql getSql(){return null;};
+	@Library("+name+")
+	public LibString getString(){return null;};
+	@Library("+name+")
+	public LibSystem getSystem(){return null;};
+	@Library("+name+")
+	public LibTable getTable(){return null;};
+	@Library("+name+")
+	public LibTeam getTeam(){return null;};
+	@Library("+name+")
+	public LibTimer getTimer(){return null;};
+	@Library("+name+")
+	public LibUndo getUndo(){return null;};
+	@Library("+name+")
+	public LibUsermessage getUsermessage(){return null;};
+	@Library("+name+")
+	public LibUtil getUtil(){return null;};
+	@Library("+name+")
+	public LibWeapons getWeapons(){return null;};
+	@Library("+name+")
+	public LibWidgets getWidgets(){return null;};
 }

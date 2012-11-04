@@ -1,0 +1,17 @@
+package com.crazyt.gmod;
+import com.crazyt.gmod.IMetaVarAny;
+import com.crazyt.mcf.MetaVar;
+import com.crazyt.mcf.MetaVarImpl;
+import com.crazyt.mcf.MetaCommand;
+import com.crazyt.mcf.External;
+import com.crazyt.mcf.SimpleName;
+@External
+@SimpleName("gameevent")
+public class LibGameevent{
+	/**
+	Add a game event listener.
+	*/
+	@External
+	@SharedFunc
+	public MetaVar Listen(MetaVarString eventNameVar){return null;};
+}

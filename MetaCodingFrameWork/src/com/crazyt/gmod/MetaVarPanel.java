@@ -9,10 +9,14 @@ import com.crazyt.mcf.SimpleName;
 @SimpleName("Panel")
 public class MetaVarPanel extends MetaVarImpl implements IMetaVarAny{
 	private MetaVarNumber x;
+	@SimpleName("x")
 	public MetaVarNumber getX(){ return x;}
+	@SimpleName("x")
 	public void setX(MetaVarNumber value){ x=value;}
 	private MetaVarNumber y;
+	@SimpleName("y")
 	public MetaVarNumber getY(){ return y;}
+	@SimpleName("y")
 	public void setY(MetaVarNumber value){ y=value;}
 	public MetaVarPanel(String n) {
 		super(n);
@@ -20,9 +24,7 @@ public class MetaVarPanel extends MetaVarImpl implements IMetaVarAny{
 	/**
 	Adds the specified object to the panel.
 	*/
-	@External
-	@ClientFunc
-	public MetaVarPanel Add(){return null;};
+	//public MetaVarPanel Add(){return null;};
 	/**
 	Aligns the panel on the bottom of its parent with the specified offset.
 	*/
@@ -182,9 +184,7 @@ public class MetaVarPanel extends MetaVarImpl implements IMetaVarAny{
 	/**
 	Returns the internal name of the panel.
 	*/
-	@External
-	@ClientFunc
-	public MetaVarString GetName(){return null;};
+	//public MetaVarString GetName(){return null;};
 	/**
 	Returns the parent of the panel, returns nil if there is no parent.
 	*/
@@ -368,9 +368,7 @@ public class MetaVarPanel extends MetaVarImpl implements IMetaVarAny{
 	/**
 	Marks a panel for deletion so it will be deleted the next frame.
 	*/
-	@External
-	@ClientFunc
-	public MetaVar Remove(){return null;};
+	//public MetaVar Remove(){return null;};
 	/**
 	Attempts to gain the input focus for the panel.
 	*/

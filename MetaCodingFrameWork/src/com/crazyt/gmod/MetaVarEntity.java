@@ -136,7 +136,7 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar FireBullets(){return null;};
+	public MetaVar FireBullets(MetaVarBullet bulletInfoVar){return null;};
 	/**
 	Gets the angles of given entity.
 	*/
@@ -258,9 +258,7 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	/**
 	Returns the mapping name of this entity.
 	*/
-	@External
-	@ServerFunc
-	public MetaVarString GetName(){return null;};
+	//public MetaVarString GetName(){return null;};
 	/**
 	Returns if the entity's rendering has been disabled
 	*/
@@ -494,9 +492,7 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	/**
 	Removes the entity it is used on.
 	*/
-	@External
-	@SharedFunc
-	public MetaVar Remove(){return null;};
+	//public MetaVar Remove(){return null;};
 	/**
 	Removes all decals from the entities surface.
 	*/
@@ -532,7 +528,7 @@ public class MetaVarEntity extends MetaVarImpl implements IMetaVarAny{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetColor(){return null;};
+	public MetaVar SetColor(MetaVarColor colorVar){return null;};
 	/**
 	Sets how much friction an entity has when sliding against a surface. Entities default to 1 (100%) and can be higher or even negative.
 	*/

@@ -9,13 +9,19 @@ import com.crazyt.mcf.SimpleName;
 @SimpleName("Vector")
 public class MetaVarVector extends MetaVarImpl implements IMetaVarAny{
 	private MetaVarNumber x;
+	@SimpleName("x")
 	public MetaVarNumber getX(){ return x;}
+	@SimpleName("x")
 	public void setX(MetaVarNumber value){ x=value;}
 	private MetaVarNumber y;
+	@SimpleName("y")
 	public MetaVarNumber getY(){ return y;}
+	@SimpleName("y")
 	public void setY(MetaVarNumber value){ y=value;}
 	private MetaVarNumber z;
+	@SimpleName("z")
 	public MetaVarNumber getZ(){ return z;}
+	@SimpleName("z")
 	public void setZ(MetaVarNumber value){ z=value;}
 	public MetaVarVector(String n) {
 		super(n);
@@ -29,9 +35,7 @@ public class MetaVarVector extends MetaVarImpl implements IMetaVarAny{
 	/**
 	Adds the values of the second vector to the orignal vector, this function can be used to avoid garbage collection.
 	*/
-	@External
-	@SharedFunc
-	public MetaVar Add(MetaVarVector vectorVar){return null;};
+	//public MetaVar Add(MetaVarVector vectorVar){return null;};
 	/**
 	Returns an angle representing the normal of the vector.
 	*/

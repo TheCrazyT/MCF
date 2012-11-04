@@ -9,13 +9,19 @@ import com.crazyt.mcf.SimpleName;
 @SimpleName("Angle")
 public class MetaVarAngle extends MetaVarImpl implements IMetaVarAny{
 	private MetaVarNumber p;
+	@SimpleName("p")
 	public MetaVarNumber getP(){ return p;}
+	@SimpleName("p")
 	public void setP(MetaVarNumber value){ p=value;}
 	private MetaVarNumber r;
+	@SimpleName("r")
 	public MetaVarNumber getR(){ return r;}
+	@SimpleName("r")
 	public void setR(MetaVarNumber value){ r=value;}
 	private MetaVarNumber y;
+	@SimpleName("y")
 	public MetaVarNumber getY(){ return y;}
+	@SimpleName("y")
 	public void setY(MetaVarNumber value){ y=value;}
 	public MetaVarAngle(String n) {
 		super(n);
