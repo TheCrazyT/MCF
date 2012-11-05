@@ -143,12 +143,20 @@ public aspect MethodInvocationAspect {
 //	    	System.out.println("ext command:" + thisJoinPoint.getThis().getClass().getCanonicalName()+"."+thisJoinPoint.getSignature().getName());
 	    	MethodSignature ms = (MethodSignature)thisJoinPoint.getSignature();
 	    	String name = thisJoinPoint.getSignature().getName();
-	    	if(thisJoinPoint.getThis().getClass().isAnnotationPresent(Library.class)){
-				name = thisJoinPoint.getThis().getClass().getAnnotation(Library.class)
-						.value()
+			if (thisJoinPoint.getThis().getClass()
+					.isAnnotationPresent(Library.class)) {
+				name = thisJoinPoint.getThis().getClass()
+						.getAnnotation(Library.class).value()
 						+ "." + name;
-//				System.out.println("Found library call:"+name);
-	    	}
+				// System.out.println("Found library call:"+name);
+			} else {
+				if (!thisJoinPoint.getThis()
+						.getClass().isAnnotationPresent(SourceInfo.class) && MetaVar.class.isAssignableFrom(thisJoinPoint.getThis()
+						.getClass())) {
+					name = ((MetaVar) thisJoinPoint.getThis())._getName() + "."
+							+ name;
+				}
+			}
 	    	
 			cp._addExternalFunctionCall(ms,name,thisJoinPoint.getArgs());
 	    	returnType = ms.getReturnType();

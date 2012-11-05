@@ -13,6 +13,8 @@ import java.util.Set;
 
 import org.aspectj.lang.reflect.MethodSignature;
 
+import com.crazyt.gmod.SourceInfo;
+
 public class LuaBuilder implements MetaScriptBuilder{
 
 	private String commandName = null;
@@ -37,6 +39,9 @@ public class LuaBuilder implements MetaScriptBuilder{
 			try {
 				Class<?> clazz = Class.forName(clazzName);
 				String fileName = clazz.getName() + ".lua";
+				if(!clazz.isAnnotationPresent(SourceInfo.class)){
+					throw new RuntimeException("Annotation SourceInfo not found!");
+				}
 				if(clazz.isAnnotationPresent(SimpleName.class)){
 					fileName = clazz.getAnnotation(SimpleName.class).value() + ".lua";
 				}
