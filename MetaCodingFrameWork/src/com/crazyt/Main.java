@@ -1,13 +1,14 @@
 package com.crazyt;
 import com.crazyt.gmod.GMODBuilder;
 import com.crazyt.gmod.MetaVarNumber;
+import com.crazyt.gmod.MetaVarPlayer;
 import com.crazyt.gmod.MetaVarString;
+import com.crazyt.gmod.MetaVarWeapon;
 import com.crazyt.gmod.SourceInfo;
 import com.crazyt.mcf.BuildClass;
 import com.crazyt.mcf.Builder;
 import com.crazyt.mcf.CustomMetaCommand;
 import com.crazyt.mcf.MetaCommand;
-import com.crazyt.mcf.MetaCondMode;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.MetaVarInt;
 import com.crazyt.mcf.SimpleName;
@@ -31,28 +32,36 @@ public class Main extends GMODBuilder implements Builder{
 		MetaVarInt to = new MetaVarInt("to");
 		MetaVarInt v2 = new MetaVarInt("v2");
 		MetaVarInt v3 = new MetaVarInt("v3");
+		MetaVarString key = new MetaVarString("key");
+		MetaVarPlayer value = new MetaVarPlayer("value");
+		MetaVarString key2 = new MetaVarString("key2");
+		MetaVarWeapon value2 = new MetaVarWeapon("value2");
 		
 		
-		call(getPlayer().GetBots())
-		.call(EyeAngles())
-		.call(AddConsoleCommand(TEXT("test"), TEXT("test"), NUM(1)))
-		.set(v1,"test")
-		.set(v3,1)
-		.set(v2,1)
-		.set(from,1)
-		.set(to,10)
-		.forCmd(v2, from, to)
-			.print(blah());
-			print(blah());
-			cond
-				(cond(v2, v3).e(),cond(v3, v2).g()).and()
-				.print(blah2(TEXT("BLAH")))
-			.end();
-			cond(v2, v3).e()
-				.print(blah2(TEXT("BLAH2")))			
-			.end();
-			print(blah3(v1))
-			.call(blah())
+		forPair(key, value, getPlayer().GetBots())
+			.call(EyeAngles())
+			.call(AddConsoleCommand(TEXT("test"), TEXT("test"), NUM(1)))
+			.set(v1,"test")
+			.set(v3,1)
+			.set(v2,1)
+			.set(from,1)
+			.set(to,10)
+			.forPair(key2, value2, value.GetWeapons())
+				.print(value2.GetPrintName())
+				.forCmd(v2, from, to)
+					.print(blah())
+					.print(blah())
+					.cond
+						(cond(v2, v3).e(),cond(v3, v2).g()).and()
+						.print(blah2(TEXT("BLAH")))
+					.end();
+					cond(v2, v3).e()
+						.print(blah2(TEXT("BLAH2")))			
+					.end()
+					.print(blah3(v1))
+					.call(blah())
+				.end()
+			.end()
 		.end();
 		
 

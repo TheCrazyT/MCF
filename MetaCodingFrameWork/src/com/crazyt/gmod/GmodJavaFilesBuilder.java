@@ -82,7 +82,8 @@ public class GmodJavaFilesBuilder {
 		
 		customExtension.put("string","com.crazyt.mcf.MetaVarString");
 		customExtension.put("number","com.crazyt.mcf.MetaVarInt");
-		customExtension.put("boolean","com.crazyt.mcf.MetaVarBoolean");
+		customExtension.put("boolean","com.crazyt.mcf.MetaVarBooleanImpl");
+		customExtension.put("table","com.crazyt.mcf.MetaVarTableImpl");
 		
 		metaVarSubst.put("any", "com.crazyt.gmod.IMetaVarAny");
 	}

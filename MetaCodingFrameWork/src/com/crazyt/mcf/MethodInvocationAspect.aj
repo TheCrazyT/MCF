@@ -8,21 +8,23 @@ import com.crazyt.gmod.SourceInfo;
 
 
 public aspect MethodInvocationAspect {
-public static boolean executeMode = false;
+	public static boolean executeMode = false;
+	private static MetaCommand metaCommand = null;
+
 	private MetaCommand getCommandProcessor(Object o){
-		Class<?> clazz = o.getClass();
-		for(Field f:clazz.getDeclaredFields()){
-			if(f.isAnnotationPresent(BuildClass.class)){
-				try {
-					return (MetaCommand)f.get(o);
-				} catch (IllegalArgumentException e) {
-					return null;
-				} catch (IllegalAccessException e) {
-					return null;
+		if(metaCommand == null){
+			Class<?> clazz = o.getClass();
+			for(Field f:clazz.getDeclaredFields()){
+				if(f.isAnnotationPresent(BuildClass.class)){
+					try {
+						metaCommand =(MetaCommand)f.get(o);
+					} catch (IllegalArgumentException e) {
+					} catch (IllegalAccessException e) {
+					}
 				}
 			}
-		}
-		return null;
+			}
+		return metaCommand;
 	}
 
 //	@Around("(call(* * ())) && @target(com.crazyt.mcf.CustomMetaCommand) && !within(com.crazyt.mcf..*)")

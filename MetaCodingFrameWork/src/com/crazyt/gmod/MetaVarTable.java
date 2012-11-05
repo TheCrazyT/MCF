@@ -7,7 +7,7 @@ import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
 @External
 @SimpleName("table")
-public class MetaVarTable extends MetaVarImpl implements IMetaVarAny{
+public class MetaVarTable extends com.crazyt.mcf.MetaVarTableImpl implements IMetaVarAny{
 	public MetaVarTable(String n) {
 		super(n);
 	}

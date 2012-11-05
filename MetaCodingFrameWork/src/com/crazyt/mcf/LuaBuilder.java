@@ -130,7 +130,7 @@ public class LuaBuilder implements MetaScriptBuilder{
 	public MetaCommand forPair(MetaVar v1,MetaVar v2,MetaVarTable table){
 		finalizeConditionStatements();
 
-		println("for "+v1+","+v2+" in pairs("+table._getName()+") do");
+		println("for "+v1._getName()+","+v2._getName()+" in pairs("+table._getName()+") do");
 		increaseTab();
 		return this;
 	}
