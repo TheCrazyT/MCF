@@ -1,4 +1,4 @@
 package com.crazyt.mcf;
 
-public interface MetaScriptBuilder extends MetaConditionLogic,MetaConditionResult,MetaCommandInitiator,MetaCommand,MetaCondition{
+public interface MetaScriptBuilder extends Cloneable,MetaConditionLogic,MetaConditionResult,MetaCommandInitiator,MetaCommand,MetaCondition{
 }

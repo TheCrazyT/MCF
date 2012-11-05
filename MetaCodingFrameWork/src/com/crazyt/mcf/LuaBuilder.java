@@ -152,30 +152,42 @@ public class LuaBuilder implements MetaScriptBuilder{
 
 
 	public MetaCommand add(MetaVarInt v1, MetaVarInt v2) {
+		finalizeConditionStatements();
+
 		println(v1._getName()+"="+v1._getName()+"+"+v2._getName());
 		return this;
 	}
 
 	public MetaCommand sub(MetaVarInt v1, MetaVarInt v2) {
+		finalizeConditionStatements();
+
 		println(v1._getName()+"="+v1._getName()+"-"+v2._getName());
 		return this;
 	}
 
 	public MetaCommand var(MetaVarString v, String s) {
+		finalizeConditionStatements();
+
 		println(v._getName()+" = \""+s+"\"");
 		return this;
 	}
 
 	public MetaCommand set(MetaVarString v, String s) {
+		finalizeConditionStatements();
+
 		println(v._getName()+" = \""+s+"\"");
 		return this;
 	}
 
 	public MetaCommand set(MetaVarInt v, int i) {
+		finalizeConditionStatements();
+
 		println(v._getName()+" = "+i);
 		return this;
 	}
 	public MetaCommand var(MetaVarInt v, int i) {
+		finalizeConditionStatements();
+
 		println(v._getName()+" = "+i);
 		return this;
 	}
@@ -185,6 +197,8 @@ public class LuaBuilder implements MetaScriptBuilder{
 	}
 
 	public MetaCommand print(MetaVar v) {
+		finalizeConditionStatements();
+
 		println("print("+v._getName()+")");
 		return this;
 	}
@@ -273,63 +287,63 @@ public class LuaBuilder implements MetaScriptBuilder{
 	public MetaConditionResult g() {
 		_setName(condVar1._getName() + ">" + condVar2._getName());
 		lastConditionStatement = "if(" + _getName() + ")";
-		return this;
+		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaConditionResult s() {
 		_setName(condVar1._getName() + "<" + condVar2._getName());
 		lastConditionStatement = "if(" + _getName() + ")";
-		return this;
+		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaConditionResult e() {
 		_setName(condVar1._getName() + "==" + condVar2._getName());
 		lastConditionStatement = "if(" + _getName() + ")";
-		return this;
+		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaConditionResult ge() {
 		_setName(condVar1._getName() + ">=" + condVar2._getName());
 		lastConditionStatement = "if(" + _getName() + ")";
-		return this;
+		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaConditionResult se() {
 		_setName(condVar1._getName() + "<" + condVar2._getName());
 		lastConditionStatement = "if(" + _getName() + ")";
-		return this;
+		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaCondition cond(MetaVarInt v1, MetaVarInt v2) {
 		condVar1 = v1;
 		condVar2 = v2;
-		return this;
+		return (MetaCondition)cloneIt();
 	}
 	
 	@Override
 	public MetaCondition cond(MetaVarString v1, MetaVarString v2) {
 		condVar1 = v1;
 		condVar2 = v2;
-		return this;
+		return (MetaCondition)cloneIt();
 	}
 
 	@Override
 	public MetaCondition cond(MetaVarString v1, String v2) {
 		condVar1 = v1;
 		condVar2 = new MetaVarImpl("\""+v2+"\"");
-		return this;
+		return (MetaCondition)cloneIt();
 	}
 
 	@Override
 	public MetaConditionLogic cond(MetaVarBoolean v1, MetaVarBoolean v2) {
 		condVar1 = v1;
 		condVar2 = v2;
-		return this;
+		return (MetaConditionLogic)cloneIt();
 	}
 
 	@Override
@@ -338,7 +352,7 @@ public class LuaBuilder implements MetaScriptBuilder{
 		println("if((" + condVar1._getName() + ") && ("
 				+ condVar2._getName() + "))");
 		increaseTab();
-		return this;
+		return (MetaCommand)cloneIt();
 	}
 
 	@Override
@@ -347,7 +361,7 @@ public class LuaBuilder implements MetaScriptBuilder{
 		println("if((" + condVar1._getName() + ") || ("
 				+ condVar2._getName() + "))");
 		increaseTab();
-		return this;
+		return (MetaCommand)cloneIt();
 	}
 
 	@Override
@@ -359,4 +373,11 @@ public class LuaBuilder implements MetaScriptBuilder{
 		lastConditionStatement = null;
 	}
 
+	private Object cloneIt(){
+		try {
+			return clone();
+		} catch (CloneNotSupportedException e) {
+			return null;
+		}
+	}
 }
