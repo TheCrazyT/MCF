@@ -1,27 +1,27 @@
 package com.crazyt.mcf;
 
 import java.io.File;
-import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import com.crazyt.mcf.SimpleName;
 
 import org.aspectj.lang.reflect.MethodSignature;
 
-public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
+public class LuaBuilder implements MetaScriptBuilder{
 
 	private String commandName = null;
 	private String tab = "";
 	private PrintStream outputStream;
 	private Set<Method> methodRecorder = new HashSet<Method>(); 
+	private MetaVar condVar1 = null;
+	private MetaVar condVar2 = null;
+	private String lastConditionStatement = null;
 	
 	public LuaBuilder(PrintStream out){
 		outputStream = out;
@@ -127,50 +127,29 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 			throw new Exception(e);
 		}
 	}
+	public MetaCommand forPair(MetaVar v1,MetaVar v2,MetaVarTable table){
+		finalizeConditionStatements();
 
+		println("for "+v1+","+v2+" in pairs("+table._getName()+") do");
+		increaseTab();
+		return this;
+	}
 	public MetaCommand forCmd(MetaVarInt v, MetaVarInt from, MetaVarInt to) {
+		finalizeConditionStatements();
+		
 		println("for "+v._getName()+"="+from._getName()+","+to._getName()+",1 do");
 		increaseTab();
 		return this;
 	}
 
 	public MetaCommand end() {
+		finalizeConditionStatements();
+		
 		decreaseTab();
 		println("end");
 		return this;
 	}
 
-
-	public MetaCommand cond(MetaVarInt v1, MetaVarInt v2, MetaCondMode mode) {
-		String c="";
-		switch(mode){
-			case BIGGER:
-				c=">";
-				break;
-			case EQUALS:
-				c="=";
-				break;
-			case LOWER:
-				c="<";
-				break;
-			default:
-				break;
-		}
-		println("if "+v1._getName()+c+v2._getName()+" then");
-		increaseTab();
-		return this;
-	}
-
-	public MetaCommand cond(MetaVarString v1, MetaVarString v2,
-			MetaCondMode mode) {
-		println("cond");
-		return this;
-	}
-
-	public MetaCommand cond(MetaVarString v1, String v2, MetaCondMode mode) {
-		println("cond");
-		return this;
-	}
 
 	public MetaCommand add(MetaVarInt v1, MetaVarInt v2) {
 		println(v1._getName()+"="+v1._getName()+"+"+v2._getName());
@@ -230,6 +209,8 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 	
 	@Override
 	public void _addFunctionCall(MethodSignature sig,String functionName, Object[] args) {
+		finalizeConditionStatements();
+
 		int lio = functionName.lastIndexOf('.');
 		String name = "";
 		name += functionName.substring(lio + 1) + "(";
@@ -249,6 +230,8 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 
 	@Override
 	public MetaCommand call(MetaVar mc) {
+		finalizeConditionStatements();
+		
 		println(mc._getName());
 		return this;
 	}
@@ -271,6 +254,8 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 	@Override
 	public void _addExternalFunctionCall(MethodSignature sig,
 			String functionName, Object[] args) {
+		finalizeConditionStatements();
+
 		String name = functionName + "(";
 		for (Object o : args) {
 			// println("\tArg:"+o.getClass().getCanonicalName()+":"+getVarName(o));
@@ -282,4 +267,96 @@ public class LuaBuilder implements MetaCommandInitiator,MetaCommand,Cloneable{
 		name += ")";
 		_setName(name);
 	}
+
+	
+	@Override
+	public MetaConditionResult g() {
+		_setName(condVar1._getName() + ">" + condVar2._getName());
+		lastConditionStatement = "if(" + _getName() + ")";
+		return this;
+	}
+
+	@Override
+	public MetaConditionResult s() {
+		_setName(condVar1._getName() + "<" + condVar2._getName());
+		lastConditionStatement = "if(" + _getName() + ")";
+		return this;
+	}
+
+	@Override
+	public MetaConditionResult e() {
+		_setName(condVar1._getName() + "==" + condVar2._getName());
+		lastConditionStatement = "if(" + _getName() + ")";
+		return this;
+	}
+
+	@Override
+	public MetaConditionResult ge() {
+		_setName(condVar1._getName() + ">=" + condVar2._getName());
+		lastConditionStatement = "if(" + _getName() + ")";
+		return this;
+	}
+
+	@Override
+	public MetaConditionResult se() {
+		_setName(condVar1._getName() + "<" + condVar2._getName());
+		lastConditionStatement = "if(" + _getName() + ")";
+		return this;
+	}
+
+	@Override
+	public MetaCondition cond(MetaVarInt v1, MetaVarInt v2) {
+		condVar1 = v1;
+		condVar2 = v2;
+		return this;
+	}
+	
+	@Override
+	public MetaCondition cond(MetaVarString v1, MetaVarString v2) {
+		condVar1 = v1;
+		condVar2 = v2;
+		return this;
+	}
+
+	@Override
+	public MetaCondition cond(MetaVarString v1, String v2) {
+		condVar1 = v1;
+		condVar2 = new MetaVarImpl("\""+v2+"\"");
+		return this;
+	}
+
+	@Override
+	public MetaConditionLogic cond(MetaVarBoolean v1, MetaVarBoolean v2) {
+		condVar1 = v1;
+		condVar2 = v2;
+		return this;
+	}
+
+	@Override
+	public MetaCommand and() {
+		lastConditionStatement = null;
+		println("if((" + condVar1._getName() + ") && ("
+				+ condVar2._getName() + "))");
+		increaseTab();
+		return this;
+	}
+
+	@Override
+	public MetaCommand or() {
+		lastConditionStatement = null;
+		println("if((" + condVar1._getName() + ") || ("
+				+ condVar2._getName() + "))");
+		increaseTab();
+		return this;
+	}
+
+	@Override
+	public void finalizeConditionStatements() {
+		if(lastConditionStatement!=null){
+			println(lastConditionStatement);
+			increaseTab();
+		}
+		lastConditionStatement = null;
+	}
+
 }

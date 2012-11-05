@@ -1,10 +1,10 @@
 package com.crazyt.mcf;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.*;
 
 import org.aspectj.lang.reflect.MethodSignature;
+
+import com.crazyt.gmod.SourceInfo;
 
 
 public aspect MethodInvocationAspect {
@@ -185,6 +185,13 @@ public static boolean executeMode = false;
 		return null;
     }
 
+//    pointcut test():
+//    	within(@SourceInfo *);
+//    
+//    Object around():test(){
+//		return null;
+//    }
+    
 //    pointcut dbgMain(): 
 //	execution(void com.crazyt.mcf.DebugBuilder.main (*));
 //    void around(): dbgMain() {

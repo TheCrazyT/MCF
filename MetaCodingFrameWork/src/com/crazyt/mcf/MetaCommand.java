@@ -2,21 +2,14 @@ package com.crazyt.mcf;
 
 import org.aspectj.lang.reflect.MethodSignature;
 
-public interface MetaCommand extends MetaVar{
+public interface MetaCommand extends MetaVar,MetaConditionCommands{
 
 	public abstract MetaCommand  forCmd(MetaVarInt v, MetaVarInt from,
 			MetaVarInt to);
 
+	public abstract MetaCommand forPair(MetaVar v1,MetaVar v2,MetaVarTable table);
+
 	public abstract MetaCommand  end();
-
-	public abstract MetaCommand  cond(MetaVarInt v1, MetaVarInt v2,
-			MetaCondMode mode);
-
-	public abstract MetaCommand  cond(MetaVarString v1, MetaVarString v2,
-			MetaCondMode mode);
-
-	public abstract MetaCommand  cond(MetaVarString v1, String v2,
-			MetaCondMode mode);
 
 	public abstract MetaCommand  add(MetaVarInt v1, MetaVarInt v2);
 

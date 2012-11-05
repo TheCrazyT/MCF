@@ -18,21 +18,28 @@ public abstract class BasicFunctions implements MetaCommand{
 		return getMetaCommand().forCmd(v, from, to);
 	}
 
+	public MetaCommand forPair(MetaVar v1,MetaVar v2,MetaVarTable table) {
+		return getMetaCommand().forPair(v1,v2,table);
+	}
+
 	public MetaCommand end() {
 		return getMetaCommand().end();
 	}
 
-	public MetaCommand cond(MetaVarInt v1, MetaVarInt v2, MetaCondMode mode) {
-		return getMetaCommand().cond(v1, v2, mode);
+	public MetaConditionLogic cond(MetaVarBoolean v1, MetaVarBoolean v2) {
+		return getMetaCommand().cond(v1, v2);
 	}
 
-	public MetaCommand cond(MetaVarString v1, MetaVarString v2,
-			MetaCondMode mode) {
-		return getMetaCommand().cond(v1, v2, mode);
+	public MetaCondition cond(MetaVarInt v1, MetaVarInt v2) {
+		return getMetaCommand().cond(v1, v2);
 	}
 
-	public MetaCommand cond(MetaVarString v1, String v2, MetaCondMode mode) {
-		return getMetaCommand().cond(v1, v2, mode);
+	public MetaCondition cond(MetaVarString v1, MetaVarString v2) {
+		return getMetaCommand().cond(v1, v2);
+	}
+
+	public MetaCondition cond(MetaVarString v1, String v2) {
+		return getMetaCommand().cond(v1, v2);
 	}
 
 	public MetaCommand add(MetaVarInt v1, MetaVarInt v2) {
@@ -76,4 +83,10 @@ public abstract class BasicFunctions implements MetaCommand{
 			String functionName, Object[] args) {
 		getMetaCommand()._addExternalFunctionCall(sig, functionName, args);
 	}
+	
+	public void finalizeConditionStatements(){
+		getMetaCommand().finalizeConditionStatements();
+	}
+	
+
 }

@@ -42,11 +42,16 @@ public class Main extends GMODBuilder implements Builder{
 		.set(from,1)
 		.set(to,10)
 		.forCmd(v2, from, to)
-			.print(blah())
-			.cond(v2, v3, MetaCondMode.EQUALS)
+			.print(blah());
+			print(blah());
+			cond
+				(cond(v2, v3).e(),cond(v3, v2).g()).and()
 				.print(blah2(TEXT("BLAH")))
-			.end()
-			.print(blah3(v1))
+			.end();
+			cond(v2, v3).e()
+				.print(blah2(TEXT("BLAH2")))			
+			.end();
+			print(blah3(v1))
 			.call(blah())
 		.end();
 		
