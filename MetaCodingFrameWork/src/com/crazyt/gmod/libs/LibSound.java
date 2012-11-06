@@ -25,7 +25,9 @@ public class LibSound extends BasicFunctions{
 	/**
 	Creates a sound.
 	*/
-	//public MetaVar Add(MetaVarSoundData sound_dataVar){return null;};
+	@External
+	@SharedFunc
+	public MetaVar Add(MetaVarSoundData sound_dataVar){return null;};
 	/**
 	Plays a sound from the specified position in the world.
 	*/

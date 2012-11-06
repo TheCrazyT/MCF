@@ -25,7 +25,9 @@ public class LibConcommand extends BasicFunctions{
 	/**
 	Creates a console command that runs a function in lua with optional autocompletion function and help text.
 	*/
-	//public MetaVar Add(MetaVarString nameVar,MetaVarFunction commandFuncVar,MetaVarFunction autoCompleteFuncVar,MetaVarString helpTextVar,MetaVarNumber flagsVar){return null;};
+	@External
+	@SharedFunc
+	public MetaVar Add(MetaVarString nameVar,MetaVarFunction commandFuncVar,MetaVarFunction autoCompleteFuncVar,MetaVarString helpTextVar,MetaVarNumber flagsVar){return null;};
 	/**
 	Removes a console command.
 	*/

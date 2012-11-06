@@ -1,5 +1,7 @@
 package com.crazyt.mcf;
 
+import java.lang.reflect.Method;
+
 import org.aspectj.lang.reflect.MethodSignature;
 
 public abstract class BasicFunctions implements MetaCommand{
@@ -82,6 +84,11 @@ public abstract class BasicFunctions implements MetaCommand{
 	public void _addExternalFunctionCall(MethodSignature sig,
 			String functionName, Object[] args) {
 		getMetaCommand()._addExternalFunctionCall(sig, functionName, args);
+	}
+
+	public void _addHook(String hook,
+			Method method, Object object) {
+		getMetaCommand()._addHook(hook,method,object);
 	}
 	
 	public void finalizeConditionStatements(){

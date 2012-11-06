@@ -2,6 +2,8 @@ package com.crazyt.gmod.hooks;
 import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
+import com.crazyt.mcf.Hook;
+@Hook("GAMEMODE_KeyPress")
 public abstract class HookGAMEMODE_KeyPress extends MetaVarFunction{
 	public HookGAMEMODE_KeyPress(String n) {
 		super(n);

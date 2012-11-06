@@ -25,7 +25,9 @@ public class LibHook extends BasicFunctions{
 	/**
 	Add a hook to listen to the specified event.
 	*/
-	//public MetaVar Add(MetaVarString hookNameVar,com.crazyt.gmod.IMetaVarAny identifierVar,MetaVarFunction funcVar){return null;};
+	@External
+	@SharedFunc
+	public MetaVar Add(MetaVarString hookNameVar,com.crazyt.gmod.IMetaVarAny identifierVar,MetaVarFunction funcVar){return null;};
 	/**
 	Calls hooks associated with the hook name<br />
 Calls all hooks until one returns something other than nil then returns that data.

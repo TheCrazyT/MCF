@@ -1,5 +1,6 @@
 package com.crazyt.mcf;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 
 import org.aspectj.lang.reflect.MethodSignature;
@@ -9,9 +10,21 @@ import com.crazyt.mcf.SourceInfo;
 
 public aspect MethodInvocationAspect {
 	public static boolean executeMode = false;
-	private static MetaCommand metaCommand = null;
+	public static MetaCommand metaCommand = null;
 
-	private MetaCommand getCommandProcessor(Object o){
+    pointcut mcfCommands(): 
+	execution(@CustomMetaCommand * * (..)) && !within(com.crazyt.mcf..*);
+
+    pointcut externalCommands(): 
+    execution(@External * * (..)) && within(@External *);
+    
+    pointcut libraryAccess(): 
+    execution(@Library * * (..)) && within(@External *);
+
+    pointcut hooks(): 
+    execution(public new(String)) && within(@Hook *);
+
+    private MetaCommand getCommandProcessor(Object o){
 		if(metaCommand == null){
 			Class<?> clazz = o.getClass();
 			for(Field f:clazz.getDeclaredFields()){
@@ -27,12 +40,6 @@ public aspect MethodInvocationAspect {
 		return metaCommand;
 	}
 
-//	@Around("(call(* * ())) && @target(com.crazyt.mcf.CustomMetaCommand) && !within(com.crazyt.mcf..*)")
-//	@Around("(call(* * ())) && !within(com.crazyt.mcf..*)")
-    pointcut mcfCommands(): 
-	execution(@CustomMetaCommand * * (..)) && !within(com.crazyt.mcf..*);
-
-    
     Object around():mcfCommands() {
     	if(executeMode){
     		executeMode = false;
@@ -81,12 +88,6 @@ public aspect MethodInvocationAspect {
 		return null;
 	}
 
-    pointcut externalCommands(): 
-    execution( @External * * (..)) && within(@External *);
-    
-    pointcut libraryAccess(): 
-    execution( @Library * * (..)) && within(@External *);
-    
     Object around():libraryAccess() {
     	Class<?> returnType = null;
     	MetaCommand cp = null;
@@ -138,7 +139,7 @@ public aspect MethodInvocationAspect {
 		try {
 			cp = getCommandProcessor(thisJoinPoint.getThis());
 			if(cp==null){
-				throw new RuntimeException("command processor not found!");
+				throw new RuntimeException("command processor not found for class:"+thisJoinPoint.getThis().getClass().getCanonicalName()+"!");
 			}
 //	    	System.out.println("ext command:" + thisJoinPoint.getThis().getClass().getCanonicalName()+"."+thisJoinPoint.getSignature().getName());
 	    	MethodSignature ms = (MethodSignature)thisJoinPoint.getSignature();
@@ -193,6 +194,43 @@ public aspect MethodInvocationAspect {
 		}
     	
 		return null;
+    }
+    
+    after() returning:hooks(){
+		
+		MetaCommand cp = null;
+		try {
+			cp = getCommandProcessor(thisJoinPoint.getThis());
+			if (cp == null) {
+				throw new RuntimeException(
+						"command processor not found for class:"
+								+ thisJoinPoint.getSignature().getDeclaringType().getCanonicalName() + "!");
+			}
+		} catch (Throwable t) {
+			System.out.println("some aspect error happened");
+			throw new RuntimeException(t);
+		}
+		String name = (String) thisJoinPoint.getArgs()[0];
+		Method method = null;
+		Hook hookAnnotation = (Hook)thisJoinPoint.getSignature().getDeclaringType()
+				.getAnnotation(Hook.class);
+		if (hookAnnotation == null) {
+			throw new RuntimeException("Hook annotation for class:"
+					+ thisJoinPoint.getSignature().getDeclaringType().getCanonicalName()
+					+ " not found!");
+		}
+		String methodName = hookAnnotation.value();
+		for (Method m : thisJoinPoint.getSignature().getDeclaringType().getMethods()) {
+			if (m.getName().equals(methodName)) {
+				method = m;
+			}
+		}
+		if (method == null) {
+			throw new RuntimeException("Method not \"" + methodName
+					+ "\"found!");
+		}
+		cp._addHook(name, method, thisJoinPoint.getThis());
+		
     }
 
 //    pointcut test():

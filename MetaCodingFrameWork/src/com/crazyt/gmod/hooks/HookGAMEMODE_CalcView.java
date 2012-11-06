@@ -2,6 +2,8 @@ package com.crazyt.gmod.hooks;
 import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
+import com.crazyt.mcf.Hook;
+@Hook("GAMEMODE_CalcView")
 public abstract class HookGAMEMODE_CalcView extends MetaVarFunction{
 	public HookGAMEMODE_CalcView(String n) {
 		super(n);

@@ -25,11 +25,13 @@ public class LibTable extends BasicFunctions{
 	/**
 	Adds the contents from one table to another
 	*/
-	//public MetaVarTable Add(MetaVarTable Destination TableVar,MetaVarTable Source TableVar){return null;};
+	@External
+	@SharedFunc
+	public MetaVarTable Add(MetaVarTable DestinationTableVar,MetaVarTable SourceTableVar){return null;};
 	/**
 	Changes all keys to integers
 	*/
-	//public MetaVarTable ClearKeys(MetaVarTable Original TableVar,MetaVarBoolean Save KeysVar){return null;};
+	//public MetaVarTable ClearKeys(MetaVarTable OriginalTableVar,MetaVarBoolean SaveKeysVar){return null;};
 	/**
 	Concatenates the contents of a table to a string.
 	*/
@@ -39,7 +41,7 @@ public class LibTable extends BasicFunctions{
 	/**
 	Erases all values from a table, and copies the values from another table to it.
 	*/
-	//public MetaVar CopyFromTo(MetaVarTable Source TableVar,MetaVarTable Destination TableVar){return null;};
+	//public MetaVar CopyFromTo(MetaVarTable SourceTableVar,MetaVarTable DestinationTableVar){return null;};
 	/**
 	Copies and returns an identical table.
 	*/
@@ -113,5 +115,5 @@ public class LibTable extends BasicFunctions{
 	/**
 	Converts a table into a string
 	*/
-	//public MetaVarString ToString(MetaVarTable TableVar,MetaVarString Table NameVar,MetaVarBoolean "Nice" formattingVar){return null;};
+	//public MetaVarString ToString(MetaVarTable TableVar,MetaVarString TableNameVar,MetaVarBoolean "Nice"formattingVar){return null;};
 }

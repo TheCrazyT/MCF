@@ -73,7 +73,7 @@ public class GmodJavaFilesBuilder {
 		disallowedFuncs.add("gettextureid");
 		
 		disallowedFuncs.add("copyfromto");
-		disallowedFuncs.add("add");
+//		disallowedFuncs.add("add");
 		disallowedFuncs.add("tostring");
 		disallowedFuncs.add("remove");
 		disallowedFuncs.add("clearkeys");
@@ -327,7 +327,7 @@ public class GmodJavaFilesBuilder {
 					p.print("public "+retType+" "+funcName+"(");
 					boolean found = argMatcher.find();
 					while (found) {
-						String argName = argMatcher.group(1);
+						String argName = argMatcher.group(1).replace(" ", "");
 						String typePath = argMatcher.group(2);
 						String argType = argMatcher.group(3);
 						String attName = argType;
@@ -437,6 +437,8 @@ public class GmodJavaFilesBuilder {
 				p2.println("import com.crazyt.gmod.types.*;");
 				p2.println("import com.crazyt.gmod.*;");
 				p2.println("import com.crazyt.mcf.MetaVar;");
+				p2.println("import com.crazyt.mcf.Hook;");
+				p2.println("@Hook(\""+funcName+"\")");
 				p2.println("public abstract class Hook" + funcName + " extends MetaVarFunction{");
 				p2.println("\tpublic Hook" + funcName + "(String n) {");
 				p2.println("\t\tsuper(n);");

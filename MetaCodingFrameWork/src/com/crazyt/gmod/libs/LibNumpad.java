@@ -49,7 +49,7 @@ public class LibNumpad extends BasicFunctions{
 	/**
 	Adds a function to call when a player releases a key on the number pad
 	*/
-	//public MetaVarNumber OnUp(MetaVarPlayer plyVar,MetaVarNumber keyVar,MetaVarString nameVar,com.crazyt.gmod.IMetaVarAny args, ...Var){return null;};
+	//public MetaVarNumber OnUp(MetaVarPlayer plyVar,MetaVarNumber keyVar,MetaVarString nameVar,com.crazyt.gmod.IMetaVarAny args,...Var){return null;};
 	/**
 	Registers a numpad library action for use with <a href="http://wiki.garrysmod.com/page/Libraries/numpad/OnDown" title="Libraries/numpad/OnDown">numpad.OnDown</a> and <a href="http://wiki.garrysmod.com/page/Libraries/numpad/OnUp" title="Libraries/numpad/OnUp">numpad.OnUp</a>.
 	*/

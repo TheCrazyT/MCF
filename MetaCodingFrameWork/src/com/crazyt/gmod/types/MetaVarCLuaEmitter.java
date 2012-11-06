@@ -14,7 +14,9 @@ public class MetaVarCLuaEmitter extends MetaVarImpl implements IMetaVarAny{
 	/**
 	Creates a new <a href="http://wiki.garrysmod.com/page/Classes/CLuaParticle" title="Classes/CLuaParticle">CLuaParticle</a> with the given material and position.
 	*/
-	//public MetaVarCLuaParticle Add(MetaVarString materialVar,MetaVarVector positionVar){return null;};
+	@External
+	@ClientFunc
+	public MetaVarCLuaParticle Add(MetaVarString materialVar,MetaVarVector positionVar){return null;};
 	/**
 	Manually renders all particles which parent is the current emitter.
 	*/

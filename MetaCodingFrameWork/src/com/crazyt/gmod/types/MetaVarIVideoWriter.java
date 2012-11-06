@@ -14,7 +14,9 @@ public class MetaVarIVideoWriter extends MetaVarImpl implements IMetaVarAny{
 	/**
 	Adds the current framebuffer to the video stream.
 	*/
-	//public MetaVar Add(MetaVarNumber frameTimeVar,MetaVarBoolean downsampleVar){return null;};
+	@External
+	@ClientFunc
+	public MetaVar Add(MetaVarNumber frameTimeVar,MetaVarBoolean downsampleVar){return null;};
 	/**
 	Ends the video recording and dumps it to disk.
 	*/

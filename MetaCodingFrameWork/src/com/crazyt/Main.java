@@ -1,5 +1,8 @@
 package com.crazyt;
+import com.crazyt.gmod.ClientFunc;
 import com.crazyt.gmod.GMODBuilder;
+import com.crazyt.gmod.hooks.HookGAMEMODE_AddDeathNotice;
+import com.crazyt.gmod.types.MetaVarFunction;
 import com.crazyt.gmod.types.MetaVarNumber;
 import com.crazyt.gmod.types.MetaVarPlayer;
 import com.crazyt.gmod.types.MetaVarString;
@@ -36,11 +39,22 @@ public class Main extends GMODBuilder implements Builder{
 		MetaVarPlayer value = new MetaVarPlayer("value");
 		MetaVarString key2 = new MetaVarString("key2");
 		MetaVarWeapon value2 = new MetaVarWeapon("value2");
-		
+		MetaVarString hook = new MetaVarString("hook");
+		MetaVarFunction funcVar = new HookGAMEMODE_AddDeathNotice("hookFunc") {
+			@Override
+			@ClientFunc
+			public MetaVar GAMEMODE_AddDeathNotice(MetaVarString victimVar,
+					MetaVarNumber victimsTeamVar, MetaVarString inflictorVar,
+					MetaVarString attackerVar, MetaVarNumber attackersTeamVar) {
+				print(attackerVar);
+				return null;
+			}
+		};
 		
 		forPair(key, value, getPlayer().GetBots())
 			.call(EyeAngles())
 			.call(AddConsoleCommand(TEXT("test"), TEXT("test"), NUM(1)))
+			.call(getHook().Add(hook, hook, funcVar))
 			.set(v1,"test")
 			.set(v3,1)
 			.set(v2,1)

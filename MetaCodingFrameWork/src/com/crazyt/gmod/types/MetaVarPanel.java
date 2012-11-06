@@ -24,7 +24,9 @@ public class MetaVarPanel extends MetaVarImpl implements IMetaVarAny{
 	/**
 	Adds the specified object to the panel.
 	*/
-	//public MetaVarPanel Add(){return null;};
+	@External
+	@ClientFunc
+	public MetaVarPanel Add(){return null;};
 	/**
 	Aligns the panel on the bottom of its parent with the specified offset.
 	*/

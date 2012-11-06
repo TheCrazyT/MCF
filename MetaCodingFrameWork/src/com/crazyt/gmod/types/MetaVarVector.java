@@ -35,7 +35,9 @@ public class MetaVarVector extends MetaVarImpl implements IMetaVarAny{
 	/**
 	Adds the values of the second vector to the orignal vector, this function can be used to avoid garbage collection.
 	*/
-	//public MetaVar Add(MetaVarVector vectorVar){return null;};
+	@External
+	@SharedFunc
+	public MetaVar Add(MetaVarVector vectorVar){return null;};
 	/**
 	Returns an angle representing the normal of the vector.
 	*/

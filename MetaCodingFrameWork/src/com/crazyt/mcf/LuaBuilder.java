@@ -17,9 +17,9 @@ import org.aspectj.lang.reflect.MethodSignature;
 public class LuaBuilder implements MetaScriptBuilder{
 
 	private String commandName = null;
-	private String tab = "";
 	private PrintStream outputStream;
-	private Set<Method> methodRecorder = new HashSet<Method>(); 
+	private Set<Method> methodRecorder = new HashSet<Method>();
+	private Set<NMO> hookRecorder = new HashSet<NMO>();
 	private MetaVar condVar1 = null;
 	private MetaVar condVar2 = null;
 	private String lastConditionStatement = null;
@@ -58,6 +58,9 @@ public class LuaBuilder implements MetaScriptBuilder{
 				}
 				instance = (LuaBuilder) dbconstr
 						.newInstance(new Object[]{ outStream});
+				
+				MethodInvocationAspect.metaCommand = instance;
+
 				Constructor<?> constr = clazz.getConstructor((Class<?>[])null);
 				
 				Builder builder = (Builder)constr.newInstance((Object[])null);
@@ -118,6 +121,54 @@ public class LuaBuilder implements MetaScriptBuilder{
 					instance.increaseTab();
 					MethodInvocationAspect.executeMode = true;
 					m.invoke(builder, mArgs2);
+					instance.decreaseTab();
+					outStream.println("}");
+				}
+				
+				for (NMO nmo : instance.getHookRecorder()) {
+					outStream.print("function " + nmo.getName() + "(");
+					Method m = nmo.getMethod();
+					List<Object> mArgs = new ArrayList<Object>();
+					int i = 0;
+					int last = m.getParameterTypes().length - 1;
+					for (Class<?> t : m.getParameterTypes()) {
+						if (MetaVarImpl.class.isAssignableFrom(t)) {
+							try {
+								Constructor<?> cons = t
+										.getConstructor(String.class);
+								mArgs.add(cons.newInstance("arg" + i));
+							} catch (NoSuchMethodException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (SecurityException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (InstantiationException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (IllegalAccessException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (IllegalArgumentException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (InvocationTargetException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						outStream.print("arg" + i + (i == last ? "" : ","));
+						i++;
+					}
+					outStream.println(") {");
+					Object[] mArgs2 = new Object[mArgs.size()];
+					i = 0;
+					for (Object o : mArgs) {
+						mArgs2[i++] = o;
+					}
+					instance.increaseTab();
+					MethodInvocationAspect.executeMode = true;
+					m.invoke(nmo.getObject(), mArgs2);
 					instance.decreaseTab();
 					outStream.println("}");
 				}
@@ -226,6 +277,11 @@ public class LuaBuilder implements MetaScriptBuilder{
 	}
 	
 	@Override
+	public void _addHook(String hook,Method method, Object object) {
+		hookRecorder.add(new NMO(hook,method,object));
+	}
+	
+	@Override
 	public void _addFunctionCall(MethodSignature sig,String functionName, Object[] args) {
 		finalizeConditionStatements();
 
@@ -254,19 +310,22 @@ public class LuaBuilder implements MetaScriptBuilder{
 		return this;
 	}
 
+	public Set<NMO> getHookRecorder() {
+		return hookRecorder;
+	}
 	public Set<Method> getMethodRecorder() {
 		return methodRecorder;
 	}
 	public void increaseTab(){
-		tab += "\t";
+		GlobalBuilderInfo.tab += "\t";
 	}
 	public void decreaseTab(){
-		if(tab.length()>0){
-			tab = tab.substring(1);
+		if(GlobalBuilderInfo.tab.length()>0){
+			GlobalBuilderInfo.tab = GlobalBuilderInfo.tab.substring(1);
 		}
 	}
 	private void println(String str){
-		outputStream.println(tab + str);
+		outputStream.println(GlobalBuilderInfo.tab + str);
 	}
 
 	@Override

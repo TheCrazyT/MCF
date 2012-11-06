@@ -25,7 +25,9 @@ public class LibHalo extends BasicFunctions{
 	/**
 	Applies a "halo" glow effect to one or multiple entities.
 	*/
-	//public MetaVar Add(MetaVarTable entitiesVar,MetaVarColor colorVar,MetaVarNumber blurXVar,MetaVarNumber blurYVar,MetaVarNumber passesVar,MetaVarBoolean additiveVar,MetaVarBoolean ignoreZVar){return null;};
+	@External
+	@ClientFunc
+	public MetaVar Add(MetaVarTable entitiesVar,MetaVarColor colorVar,MetaVarNumber blurXVar,MetaVarNumber blurYVar,MetaVarNumber passesVar,MetaVarBoolean additiveVar,MetaVarBoolean ignoreZVar){return null;};
 	/**
 	Renders a halo according to the specified table, only used internally, called from a PostDrawEffects hook added by the holo library
 	*/

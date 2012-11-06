@@ -25,7 +25,9 @@ public class LibList extends BasicFunctions{
 	/**
 	Adds an item to a named list
 	*/
-	//public MetaVar Add(MetaVarString identifierVar,com.crazyt.gmod.IMetaVarAny itemVar){return null;};
+	@External
+	@SharedFunc
+	public MetaVar Add(MetaVarString identifierVar,com.crazyt.gmod.IMetaVarAny itemVar){return null;};
 	/**
 	Returns a copy of the list stored at identifier
 	*/

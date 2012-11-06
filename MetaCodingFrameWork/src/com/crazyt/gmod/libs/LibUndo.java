@@ -31,7 +31,7 @@ public class LibUndo extends BasicFunctions{
 	/**
 	Adds a function to call when the current undo block is undone
 	*/
-	//public MetaVar AddFunction(MetaVarFunction funcVar,com.crazyt.gmod.IMetaVarAny arg2, ...Var){return null;};
+	//public MetaVar AddFunction(MetaVarFunction funcVar,com.crazyt.gmod.IMetaVarAny arg2,...Var){return null;};
 	/**
 	Begins a new undo entry
 	*/

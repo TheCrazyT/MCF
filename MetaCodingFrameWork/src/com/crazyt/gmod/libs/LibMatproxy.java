@@ -25,5 +25,7 @@ public class LibMatproxy extends BasicFunctions{
 	/**
 	Adds a material proxy.
 	*/
-	//public MetaVar Add(MetaVarMatProxyData MatProxyDataVar){return null;};
+	@External
+	@ClientFunc
+	public MetaVar Add(MetaVarMatProxyData MatProxyDataVar){return null;};
 }

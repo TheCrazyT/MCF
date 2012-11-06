@@ -2,6 +2,8 @@ package com.crazyt.gmod.hooks;
 import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
+import com.crazyt.mcf.Hook;
+@Hook("GAMEMODE_CanExitVehicle")
 public abstract class HookGAMEMODE_CanExitVehicle extends MetaVarFunction{
 	public HookGAMEMODE_CanExitVehicle(String n) {
 		super(n);
