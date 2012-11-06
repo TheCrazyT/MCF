@@ -187,7 +187,8 @@ public class GmodJavaFilesBuilder {
 	}
 	private static void writeMainPackages(PrintStream p,String name){
 		p.println("package com.crazyt.gmod;");
-		p.println("import com.crazyt.gmod.*;");
+		p.println("import com.crazyt.gmod.types.*;");
+		p.println("import com.crazyt.gmod.libs.*;");
 		p.println("import com.crazyt.mcf.External;");
 		p.println("import com.crazyt.mcf.MetaVar;");
 		p.println("import com.crazyt.mcf.MetaCommand;");
@@ -366,13 +367,13 @@ public class GmodJavaFilesBuilder {
 			String content2 = getContent(BASE_URL + url);
 			Matcher enumListMatcher = enumListPattern.matcher(content2);
 			if(!content2.equals("")){
-				PrintStream p = newFile(path + name + ".java");
+				PrintStream p = newFile(path + "enums/" + name + ".java");
 				if(p==null){
 					return;
 				}
 	
 				
-				p.println("package com.crazyt.gmod;");
+				p.println("package com.crazyt.gmod.enums;");
 				p.println("import com.crazyt.mcf.MetaVar;");
 				p.println("public enum " + name + " implements MetaVar {");
 				while(enumListMatcher.find()){
@@ -431,9 +432,11 @@ public class GmodJavaFilesBuilder {
 			libName = libName.toUpperCase().substring(0, 1)
 					+ libName.substring(1);
 
-			PrintStream p2 = newFile(path + "Lib" + libName + ".java");
-			p2.println("package com.crazyt.gmod;");
+			PrintStream p2 = newFile(path + "libs/Lib" + libName + ".java");
+			p2.println("package com.crazyt.gmod.libs;");
 			p2.println("import com.crazyt.gmod.IMetaVarAny;");
+			p2.println("import com.crazyt.gmod.types.*;");
+			p2.println("import com.crazyt.gmod.*;");
 			p2.println("import com.crazyt.mcf.MetaVar;");
 			p2.println("import com.crazyt.mcf.MetaVarImpl;");
 			p2.println("import com.crazyt.mcf.MetaCommand;");
@@ -479,14 +482,14 @@ public class GmodJavaFilesBuilder {
 				attName = attName.toUpperCase().substring(0, 1)
 						+ attName.substring(1);
 				System.out.println("MetaVar    :" + k);
-				PrintStream p2 = newFile(path + "MetaVar" + attName + ".java");
+				PrintStream p2 = newFile(path + "types/MetaVar" + attName + ".java");
 				String ext = "MetaVarImpl";
 				if (customExtension.containsKey(k.toLowerCase())) {
 					ext = customExtension.get(k.toLowerCase());
 				}
 	
-				p2.println("package com.crazyt.gmod;");
-				p2.println("import com.crazyt.gmod.IMetaVarAny;");
+				p2.println("package com.crazyt.gmod.types;");
+				p2.println("import com.crazyt.gmod.*;");
 				p2.println("import com.crazyt.mcf.MetaVar;");
 				p2.println("import com.crazyt.mcf.MetaVarImpl;");
 				p2.println("import com.crazyt.mcf.MetaCommand;");

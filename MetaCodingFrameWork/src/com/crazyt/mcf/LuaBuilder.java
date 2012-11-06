@@ -13,7 +13,6 @@ import java.util.Set;
 
 import org.aspectj.lang.reflect.MethodSignature;
 
-import com.crazyt.gmod.SourceInfo;
 
 public class LuaBuilder implements MetaScriptBuilder{
 

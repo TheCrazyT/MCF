@@ -1,5 +1,6 @@
 package com.crazyt.gmod;
-import com.crazyt.gmod.*;
+import com.crazyt.gmod.types.*;
+import com.crazyt.gmod.libs.*;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.MetaCommand;

@@ -1,6 +1,9 @@
 package com.crazyt.gmod;
 
 
+import com.crazyt.gmod.types.MetaVarBoolean;
+import com.crazyt.gmod.types.MetaVarString;
+import com.crazyt.gmod.types.MetaVarTable;
 import com.crazyt.mcf.Builder;
 
 public abstract class GMODBuilder extends Functions implements Builder{
