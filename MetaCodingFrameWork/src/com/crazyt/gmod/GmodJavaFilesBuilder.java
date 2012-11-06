@@ -30,6 +30,7 @@ public class GmodJavaFilesBuilder {
 	
 	private static String path;
 	
+	
 	private final static String BASE_URL = "http://wiki.garrysmod.com";
 	static {
 		disallowedFuncs = new HashSet<String>();
@@ -77,6 +78,9 @@ public class GmodJavaFilesBuilder {
 		disallowedFuncs.add("remove");
 		disallowedFuncs.add("clearkeys");
 		disallowedFuncs.add("getname");
+		
+		disallowedFuncs.add("gamemode_chattext");
+		disallowedFuncs.add("gamemode_canplayerentervehicle");
 		
 //		propertySubst.put("name","name_p");
 		
@@ -275,10 +279,9 @@ public class GmodJavaFilesBuilder {
 			String state = funcUrlMatcher.group(1);
 			String entity = funcUrlMatcher.group(3);
 			String methodPath = funcUrlMatcher.group(2);
-			System.out.println(entity+":"+methodPath+":"+entity);
-			String path ="";
-			path += methodPath;
-			String content2 = getContent("http://wiki.garrysmod.com"+path);
+			System.out.println(entity+":"+methodPath+":"+state);
+			String content2 = getContent("http://wiki.garrysmod.com"
+					+ methodPath);
 			Matcher nameMatcher = namePattern.matcher(content2);			
 			Matcher argMatcher = argPattern.matcher(content2);
 			if(nameMatcher.find()){
@@ -288,9 +291,9 @@ public class GmodJavaFilesBuilder {
 				}
 				if(!functions.contains(funcName.toLowerCase())){
 					functions.add(funcName.toLowerCase());
-					Matcher matcher5 = descPattern.matcher(content2);
-					if(matcher5.find()){
-						String description = matcher5.group(1).trim();
+					Matcher descMatcher = descPattern.matcher(content2);
+					if(descMatcher.find()){
+						String description = descMatcher.group(1).trim();
 						description = description.replaceAll(" href=\"/page/"," href=\"" + BASE_URL + "/page/" );
 						p.println("\t/**");
 						p.println("\t"+description);
@@ -396,6 +399,109 @@ public class GmodJavaFilesBuilder {
 				p.close();
 			}
 		}
+	}
+	
+	//99% identical with parseFunctions,maybe improve it later by creating functions with same content
+	public static void parseHooks(String urlStr){
+		String funcUrlPat = "(?s)<td> *<a +href=\"[^\"]+\" +title=\"[^\"]+\">([^<]+)</a>\r?\n\\</td>\r?\n<td> *(?:<b>(?:[^<]+)</b>(?::|.))?\\<a +href=\"([^\"]+)\" title=\"[^\"]+\">([^<]+)</a>";
+		String argPat = "(?s)<p>[0-9]+\\.[^<]+<b>([^<]+)</b> *\\(<a href=\"([^\"]+)\" title=\"[^\"]+\"[^>]*>([^<]+)</a>\\)";
+		String namePat = "(?s)<tr>\r?\n<td><strong>Name:</strong></td>\r?\n<td>(?:[^.]+\\.)?([^<]+)</td>";
+		String returnPat = "(?s)<b>Returns:</b> <a href=\"([^\"]+)\" title=\"[^\"]+\">([^<]+)</a>";
+		String descPat = "(?s)<p><b>Description:</b>(.+?)</p";
+		
+		Pattern funcUrlPattern = Pattern.compile(funcUrlPat);
+		Pattern argPattern = Pattern.compile(argPat);
+		Pattern namePattern = Pattern.compile(namePat);
+		Pattern returnPattern = Pattern.compile(returnPat);
+		Pattern descPattern = Pattern.compile(descPat);
+		
+		String content = getContent(urlStr);
+
+		Matcher funcUrlMatcher = funcUrlPattern.matcher(content);
+		while(funcUrlMatcher.find()){
+			String state = funcUrlMatcher.group(1);
+			String entity = funcUrlMatcher.group(3);
+			String methodPath = funcUrlMatcher.group(2);
+			System.out.println(entity+":"+methodPath+":"+state);
+			String content2 = getContent("http://wiki.garrysmod.com"+methodPath);
+			Matcher nameMatcher = namePattern.matcher(content2);			
+			Matcher argMatcher = argPattern.matcher(content2);
+			if(nameMatcher.find()){
+				String funcName = nameMatcher.group(1);
+				funcName = funcName.replace(":", "_");
+				if(disallowedFuncs.contains(funcName.toLowerCase())){
+					continue;
+				}
+				PrintStream p2 = newFile(path + "hooks/Hook" + funcName + ".java");
+				p2.println("package com.crazyt.gmod.hooks;");
+				p2.println("import com.crazyt.gmod.types.*;");
+				p2.println("import com.crazyt.gmod.*;");
+				p2.println("import com.crazyt.mcf.MetaVar;");
+				p2.println("public abstract class Hook" + funcName + " extends MetaVarFunction{");
+				p2.println("\tpublic Hook" + funcName + "(String n) {");
+				p2.println("\t\tsuper(n);");
+				p2.println("\t}");
+
+				Matcher descMatcher = descPattern.matcher(content2);
+				if(descMatcher.find()){
+					String description = descMatcher.group(1).trim();
+					description = description.replaceAll(" href=\"/page/",
+							" href=\"" + BASE_URL + "/page/");
+					p2.println("\t/**");
+					p2.println("\t" + description);
+					p2.println("\t*/");
+				}
+				
+				p2.println("\t@"+state+"Func");
+
+				String retType = "MetaVar";
+				Matcher returnMatcher = returnPattern.matcher(content2);
+				if(returnMatcher.find()){
+					String retTypePath = returnMatcher.group(1);
+					retType = returnMatcher.group(2);
+					
+					attributeTypes.add(retType);
+					attributePaths.put(retType.toLowerCase(),retTypePath);
+
+					if (metaVarSubst.containsKey(retType.toLowerCase())) {
+						retType = metaVarSubst.get(retType.toLowerCase());
+					} else {
+						retType = retType.toUpperCase().substring(0, 1)
+								+ retType.substring(1);
+						retType = "MetaVar" + retType;
+					}
+				}
+				
+				p2.print("\tpublic abstract "+retType+" "+funcName+"(");
+				boolean found = argMatcher.find();
+				while (found) {
+					String argName = argMatcher.group(1);
+					String typePath = argMatcher.group(2);
+					String argType = argMatcher.group(3);
+					String attName = argType;
+					attName = attName.toUpperCase().substring(0, 1) + attName.substring(1);
+					attributeTypes.add(argType);
+					attributePaths.put(argType.toLowerCase(),typePath);
+
+					if (metaVarSubst.containsKey(argType.toLowerCase())) {
+						p2.print(metaVarSubst.get(argType.toLowerCase())+" "+argName+"Var");
+					}
+					else
+					{
+						p2.print("MetaVar"+attName+" "+argName+"Var");
+					}
+					found = argMatcher.find();
+					if(found){
+						p2.print(",");						
+					}
+				}
+				p2.println(");");
+				p2.println("}");
+				p2.close();
+			}
+
+		}
+
 	}
 	
 	/**
@@ -514,5 +620,7 @@ public class GmodJavaFilesBuilder {
 		}
 		
 		parseEnums(BASE_URL + "/page/Enums");
+		
+		parseHooks(BASE_URL + "/page/Hooks/Base");
 	}
 }
