@@ -438,6 +438,7 @@ public class GmodJavaFilesBuilder {
 				p2.println("import com.crazyt.gmod.*;");
 				p2.println("import com.crazyt.mcf.MetaVar;");
 				p2.println("import com.crazyt.mcf.Hook;");
+				p2.println("import com.crazyt.mcf.SimpleName;");
 				p2.println("@Hook(\""+funcName+"\")");
 				p2.println("public abstract class Hook" + funcName + " extends MetaVarFunction{");
 				p2.println("\tpublic Hook" + funcName + "(String n) {");
@@ -490,7 +491,7 @@ public class GmodJavaFilesBuilder {
 					}
 					else
 					{
-						p2.print("MetaVar"+attName+" "+argName+"Var");
+						p2.print("@SimpleName(\""+argName+"Var\")MetaVar"+attName+" "+argName+"Var");
 					}
 					found = argMatcher.find();
 					if(found){

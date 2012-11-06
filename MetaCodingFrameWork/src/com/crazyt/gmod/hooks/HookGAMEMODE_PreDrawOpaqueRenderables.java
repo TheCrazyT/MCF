@@ -3,6 +3,7 @@ import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
+import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_PreDrawOpaqueRenderables")
 public abstract class HookGAMEMODE_PreDrawOpaqueRenderables extends MetaVarFunction{
 	public HookGAMEMODE_PreDrawOpaqueRenderables(String n) {

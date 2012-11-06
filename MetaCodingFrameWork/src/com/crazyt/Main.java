@@ -43,10 +43,11 @@ public class Main extends GMODBuilder implements Builder{
 		MetaVarFunction funcVar = new HookGAMEMODE_AddDeathNotice("hookFunc") {
 			@Override
 			@ClientFunc
-			public MetaVar GAMEMODE_AddDeathNotice(MetaVarString victimVar,
+			public MetaVar GAMEMODE_AddDeathNotice(@SimpleName("test")MetaVarString victimVar,
 					MetaVarNumber victimsTeamVar, MetaVarString inflictorVar,
 					MetaVarString attackerVar, MetaVarNumber attackersTeamVar) {
 				print(attackerVar);
+				print(inflictorVar);
 				return null;
 			}
 		};

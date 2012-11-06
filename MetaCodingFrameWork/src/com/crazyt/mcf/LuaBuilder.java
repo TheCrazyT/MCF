@@ -2,6 +2,7 @@ package com.crazyt.mcf;
 
 import java.io.File;
 import java.io.PrintStream;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -132,11 +133,18 @@ public class LuaBuilder implements MetaScriptBuilder{
 					int i = 0;
 					int last = m.getParameterTypes().length - 1;
 					for (Class<?> t : m.getParameterTypes()) {
+						String name = "arg" + i;
+						for(Annotation a:m.getParameterAnnotations()[i]){
+							if(a.annotationType().equals(SimpleName.class)){
+								name = ((SimpleName)a).value();
+								break;
+							}
+						}
 						if (MetaVarImpl.class.isAssignableFrom(t)) {
 							try {
 								Constructor<?> cons = t
 										.getConstructor(String.class);
-								mArgs.add(cons.newInstance("arg" + i));
+								mArgs.add(cons.newInstance(name));
 							} catch (NoSuchMethodException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -157,7 +165,7 @@ public class LuaBuilder implements MetaScriptBuilder{
 								e.printStackTrace();
 							}
 						}
-						outStream.print("arg" + i + (i == last ? "" : ","));
+						outStream.print(name + (i == last ? "" : ","));
 						i++;
 					}
 					outStream.println(") {");

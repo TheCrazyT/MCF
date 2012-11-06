@@ -3,6 +3,7 @@ import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
+import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_PrePlayerDraw")
 public abstract class HookGAMEMODE_PrePlayerDraw extends MetaVarFunction{
 	public HookGAMEMODE_PrePlayerDraw(String n) {
@@ -12,5 +13,5 @@ public abstract class HookGAMEMODE_PrePlayerDraw extends MetaVarFunction{
 	Called before each player is drawn.
 	*/
 	@ClientFunc
-	public abstract MetaVarBoolean GAMEMODE_PrePlayerDraw(MetaVarPlayer plyVar);
+	public abstract MetaVarBoolean GAMEMODE_PrePlayerDraw(@SimpleName("ply")MetaVarPlayer plyVar);
 }

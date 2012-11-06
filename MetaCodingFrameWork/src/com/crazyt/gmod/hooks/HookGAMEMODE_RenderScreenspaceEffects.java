@@ -3,6 +3,7 @@ import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
+import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_RenderScreenspaceEffects")
 public abstract class HookGAMEMODE_RenderScreenspaceEffects extends MetaVarFunction{
 	public HookGAMEMODE_RenderScreenspaceEffects(String n) {

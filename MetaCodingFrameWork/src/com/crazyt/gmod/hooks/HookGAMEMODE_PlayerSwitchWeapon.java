@@ -3,6 +3,7 @@ import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
+import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_PlayerSwitchWeapon")
 public abstract class HookGAMEMODE_PlayerSwitchWeapon extends MetaVarFunction{
 	public HookGAMEMODE_PlayerSwitchWeapon(String n) {
@@ -12,5 +13,5 @@ public abstract class HookGAMEMODE_PlayerSwitchWeapon extends MetaVarFunction{
 	Called when a player switched their weapon.
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_PlayerSwitchWeapon(MetaVarPlayer playerVar,MetaVarWeapon oldWeaponVar,MetaVarWeapon newWeaponVar);
+	public abstract MetaVar GAMEMODE_PlayerSwitchWeapon(@SimpleName("player")MetaVarPlayer playerVar,@SimpleName("oldWeapon")MetaVarWeapon oldWeaponVar,@SimpleName("newWeapon")MetaVarWeapon newWeaponVar);
 }

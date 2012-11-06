@@ -3,6 +3,7 @@ import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
+import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_StartChat")
 public abstract class HookGAMEMODE_StartChat extends MetaVarFunction{
 	public HookGAMEMODE_StartChat(String n) {
@@ -12,5 +13,5 @@ public abstract class HookGAMEMODE_StartChat extends MetaVarFunction{
 	Runs when the user starts typing (opens the chatbox).
 	*/
 	@ClientFunc
-	public abstract MetaVar GAMEMODE_StartChat(MetaVarNumber TeamChatVar);
+	public abstract MetaVar GAMEMODE_StartChat(@SimpleName("TeamChat")MetaVarNumber TeamChatVar);
 }

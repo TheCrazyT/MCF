@@ -3,6 +3,7 @@ import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
+import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_ShouldCollide")
 public abstract class HookGAMEMODE_ShouldCollide extends MetaVarFunction{
 	public HookGAMEMODE_ShouldCollide(String n) {
@@ -12,5 +13,5 @@ public abstract class HookGAMEMODE_ShouldCollide extends MetaVarFunction{
 	Called whenever the engine wants to poll two entities should be able to collide.
 	*/
 	@SharedFunc
-	public abstract MetaVar GAMEMODE_ShouldCollide(MetaVarEntity ent1Var,MetaVarEntity ent2Var);
+	public abstract MetaVar GAMEMODE_ShouldCollide(@SimpleName("ent1")MetaVarEntity ent1Var,@SimpleName("ent2")MetaVarEntity ent2Var);
 }

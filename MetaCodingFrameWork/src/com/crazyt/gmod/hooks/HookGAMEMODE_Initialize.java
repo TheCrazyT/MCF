@@ -3,6 +3,7 @@ import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
+import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_Initialize")
 public abstract class HookGAMEMODE_Initialize extends MetaVarFunction{
 	public HookGAMEMODE_Initialize(String n) {

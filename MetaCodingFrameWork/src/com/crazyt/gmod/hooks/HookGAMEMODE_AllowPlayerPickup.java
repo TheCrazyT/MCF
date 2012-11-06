@@ -3,6 +3,7 @@ import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
+import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_AllowPlayerPickup")
 public abstract class HookGAMEMODE_AllowPlayerPickup extends MetaVarFunction{
 	public HookGAMEMODE_AllowPlayerPickup(String n) {
@@ -12,5 +13,5 @@ public abstract class HookGAMEMODE_AllowPlayerPickup extends MetaVarFunction{
 	Called when a player tries to pick up something using the "use" key.
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_AllowPlayerPickup(MetaVarEntity playerVar,MetaVarEntity EntityVar);
+	public abstract MetaVar GAMEMODE_AllowPlayerPickup(@SimpleName("player")MetaVarEntity playerVar,@SimpleName("Entity")MetaVarEntity EntityVar);
 }

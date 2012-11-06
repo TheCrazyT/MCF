@@ -3,6 +3,7 @@ import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
+import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_OnPlayerChat")
 public abstract class HookGAMEMODE_OnPlayerChat extends MetaVarFunction{
 	public HookGAMEMODE_OnPlayerChat(String n) {
@@ -12,5 +13,5 @@ public abstract class HookGAMEMODE_OnPlayerChat extends MetaVarFunction{
 	Process the player's chat.. return true for no default
 	*/
 	@SharedFunc
-	public abstract MetaVar GAMEMODE_OnPlayerChat(MetaVarEntity playerVar,MetaVarString textVar,MetaVarBoolean teamOnlyVar,MetaVarBoolean playerIsDeadVar);
+	public abstract MetaVar GAMEMODE_OnPlayerChat(@SimpleName("player")MetaVarEntity playerVar,@SimpleName("text")MetaVarString textVar,@SimpleName("teamOnly")MetaVarBoolean teamOnlyVar,@SimpleName("playerIsDead")MetaVarBoolean playerIsDeadVar);
 }

@@ -3,6 +3,7 @@ import com.crazyt.gmod.types.*;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
+import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_PlayerDeathThink")
 public abstract class HookGAMEMODE_PlayerDeathThink extends MetaVarFunction{
 	public HookGAMEMODE_PlayerDeathThink(String n) {
@@ -12,5 +13,5 @@ public abstract class HookGAMEMODE_PlayerDeathThink extends MetaVarFunction{
 	Called every think while the player is dead.
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_PlayerDeathThink(MetaVarPlayer plyVar);
+	public abstract MetaVar GAMEMODE_PlayerDeathThink(@SimpleName("ply")MetaVarPlayer plyVar);
 }
