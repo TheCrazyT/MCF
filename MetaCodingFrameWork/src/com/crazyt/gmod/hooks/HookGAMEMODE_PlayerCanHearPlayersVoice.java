@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_PlayerCanHearPlayersVoice extends MetaVarFunc
 	Polls if a player can be heard by another player.
 	*/
 	@ServerFunc
-	public abstract MetaVarBoolean GAMEMODE_PlayerCanHearPlayersVoice(@SimpleName("listener")MetaVarPlayer listenerVar,@SimpleName("talker")MetaVarPlayer talkerVar);
+	public abstract MetaVarBoolean GAMEMODE_PlayerCanHearPlayersVoice(@SimpleName("listenerVar")MetaVarPlayer listenerVar,@SimpleName("talkerVar")MetaVarPlayer talkerVar);
 }

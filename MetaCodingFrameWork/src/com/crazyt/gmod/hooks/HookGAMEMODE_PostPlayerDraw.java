@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_PostPlayerDraw extends MetaVarFunction{
 	Called before each player is drawn.
 	*/
 	@ClientFunc
-	public abstract MetaVar GAMEMODE_PostPlayerDraw(@SimpleName("ply")MetaVarPlayer plyVar);
+	public abstract MetaVar GAMEMODE_PostPlayerDraw(@SimpleName("plyVar")MetaVarPlayer plyVar);
 }

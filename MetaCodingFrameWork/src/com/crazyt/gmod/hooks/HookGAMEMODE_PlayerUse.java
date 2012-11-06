@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_PlayerUse extends MetaVarFunction{
 	Called when a player tries to "use" an entity.
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_PlayerUse(@SimpleName("player")MetaVarEntity playerVar,@SimpleName("Entity")MetaVarEntity EntityVar);
+	public abstract MetaVar GAMEMODE_PlayerUse(@SimpleName("playerVar")MetaVarEntity playerVar,@SimpleName("EntityVar")MetaVarEntity EntityVar);
 }

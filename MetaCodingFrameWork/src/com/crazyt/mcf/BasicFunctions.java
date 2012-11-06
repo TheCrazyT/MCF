@@ -20,6 +20,10 @@ public abstract class BasicFunctions implements MetaCommand{
 		return getMetaCommand().forCmd(v, from, to);
 	}
 
+	public MetaCommand forCmd(MetaVarInt v, Integer from, Integer to) {
+		return getMetaCommand().forCmd(v, from, to);
+	}
+
 	public MetaCommand forPair(MetaVar v1,MetaVar v2,MetaVarTable table) {
 		return getMetaCommand().forPair(v1,v2,table);
 	}
@@ -52,14 +56,6 @@ public abstract class BasicFunctions implements MetaCommand{
 		return getMetaCommand().sub(v1, v2);
 	}
 
-	public MetaCommand var(MetaVarString v, String s) {
-		return getMetaCommand().var(v, s);
-	}
-
-	public MetaCommand var(MetaVarInt v, int i) {
-		return getMetaCommand().var(v, i);
-	}
-
 	public MetaCommand set(MetaVarString v, String s) {
 		return getMetaCommand().set(v, s);
 	}
@@ -69,6 +65,11 @@ public abstract class BasicFunctions implements MetaCommand{
 	}
 
 	public MetaCommand print(MetaVar v) {
+		return getMetaCommand().print(v);
+	}
+
+
+	public MetaCommand print(String v) {
 		return getMetaCommand().print(v);
 	}
 

@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_PlayerInitialSpawn extends MetaVarFunction{
 	Called when the player spawns for the first time.
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_PlayerInitialSpawn(@SimpleName("player")MetaVarPlayer playerVar);
+	public abstract MetaVar GAMEMODE_PlayerInitialSpawn(@SimpleName("playerVar")MetaVarPlayer playerVar);
 }

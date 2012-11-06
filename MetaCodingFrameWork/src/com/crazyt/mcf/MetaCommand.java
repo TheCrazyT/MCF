@@ -8,6 +8,9 @@ public interface MetaCommand extends MetaVar,MetaConditionCommands{
 
 	public abstract MetaCommand  forCmd(MetaVarInt v, MetaVarInt from,
 			MetaVarInt to);
+	
+	public abstract MetaCommand  forCmd(MetaVarInt v, Integer from,
+			Integer to);
 
 	public abstract MetaCommand forPair(MetaVar v1,MetaVar v2,MetaVarTable table);
 
@@ -17,16 +20,14 @@ public interface MetaCommand extends MetaVar,MetaConditionCommands{
 
 	public abstract MetaCommand  sub(MetaVarInt v1, MetaVarInt v2);
 
-	public abstract MetaCommand  var(MetaVarString v, String s);
-
-	public abstract MetaCommand  var(MetaVarInt v, int i);
-
 	public abstract MetaCommand  set(MetaVarString v, String s);
 	
 	public abstract MetaCommand  set(MetaVarInt v, int i);
 	
 	public abstract MetaCommand  print(MetaVar v);
 	
+	public abstract MetaCommand  print(String v);
+
 	public abstract MetaCommand  call(MetaVar mc);
 	
 	/**

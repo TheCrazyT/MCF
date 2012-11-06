@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_CanPlayerSuicide extends MetaVarFunction{
 	Determines if the player can kill themselves using the concommands "kill" or "explode"
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_CanPlayerSuicide(@SimpleName("player")MetaVarPlayer playerVar);
+	public abstract MetaVar GAMEMODE_CanPlayerSuicide(@SimpleName("playerVar")MetaVarPlayer playerVar);
 }

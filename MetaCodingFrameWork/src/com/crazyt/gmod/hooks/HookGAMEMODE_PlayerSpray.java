@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_PlayerSpray extends MetaVarFunction{
 	Called whenever a player sprayed his logo, return true to prevent the spray.
 	*/
 	@ServerFunc
-	public abstract MetaVarBoolean GAMEMODE_PlayerSpray(@SimpleName("sprayer")MetaVarPlayer sprayerVar);
+	public abstract MetaVarBoolean GAMEMODE_PlayerSpray(@SimpleName("sprayerVar")MetaVarPlayer sprayerVar);
 }

@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_KeyPress extends MetaVarFunction{
 	Player pressed a key (see IN enums)
 	*/
 	@SharedFunc
-	public abstract MetaVar GAMEMODE_KeyPress(@SimpleName("player")MetaVarEntity playerVar,@SimpleName("key")MetaVarNumber keyVar);
+	public abstract MetaVar GAMEMODE_KeyPress(@SimpleName("playerVar")MetaVarEntity playerVar,@SimpleName("keyVar")MetaVarNumber keyVar);
 }

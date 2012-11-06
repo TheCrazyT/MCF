@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_AllowPlayerPickup extends MetaVarFunction{
 	Called when a player tries to pick up something using the "use" key.
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_AllowPlayerPickup(@SimpleName("player")MetaVarEntity playerVar,@SimpleName("Entity")MetaVarEntity EntityVar);
+	public abstract MetaVar GAMEMODE_AllowPlayerPickup(@SimpleName("playerVar")MetaVarEntity playerVar,@SimpleName("EntityVar")MetaVarEntity EntityVar);
 }

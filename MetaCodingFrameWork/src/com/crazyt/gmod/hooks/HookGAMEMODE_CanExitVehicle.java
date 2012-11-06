@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_CanExitVehicle extends MetaVarFunction{
 	Determines if the player can exit the vehicle
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_CanExitVehicle(@SimpleName("vehicle")MetaVarEntity vehicleVar,@SimpleName("player")MetaVarPlayer playerVar);
+	public abstract MetaVar GAMEMODE_CanExitVehicle(@SimpleName("vehicleVar")MetaVarEntity vehicleVar,@SimpleName("playerVar")MetaVarPlayer playerVar);
 }

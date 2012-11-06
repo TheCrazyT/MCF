@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_PlayerSwitchWeapon extends MetaVarFunction{
 	Called when a player switched their weapon.
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_PlayerSwitchWeapon(@SimpleName("player")MetaVarPlayer playerVar,@SimpleName("oldWeapon")MetaVarWeapon oldWeaponVar,@SimpleName("newWeapon")MetaVarWeapon newWeaponVar);
+	public abstract MetaVar GAMEMODE_PlayerSwitchWeapon(@SimpleName("playerVar")MetaVarPlayer playerVar,@SimpleName("oldWeaponVar")MetaVarWeapon oldWeaponVar,@SimpleName("newWeaponVar")MetaVarWeapon newWeaponVar);
 }

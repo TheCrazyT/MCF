@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_CalcViewModelView extends MetaVarFunction{
 	Called to set the view model's position
 	*/
 	@ClientFunc
-	public abstract MetaVar GAMEMODE_CalcViewModelView(@SimpleName("weapon")MetaVarEntity weaponVar,@SimpleName("viewModel")MetaVarEntity viewModelVar,@SimpleName("oldEyePosition")MetaVarVector oldEyePositionVar,@SimpleName("oldEyeAngles")MetaVarAngle oldEyeAnglesVar,@SimpleName("eyePosition")MetaVarVector eyePositionVar,@SimpleName("eyeAngles")MetaVarAngle eyeAnglesVar);
+	public abstract MetaVar GAMEMODE_CalcViewModelView(@SimpleName("weaponVar")MetaVarEntity weaponVar,@SimpleName("viewModelVar")MetaVarEntity viewModelVar,@SimpleName("oldEyePositionVar")MetaVarVector oldEyePositionVar,@SimpleName("oldEyeAnglesVar")MetaVarAngle oldEyeAnglesVar,@SimpleName("eyePositionVar")MetaVarVector eyePositionVar,@SimpleName("eyeAnglesVar")MetaVarAngle eyeAnglesVar);
 }

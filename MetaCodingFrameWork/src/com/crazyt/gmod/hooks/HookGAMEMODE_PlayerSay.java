@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_PlayerSay extends MetaVarFunction{
 	Called when a player types and enters a text message.
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_PlayerSay(@SimpleName("player")MetaVarEntity playerVar,@SimpleName("message")MetaVarString messageVar,@SimpleName("team")MetaVarBoolean teamVar);
+	public abstract MetaVar GAMEMODE_PlayerSay(@SimpleName("playerVar")MetaVarEntity playerVar,@SimpleName("messageVar")MetaVarString messageVar,@SimpleName("teamVar")MetaVarBoolean teamVar);
 }

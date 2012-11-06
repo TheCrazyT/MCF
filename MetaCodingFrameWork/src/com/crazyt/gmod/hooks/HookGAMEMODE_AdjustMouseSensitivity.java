@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_AdjustMouseSensitivity extends MetaVarFunctio
 	Allows you to adjust the mouse sensitivity
 	*/
 	@ClientFunc
-	public abstract MetaVar GAMEMODE_AdjustMouseSensitivity(@SimpleName("defaultSensitivity")MetaVarNumber defaultSensitivityVar);
+	public abstract MetaVar GAMEMODE_AdjustMouseSensitivity(@SimpleName("defaultSensitivityVar")MetaVarNumber defaultSensitivityVar);
 }

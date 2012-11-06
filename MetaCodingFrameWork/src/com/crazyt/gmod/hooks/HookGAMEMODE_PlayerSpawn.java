@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_PlayerSpawn extends MetaVarFunction{
 	Called whenever a player spawned.
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_PlayerSpawn(@SimpleName("sprayer")MetaVarPlayer sprayerVar);
+	public abstract MetaVar GAMEMODE_PlayerSpawn(@SimpleName("sprayerVar")MetaVarPlayer sprayerVar);
 }

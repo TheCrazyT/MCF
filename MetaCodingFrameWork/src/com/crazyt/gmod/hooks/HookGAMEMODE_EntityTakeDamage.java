@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_EntityTakeDamage extends MetaVarFunction{
 	Called when an entity takes damage.
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_EntityTakeDamage(@SimpleName("Target")MetaVarEntity TargetVar,@SimpleName("DamageInfo")MetaVarCTakeDamageInfo DamageInfoVar);
+	public abstract MetaVar GAMEMODE_EntityTakeDamage(@SimpleName("TargetVar")MetaVarEntity TargetVar,@SimpleName("DamageInfoVar")MetaVarCTakeDamageInfo DamageInfoVar);
 }

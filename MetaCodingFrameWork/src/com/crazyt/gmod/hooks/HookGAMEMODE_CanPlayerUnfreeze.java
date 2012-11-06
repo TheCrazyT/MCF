@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_CanPlayerUnfreeze extends MetaVarFunction{
 	Determines if the player can unfreeze the entity
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_CanPlayerUnfreeze(@SimpleName("player")MetaVarPlayer playerVar,@SimpleName("entity")MetaVarEntity entityVar,@SimpleName("physObj")MetaVarPhysObj physObjVar);
+	public abstract MetaVar GAMEMODE_CanPlayerUnfreeze(@SimpleName("playerVar")MetaVarPlayer playerVar,@SimpleName("entityVar")MetaVarEntity entityVar,@SimpleName("physObjVar")MetaVarPhysObj physObjVar);
 }

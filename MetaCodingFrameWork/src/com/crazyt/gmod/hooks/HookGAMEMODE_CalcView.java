@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_CalcView extends MetaVarFunction{
 	Allows override of the default view.
 	*/
 	@ClientFunc
-	public abstract MetaVar GAMEMODE_CalcView(@SimpleName("player")MetaVarEntity playerVar,@SimpleName("origin")MetaVarVector originVar,@SimpleName("angles")MetaVarAngle anglesVar,@SimpleName("fov")MetaVarNumber fovVar,@SimpleName("nearZ")MetaVarNumber nearZVar,@SimpleName("farZ")MetaVarNumber farZVar);
+	public abstract MetaVar GAMEMODE_CalcView(@SimpleName("playerVar")MetaVarEntity playerVar,@SimpleName("originVar")MetaVarVector originVar,@SimpleName("anglesVar")MetaVarAngle anglesVar,@SimpleName("fovVar")MetaVarNumber fovVar,@SimpleName("nearZVar")MetaVarNumber nearZVar,@SimpleName("farZVar")MetaVarNumber farZVar);
 }

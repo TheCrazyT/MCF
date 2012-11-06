@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_OnPlayerChat extends MetaVarFunction{
 	Process the player's chat.. return true for no default
 	*/
 	@SharedFunc
-	public abstract MetaVar GAMEMODE_OnPlayerChat(@SimpleName("player")MetaVarEntity playerVar,@SimpleName("text")MetaVarString textVar,@SimpleName("teamOnly")MetaVarBoolean teamOnlyVar,@SimpleName("playerIsDead")MetaVarBoolean playerIsDeadVar);
+	public abstract MetaVar GAMEMODE_OnPlayerChat(@SimpleName("playerVar")MetaVarEntity playerVar,@SimpleName("textVar")MetaVarString textVar,@SimpleName("teamOnlyVar")MetaVarBoolean teamOnlyVar,@SimpleName("playerIsDeadVar")MetaVarBoolean playerIsDeadVar);
 }

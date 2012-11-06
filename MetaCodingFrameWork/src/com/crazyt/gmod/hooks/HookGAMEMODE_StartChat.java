@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_StartChat extends MetaVarFunction{
 	Runs when the user starts typing (opens the chatbox).
 	*/
 	@ClientFunc
-	public abstract MetaVar GAMEMODE_StartChat(@SimpleName("TeamChat")MetaVarNumber TeamChatVar);
+	public abstract MetaVar GAMEMODE_StartChat(@SimpleName("TeamChatVar")MetaVarNumber TeamChatVar);
 }

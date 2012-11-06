@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_PlayerDeathThink extends MetaVarFunction{
 	Called every think while the player is dead.
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_PlayerDeathThink(@SimpleName("ply")MetaVarPlayer plyVar);
+	public abstract MetaVar GAMEMODE_PlayerDeathThink(@SimpleName("plyVar")MetaVarPlayer plyVar);
 }

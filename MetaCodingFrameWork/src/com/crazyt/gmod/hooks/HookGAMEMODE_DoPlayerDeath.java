@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_DoPlayerDeath extends MetaVarFunction{
 	Handles the player's death
 	*/
 	@ServerFunc
-	public abstract MetaVar GAMEMODE_DoPlayerDeath(@SimpleName("ply")MetaVarPlayer plyVar,@SimpleName("attacker")MetaVarPlayer attackerVar,@SimpleName("dmginfo")MetaVarCTakeDamageInfo dmginfoVar);
+	public abstract MetaVar GAMEMODE_DoPlayerDeath(@SimpleName("plyVar")MetaVarPlayer plyVar,@SimpleName("attackerVar")MetaVarPlayer attackerVar,@SimpleName("dmginfoVar")MetaVarCTakeDamageInfo dmginfoVar);
 }

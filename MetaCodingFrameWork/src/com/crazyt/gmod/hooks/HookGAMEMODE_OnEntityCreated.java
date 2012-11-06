@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_OnEntityCreated extends MetaVarFunction{
 	Called right after the Entity has been made visible to Lua.
 	*/
 	@SharedFunc
-	public abstract MetaVar GAMEMODE_OnEntityCreated(@SimpleName("entity")MetaVarEntity entityVar);
+	public abstract MetaVar GAMEMODE_OnEntityCreated(@SimpleName("entityVar")MetaVarEntity entityVar);
 }

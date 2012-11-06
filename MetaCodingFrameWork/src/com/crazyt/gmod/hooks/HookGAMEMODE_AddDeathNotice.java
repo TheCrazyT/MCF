@@ -13,5 +13,5 @@ public abstract class HookGAMEMODE_AddDeathNotice extends MetaVarFunction{
 	Adds an death notice entry
 	*/
 	@ClientFunc
-	public abstract MetaVar GAMEMODE_AddDeathNotice(@SimpleName("victim")MetaVarString victimVar,@SimpleName("victimsTeam")MetaVarNumber victimsTeamVar,@SimpleName("inflictor")MetaVarString inflictorVar,@SimpleName("attacker")MetaVarString attackerVar,@SimpleName("attackersTeam")MetaVarNumber attackersTeamVar);
+	public abstract MetaVar GAMEMODE_AddDeathNotice(@SimpleName("victimVar")MetaVarString victimVar,@SimpleName("victimsTeamVar")MetaVarNumber victimsTeamVar,@SimpleName("inflictorVar")MetaVarString inflictorVar,@SimpleName("attackerVar")MetaVarString attackerVar,@SimpleName("attackersTeamVar")MetaVarNumber attackersTeamVar);
 }

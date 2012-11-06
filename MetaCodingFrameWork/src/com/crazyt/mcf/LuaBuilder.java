@@ -45,6 +45,9 @@ public class LuaBuilder implements MetaScriptBuilder{
 				if(clazz.isAnnotationPresent(SimpleName.class)){
 					fileName = clazz.getAnnotation(SimpleName.class).value() + ".lua";
 				}
+				if(clazz.isAnnotationPresent(SourceInfo.class)){
+					fileName = clazz.getAnnotation(SourceInfo.class).folder() + "\\" + fileName;
+				}
 				Constructor<?> dbconstr = LuaBuilder.class.getConstructor(new Class<?>[]{PrintStream.class});
 				LuaBuilder instance=null;
 				PrintStream outStream = null;
@@ -52,6 +55,14 @@ public class LuaBuilder implements MetaScriptBuilder{
 						&& System.getenv().get("DEBUG").equals("1")) {
 					outStream = System.out; 
 				} else {
+					if(clazz.isAnnotationPresent(SourceInfo.class)){
+						String info = clazz.getAnnotation(SourceInfo.class).info();
+						if(info != null){
+							File i = new File("build/"+info);
+							File i2 = new File("build/out/lua/" + info);
+							i.renameTo(i2);
+						}
+					}
 					File out = new File("build/out/lua/"+fileName);
 					out.getParentFile().mkdirs();
 					out.createNewFile();
@@ -193,14 +204,24 @@ public class LuaBuilder implements MetaScriptBuilder{
 	public MetaCommand forPair(MetaVar v1,MetaVar v2,MetaVarTable table){
 		finalizeConditionStatements();
 
-		println("for "+v1._getName()+","+v2._getName()+" in pairs("+table._getName()+") do");
+		println("for " + v1._getName() + "," + v2._getName() + " in pairs("
+				+ table._getName() + ") do");
 		increaseTab();
 		return this;
 	}
 	public MetaCommand forCmd(MetaVarInt v, MetaVarInt from, MetaVarInt to) {
 		finalizeConditionStatements();
 		
-		println("for "+v._getName()+"="+from._getName()+","+to._getName()+",1 do");
+		println("for " + v._getName() + "=" + from._getName() + ","
+				+ to._getName() + ",1 do");
+		increaseTab();
+		return this;
+	}
+
+	public MetaCommand forCmd(MetaVarInt v, Integer from, Integer to) {
+		finalizeConditionStatements();
+		
+		println("for " + v._getName() + "=" + from + "," + to + ",1 do");
 		increaseTab();
 		return this;
 	}
@@ -228,13 +249,6 @@ public class LuaBuilder implements MetaScriptBuilder{
 		return this;
 	}
 
-	public MetaCommand var(MetaVarString v, String s) {
-		finalizeConditionStatements();
-
-		println(v._getName()+" = \""+s+"\"");
-		return this;
-	}
-
 	public MetaCommand set(MetaVarString v, String s) {
 		finalizeConditionStatements();
 
@@ -243,12 +257,6 @@ public class LuaBuilder implements MetaScriptBuilder{
 	}
 
 	public MetaCommand set(MetaVarInt v, int i) {
-		finalizeConditionStatements();
-
-		println(v._getName()+" = "+i);
-		return this;
-	}
-	public MetaCommand var(MetaVarInt v, int i) {
 		finalizeConditionStatements();
 
 		println(v._getName()+" = "+i);
@@ -263,6 +271,13 @@ public class LuaBuilder implements MetaScriptBuilder{
 		finalizeConditionStatements();
 
 		println("print("+v._getName()+")");
+		return this;
+	}
+	
+	public MetaCommand print(String v) {
+		finalizeConditionStatements();
+
+		println("print(\""+v+"\")");
 		return this;
 	}
 	
