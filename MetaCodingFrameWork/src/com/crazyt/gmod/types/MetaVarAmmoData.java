@@ -1,54 +1,43 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("AmmoData")
-public class MetaVarAmmoData extends MetaVarImpl implements IMetaVarAny{
-	private MetaVarNumber dmgtype;
+@Implementation(MetaVarAmmoDataImpl.class)
+public interface MetaVarAmmoData extends MetaVar,IMetaVarAny{
 	@SimpleName("dmgtype")
-	public MetaVarNumber getDmgtype(){ return dmgtype;}
+	public MetaVarNumber getDmgtype();
 	@SimpleName("dmgtype")
-	public void setDmgtype(MetaVarNumber value){ dmgtype=value;}
-	private MetaVarNumber force;
+	public void setDmgtype(MetaVarNumber value);
 	@SimpleName("force")
-	public MetaVarNumber getForce(){ return force;}
+	public MetaVarNumber getForce();
 	@SimpleName("force")
-	public void setForce(MetaVarNumber value){ force=value;}
-	private MetaVarNumber maxsplash;
+	public void setForce(MetaVarNumber value);
 	@SimpleName("maxsplash")
-	public MetaVarNumber getMaxsplash(){ return maxsplash;}
+	public MetaVarNumber getMaxsplash();
 	@SimpleName("maxsplash")
-	public void setMaxsplash(MetaVarNumber value){ maxsplash=value;}
-	private MetaVarNumber minsplash;
+	public void setMaxsplash(MetaVarNumber value);
 	@SimpleName("minsplash")
-	public MetaVarNumber getMinsplash(){ return minsplash;}
+	public MetaVarNumber getMinsplash();
 	@SimpleName("minsplash")
-	public void setMinsplash(MetaVarNumber value){ minsplash=value;}
-	private MetaVarString name;
+	public void setMinsplash(MetaVarNumber value);
 	@SimpleName("name")
-	public MetaVarString getName(){ return name;}
+	public MetaVarString getName();
 	@SimpleName("name")
-	public void setName(MetaVarString value){ name=value;}
-	private MetaVarNumber npcdmg;
+	public void setName(MetaVarString value);
 	@SimpleName("npcdmg")
-	public MetaVarNumber getNpcdmg(){ return npcdmg;}
+	public MetaVarNumber getNpcdmg();
 	@SimpleName("npcdmg")
-	public void setNpcdmg(MetaVarNumber value){ npcdmg=value;}
-	private MetaVarNumber plydmg;
+	public void setNpcdmg(MetaVarNumber value);
 	@SimpleName("plydmg")
-	public MetaVarNumber getPlydmg(){ return plydmg;}
+	public MetaVarNumber getPlydmg();
 	@SimpleName("plydmg")
-	public void setPlydmg(MetaVarNumber value){ plydmg=value;}
-	private MetaVarNumber tracer;
+	public void setPlydmg(MetaVarNumber value);
 	@SimpleName("tracer")
-	public MetaVarNumber getTracer(){ return tracer;}
+	public MetaVarNumber getTracer();
 	@SimpleName("tracer")
-	public void setTracer(MetaVarNumber value){ tracer=value;}
-	public MetaVarAmmoData(String n) {
-		super(n);
-	}
+	public void setTracer(MetaVarNumber value);
 }

@@ -27,5 +27,5 @@ public class LibGWEN extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVar TextureColor(MetaVarNumber xVar,MetaVarNumber yVar){return null;};
+	public MetaVar TextureColor(MetaVarNumber xVar,MetaVarNumber yVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

@@ -5,7 +5,7 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_PreDrawTranslucentRenderables")
-public abstract class HookGAMEMODE_PreDrawTranslucentRenderables extends MetaVarFunction{
+public abstract class HookGAMEMODE_PreDrawTranslucentRenderables extends MetaVarFunctionImpl{
 	public HookGAMEMODE_PreDrawTranslucentRenderables(String n) {
 		super(n);
 	}

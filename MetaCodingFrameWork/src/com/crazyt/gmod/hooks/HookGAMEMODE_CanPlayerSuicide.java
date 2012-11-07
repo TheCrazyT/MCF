@@ -5,7 +5,7 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_CanPlayerSuicide")
-public abstract class HookGAMEMODE_CanPlayerSuicide extends MetaVarFunction{
+public abstract class HookGAMEMODE_CanPlayerSuicide extends MetaVarFunctionImpl{
 	public HookGAMEMODE_CanPlayerSuicide(String n) {
 		super(n);
 	}

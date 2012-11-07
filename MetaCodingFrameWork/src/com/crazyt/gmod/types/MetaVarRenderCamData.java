@@ -1,69 +1,55 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("RenderCamData")
-public class MetaVarRenderCamData extends MetaVarImpl implements IMetaVarAny{
-	private MetaVarAngle angles;
+@Implementation(MetaVarRenderCamDataImpl.class)
+public interface MetaVarRenderCamData extends MetaVar,IMetaVarAny{
 	@SimpleName("angles")
-	public MetaVarAngle getAngles(){ return angles;}
+	public MetaVarAngle getAngles();
 	@SimpleName("angles")
-	public void setAngles(MetaVarAngle value){ angles=value;}
-	private MetaVarNumber fov;
+	public void setAngles(MetaVarAngle value);
 	@SimpleName("fov")
-	public MetaVarNumber getFov(){ return fov;}
+	public MetaVarNumber getFov();
 	@SimpleName("fov")
-	public void setFov(MetaVarNumber value){ fov=value;}
-	private MetaVarVector origin;
+	public void setFov(MetaVarNumber value);
 	@SimpleName("origin")
-	public MetaVarVector getOrigin(){ return origin;}
+	public MetaVarVector getOrigin();
 	@SimpleName("origin")
-	public void setOrigin(MetaVarVector value){ origin=value;}
-	private MetaVarNumber type;
+	public void setOrigin(MetaVarVector value);
 	@SimpleName("type")
-	public MetaVarNumber getType(){ return type;}
+	public MetaVarNumber getType();
 	@SimpleName("type")
-	public void setType(MetaVarNumber value){ type=value;}
-	private MetaVarNumber w;
+	public void setType(MetaVarNumber value);
 	@SimpleName("w")
-	public MetaVarNumber getW(){ return w;}
+	public MetaVarNumber getW();
 	@SimpleName("w")
-	public void setW(MetaVarNumber value){ w=value;}
-	private MetaVarNumber h;
+	public void setW(MetaVarNumber value);
 	@SimpleName("h")
-	public MetaVarNumber getH(){ return h;}
+	public MetaVarNumber getH();
 	@SimpleName("h")
-	public void setH(MetaVarNumber value){ h=value;}
-	private MetaVarNumber aspect;
+	public void setH(MetaVarNumber value);
 	@SimpleName("aspect")
-	public MetaVarNumber getAspect(){ return aspect;}
+	public MetaVarNumber getAspect();
 	@SimpleName("aspect")
-	public void setAspect(MetaVarNumber value){ aspect=value;}
-	private MetaVarNumber x;
+	public void setAspect(MetaVarNumber value);
 	@SimpleName("x")
-	public MetaVarNumber getX(){ return x;}
+	public MetaVarNumber getX();
 	@SimpleName("x")
-	public void setX(MetaVarNumber value){ x=value;}
-	private MetaVarNumber y;
+	public void setX(MetaVarNumber value);
 	@SimpleName("y")
-	public MetaVarNumber getY(){ return y;}
+	public MetaVarNumber getY();
 	@SimpleName("y")
-	public void setY(MetaVarNumber value){ y=value;}
-	private MetaVarNumber zfar;
+	public void setY(MetaVarNumber value);
 	@SimpleName("zfar")
-	public MetaVarNumber getZfar(){ return zfar;}
+	public MetaVarNumber getZfar();
 	@SimpleName("zfar")
-	public void setZfar(MetaVarNumber value){ zfar=value;}
-	private MetaVarNumber znear;
+	public void setZfar(MetaVarNumber value);
 	@SimpleName("znear")
-	public MetaVarNumber getZnear(){ return znear;}
+	public MetaVarNumber getZnear();
 	@SimpleName("znear")
-	public void setZnear(MetaVarNumber value){ znear=value;}
-	public MetaVarRenderCamData(String n) {
-		super(n);
-	}
+	public void setZnear(MetaVarNumber value);
 }

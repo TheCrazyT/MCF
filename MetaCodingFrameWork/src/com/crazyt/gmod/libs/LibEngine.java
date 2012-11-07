@@ -27,23 +27,23 @@ public class LibEngine extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVarString ActiveGamemode(){return null;};
+	public MetaVarString ActiveGamemode(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns a table containing info for all installed gamemodes
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable GetGamemodes(){return null;};
+	public MetaVarTable GetGamemodes(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns an array of tables corresponding to all games from which Garry's Mod supports mounting content.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable GetGames(){return null;};
+	public MetaVarTable GetGames(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetMounted(MetaVarString depotVar,MetaVarBoolean mountedVar){return null;};
+	public MetaVar SetMounted(MetaVarString depotVar,MetaVarBoolean mountedVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

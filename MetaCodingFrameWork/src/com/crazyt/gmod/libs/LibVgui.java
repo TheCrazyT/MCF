@@ -27,41 +27,41 @@ public class LibVgui extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVarPanel Create(MetaVarString classnameVar,MetaVarPanel parentVar,MetaVarString nameVar){return null;};
+	public MetaVarPanel Create(MetaVarString classnameVar,MetaVarPanel parentVar,MetaVarString nameVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns whenever the cursor is current active and visible.
 	*/
 	@External
 	@ClientFunc
-	public MetaVarBoolean CursorVisible(){return null;};
+	public MetaVarBoolean CursorVisible(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns whenever the currently focused panel has a parent.
 	*/
 	@External
 	@ClientFunc
-	public MetaVarBoolean FocusedHasParent(){return null;};
+	public MetaVarBoolean FocusedHasParent(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the panel the cursor is hovering above.
 	*/
 	@External
 	@ClientFunc
-	public MetaVarPanel GetHoveredPanel(){return null;};
+	public MetaVarPanel GetHoveredPanel(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the panel which is currently received keyboard input.
 	*/
 	@External
 	@ClientFunc
-	public MetaVarPanel GetKeyboardFocus(){return null;};
+	public MetaVarPanel GetKeyboardFocus(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the global world panel which is the parent to all others.
 	*/
 	@External
 	@ClientFunc
-	public MetaVarPanel GetWorldPanel(){return null;};
+	public MetaVarPanel GetWorldPanel(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns whenever the cursor is hovering the world panel.
 	*/
 	@External
 	@ClientFunc
-	public MetaVarBoolean IsHoveringWorld(){return null;};
+	public MetaVarBoolean IsHoveringWorld(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

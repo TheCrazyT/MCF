@@ -5,6 +5,7 @@ import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME) 
 public @interface SourceInfo {
-	String folder();
+	String addonFolder();
+	String subFolder();
 	String info();
 }

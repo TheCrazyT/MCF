@@ -1,54 +1,43 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("PhysEnvPerformanceSettings")
-public class MetaVarPhysEnvPerformanceSettings extends MetaVarImpl implements IMetaVarAny{
-	private MetaVarNumber LookAheadTimeObjectsVsObject;
+@Implementation(MetaVarPhysEnvPerformanceSettingsImpl.class)
+public interface MetaVarPhysEnvPerformanceSettings extends MetaVar,IMetaVarAny{
 	@SimpleName("LookAheadTimeObjectsVsObject")
-	public MetaVarNumber getLookAheadTimeObjectsVsObject(){ return LookAheadTimeObjectsVsObject;}
+	public MetaVarNumber getLookAheadTimeObjectsVsObject();
 	@SimpleName("LookAheadTimeObjectsVsObject")
-	public void setLookAheadTimeObjectsVsObject(MetaVarNumber value){ LookAheadTimeObjectsVsObject=value;}
-	private MetaVarNumber LookAheadTimeObjectsVsWorld;
+	public void setLookAheadTimeObjectsVsObject(MetaVarNumber value);
 	@SimpleName("LookAheadTimeObjectsVsWorld")
-	public MetaVarNumber getLookAheadTimeObjectsVsWorld(){ return LookAheadTimeObjectsVsWorld;}
+	public MetaVarNumber getLookAheadTimeObjectsVsWorld();
 	@SimpleName("LookAheadTimeObjectsVsWorld")
-	public void setLookAheadTimeObjectsVsWorld(MetaVarNumber value){ LookAheadTimeObjectsVsWorld=value;}
-	private MetaVarNumber MaxAngularVelocity;
+	public void setLookAheadTimeObjectsVsWorld(MetaVarNumber value);
 	@SimpleName("MaxAngularVelocity")
-	public MetaVarNumber getMaxAngularVelocity(){ return MaxAngularVelocity;}
+	public MetaVarNumber getMaxAngularVelocity();
 	@SimpleName("MaxAngularVelocity")
-	public void setMaxAngularVelocity(MetaVarNumber value){ MaxAngularVelocity=value;}
-	private MetaVarNumber MaxCollisionChecksPerTimestep;
+	public void setMaxAngularVelocity(MetaVarNumber value);
 	@SimpleName("MaxCollisionChecksPerTimestep")
-	public MetaVarNumber getMaxCollisionChecksPerTimestep(){ return MaxCollisionChecksPerTimestep;}
+	public MetaVarNumber getMaxCollisionChecksPerTimestep();
 	@SimpleName("MaxCollisionChecksPerTimestep")
-	public void setMaxCollisionChecksPerTimestep(MetaVarNumber value){ MaxCollisionChecksPerTimestep=value;}
-	private MetaVarNumber MaxCollisionsPerObjectPerTimestep;
+	public void setMaxCollisionChecksPerTimestep(MetaVarNumber value);
 	@SimpleName("MaxCollisionsPerObjectPerTimestep")
-	public MetaVarNumber getMaxCollisionsPerObjectPerTimestep(){ return MaxCollisionsPerObjectPerTimestep;}
+	public MetaVarNumber getMaxCollisionsPerObjectPerTimestep();
 	@SimpleName("MaxCollisionsPerObjectPerTimestep")
-	public void setMaxCollisionsPerObjectPerTimestep(MetaVarNumber value){ MaxCollisionsPerObjectPerTimestep=value;}
-	private MetaVarNumber MaxFrictionMass;
+	public void setMaxCollisionsPerObjectPerTimestep(MetaVarNumber value);
 	@SimpleName("MaxFrictionMass")
-	public MetaVarNumber getMaxFrictionMass(){ return MaxFrictionMass;}
+	public MetaVarNumber getMaxFrictionMass();
 	@SimpleName("MaxFrictionMass")
-	public void setMaxFrictionMass(MetaVarNumber value){ MaxFrictionMass=value;}
-	private MetaVarNumber MaxVelocity;
+	public void setMaxFrictionMass(MetaVarNumber value);
 	@SimpleName("MaxVelocity")
-	public MetaVarNumber getMaxVelocity(){ return MaxVelocity;}
+	public MetaVarNumber getMaxVelocity();
 	@SimpleName("MaxVelocity")
-	public void setMaxVelocity(MetaVarNumber value){ MaxVelocity=value;}
-	private MetaVarNumber MinFrictionMass;
+	public void setMaxVelocity(MetaVarNumber value);
 	@SimpleName("MinFrictionMass")
-	public MetaVarNumber getMinFrictionMass(){ return MinFrictionMass;}
+	public MetaVarNumber getMinFrictionMass();
 	@SimpleName("MinFrictionMass")
-	public void setMinFrictionMass(MetaVarNumber value){ MinFrictionMass=value;}
-	public MetaVarPhysEnvPerformanceSettings(String n) {
-		super(n);
-	}
+	public void setMinFrictionMass(MetaVarNumber value);
 }

@@ -27,17 +27,17 @@ public class LibChat extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVar AddText(MetaVarVararg ArgumentsVar){return null;};
+	public MetaVar AddText(MetaVarVararg ArgumentsVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the chat box positions x and y.
 	*/
 	@External
 	@ClientFunc
-	public MetaVarNumber GetChatBoxPos(){return null;};
+	public MetaVarNumber GetChatBoxPos(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Plays the chat "tick" sound.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar PlaySound(){return null;};
+	public MetaVar PlaySound(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

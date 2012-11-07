@@ -5,7 +5,7 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_CalcView")
-public abstract class HookGAMEMODE_CalcView extends MetaVarFunction{
+public abstract class HookGAMEMODE_CalcView extends MetaVarFunctionImpl{
 	public HookGAMEMODE_CalcView(String n) {
 		super(n);
 	}

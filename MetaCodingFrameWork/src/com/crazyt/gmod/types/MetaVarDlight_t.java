@@ -1,94 +1,75 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("dlight_t")
-public class MetaVarDlight_t extends MetaVarImpl implements IMetaVarAny{
-	private MetaVarNumber Brightness;
+@Implementation(MetaVarDlight_tImpl.class)
+public interface MetaVarDlight_t extends MetaVar,IMetaVarAny{
 	@SimpleName("Brightness")
-	public MetaVarNumber getBrightness(){ return Brightness;}
+	public MetaVarNumber getBrightness();
 	@SimpleName("Brightness")
-	public void setBrightness(MetaVarNumber value){ Brightness=value;}
-	private MetaVarNumber Decay;
+	public void setBrightness(MetaVarNumber value);
 	@SimpleName("Decay")
-	public MetaVarNumber getDecay(){ return Decay;}
+	public MetaVarNumber getDecay();
 	@SimpleName("Decay")
-	public void setDecay(MetaVarNumber value){ Decay=value;}
-	private MetaVarNumber DieTime;
+	public void setDecay(MetaVarNumber value);
 	@SimpleName("DieTime")
-	public MetaVarNumber getDieTime(){ return DieTime;}
+	public MetaVarNumber getDieTime();
 	@SimpleName("DieTime")
-	public void setDieTime(MetaVarNumber value){ DieTime=value;}
-	private MetaVarNumber Dir;
+	public void setDieTime(MetaVarNumber value);
 	@SimpleName("Dir")
-	public MetaVarNumber getDir(){ return Dir;}
+	public MetaVarNumber getDir();
 	@SimpleName("Dir")
-	public void setDir(MetaVarNumber value){ Dir=value;}
-	private MetaVarNumber InnerAngle;
+	public void setDir(MetaVarNumber value);
 	@SimpleName("InnerAngle")
-	public MetaVarNumber getInnerAngle(){ return InnerAngle;}
+	public MetaVarNumber getInnerAngle();
 	@SimpleName("InnerAngle")
-	public void setInnerAngle(MetaVarNumber value){ InnerAngle=value;}
-	private MetaVarNumber Key;
+	public void setInnerAngle(MetaVarNumber value);
 	@SimpleName("Key")
-	public MetaVarNumber getKey(){ return Key;}
+	public MetaVarNumber getKey();
 	@SimpleName("Key")
-	public void setKey(MetaVarNumber value){ Key=value;}
-	private MetaVarNumber MinLight;
+	public void setKey(MetaVarNumber value);
 	@SimpleName("MinLight")
-	public MetaVarNumber getMinLight(){ return MinLight;}
+	public MetaVarNumber getMinLight();
 	@SimpleName("MinLight")
-	public void setMinLight(MetaVarNumber value){ MinLight=value;}
-	private MetaVarBoolean NoWorld;
+	public void setMinLight(MetaVarNumber value);
 	@SimpleName("NoWorld")
-	public MetaVarBoolean getNoWorld(){ return NoWorld;}
+	public MetaVarBoolean getNoWorld();
 	@SimpleName("NoWorld")
-	public void setNoWorld(MetaVarBoolean value){ NoWorld=value;}
-	private MetaVarBoolean NoModel;
+	public void setNoWorld(MetaVarBoolean value);
 	@SimpleName("NoModel")
-	public MetaVarBoolean getNoModel(){ return NoModel;}
+	public MetaVarBoolean getNoModel();
 	@SimpleName("NoModel")
-	public void setNoModel(MetaVarBoolean value){ NoModel=value;}
-	private MetaVarNumber OuterAngle;
+	public void setNoModel(MetaVarBoolean value);
 	@SimpleName("OuterAngle")
-	public MetaVarNumber getOuterAngle(){ return OuterAngle;}
+	public MetaVarNumber getOuterAngle();
 	@SimpleName("OuterAngle")
-	public void setOuterAngle(MetaVarNumber value){ OuterAngle=value;}
-	private MetaVarVector Pos;
+	public void setOuterAngle(MetaVarNumber value);
 	@SimpleName("Pos")
-	public MetaVarVector getPos(){ return Pos;}
+	public MetaVarVector getPos();
 	@SimpleName("Pos")
-	public void setPos(MetaVarVector value){ Pos=value;}
-	private MetaVarNumber Size;
+	public void setPos(MetaVarVector value);
 	@SimpleName("Size")
-	public MetaVarNumber getSize(){ return Size;}
+	public MetaVarNumber getSize();
 	@SimpleName("Size")
-	public void setSize(MetaVarNumber value){ Size=value;}
-	private MetaVarNumber Style;
+	public void setSize(MetaVarNumber value);
 	@SimpleName("Style")
-	public MetaVarNumber getStyle(){ return Style;}
+	public MetaVarNumber getStyle();
 	@SimpleName("Style")
-	public void setStyle(MetaVarNumber value){ Style=value;}
-	private MetaVarNumber b;
+	public void setStyle(MetaVarNumber value);
 	@SimpleName("b")
-	public MetaVarNumber getB(){ return b;}
+	public MetaVarNumber getB();
 	@SimpleName("b")
-	public void setB(MetaVarNumber value){ b=value;}
-	private MetaVarNumber g;
+	public void setB(MetaVarNumber value);
 	@SimpleName("g")
-	public MetaVarNumber getG(){ return g;}
+	public MetaVarNumber getG();
 	@SimpleName("g")
-	public void setG(MetaVarNumber value){ g=value;}
-	private MetaVarNumber r;
+	public void setG(MetaVarNumber value);
 	@SimpleName("r")
-	public MetaVarNumber getR(){ return r;}
+	public MetaVarNumber getR();
 	@SimpleName("r")
-	public void setR(MetaVarNumber value){ r=value;}
-	public MetaVarDlight_t(String n) {
-		super(n);
-	}
+	public void setR(MetaVarNumber value);
 }

@@ -1,34 +1,27 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("color")
-public class MetaVarColor extends MetaVarImpl implements IMetaVarAny{
-	private MetaVarNumber r;
+@Implementation(MetaVarColorImpl.class)
+public interface MetaVarColor extends MetaVar,IMetaVarAny{
 	@SimpleName("r")
-	public MetaVarNumber getR(){ return r;}
+	public MetaVarNumber getR();
 	@SimpleName("r")
-	public void setR(MetaVarNumber value){ r=value;}
-	private MetaVarNumber g;
+	public void setR(MetaVarNumber value);
 	@SimpleName("g")
-	public MetaVarNumber getG(){ return g;}
+	public MetaVarNumber getG();
 	@SimpleName("g")
-	public void setG(MetaVarNumber value){ g=value;}
-	private MetaVarNumber b;
+	public void setG(MetaVarNumber value);
 	@SimpleName("b")
-	public MetaVarNumber getB(){ return b;}
+	public MetaVarNumber getB();
 	@SimpleName("b")
-	public void setB(MetaVarNumber value){ b=value;}
-	private MetaVarNumber a;
+	public void setB(MetaVarNumber value);
 	@SimpleName("a")
-	public MetaVarNumber getA(){ return a;}
+	public MetaVarNumber getA();
 	@SimpleName("a")
-	public void setA(MetaVarNumber value){ a=value;}
-	public MetaVarColor(String n) {
-		super(n);
-	}
+	public void setA(MetaVarNumber value);
 }

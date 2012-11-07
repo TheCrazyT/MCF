@@ -5,7 +5,7 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_CanPlayerUnfreeze")
-public abstract class HookGAMEMODE_CanPlayerUnfreeze extends MetaVarFunction{
+public abstract class HookGAMEMODE_CanPlayerUnfreeze extends MetaVarFunctionImpl{
 	public HookGAMEMODE_CanPlayerUnfreeze(String n) {
 		super(n);
 	}

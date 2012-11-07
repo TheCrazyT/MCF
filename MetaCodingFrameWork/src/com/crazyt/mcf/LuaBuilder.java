@@ -23,7 +23,13 @@ public class LuaBuilder implements MetaScriptBuilder{
 	private Set<NMO> hookRecorder = new HashSet<NMO>();
 	private MetaVar condVar1 = null;
 	private MetaVar condVar2 = null;
-	private String lastConditionStatement = null;
+
+	private static Class<?> getImplementationIfExist(Class<?> clazz){
+		if(clazz.isAnnotationPresent(Implementation.class)){
+			return clazz.getAnnotation(Implementation.class).value();
+		}
+		return clazz;
+	}
 	
 	public LuaBuilder(PrintStream out){
 		outputStream = out;
@@ -46,7 +52,11 @@ public class LuaBuilder implements MetaScriptBuilder{
 					fileName = clazz.getAnnotation(SimpleName.class).value() + ".lua";
 				}
 				if(clazz.isAnnotationPresent(SourceInfo.class)){
-					fileName = clazz.getAnnotation(SourceInfo.class).folder() + "\\" + fileName;
+					fileName = clazz.getAnnotation(SourceInfo.class)
+							.addonFolder()
+							+ "\\"
+							+ clazz.getAnnotation(SourceInfo.class).subFolder()
+							+ "\\" + fileName;
 				}
 				Constructor<?> dbconstr = LuaBuilder.class.getConstructor(new Class<?>[]{PrintStream.class});
 				LuaBuilder instance=null;
@@ -57,9 +67,12 @@ public class LuaBuilder implements MetaScriptBuilder{
 				} else {
 					if(clazz.isAnnotationPresent(SourceInfo.class)){
 						String info = clazz.getAnnotation(SourceInfo.class).info();
+						String addonFolder = clazz.getAnnotation(SourceInfo.class).addonFolder();
 						if(info != null){
 							File i = new File("build/"+info);
-							File i2 = new File("build/out/lua/" + info);
+							File i2 = new File("build/out/lua/" + addonFolder
+									+ "/" + info);
+							i2.getParentFile().mkdirs();
 							i.renameTo(i2);
 						}
 					}
@@ -97,6 +110,7 @@ public class LuaBuilder implements MetaScriptBuilder{
 					int i=0;
 					int last = m.getParameterTypes().length-1;
 					for(Class<?> t:m.getParameterTypes()){
+						t = getImplementationIfExist(t);
 						if(MetaVarImpl.class.isAssignableFrom(t)){
 							try {
 								Constructor<?> cons = t.getConstructor(String.class);
@@ -124,7 +138,7 @@ public class LuaBuilder implements MetaScriptBuilder{
 						outStream.print("arg"+i+(i==last?"":","));
 						i++;
 					}
-					outStream.println(") {");
+					outStream.println(")");
 					Object[] mArgs2 = new Object[mArgs.size()];
 					i=0;
 					for(Object o:mArgs){
@@ -134,7 +148,7 @@ public class LuaBuilder implements MetaScriptBuilder{
 					MethodInvocationAspect.executeMode = true;
 					m.invoke(builder, mArgs2);
 					instance.decreaseTab();
-					outStream.println("}");
+					outStream.println("end");
 				}
 				
 				for (NMO nmo : instance.getHookRecorder()) {
@@ -151,6 +165,10 @@ public class LuaBuilder implements MetaScriptBuilder{
 								break;
 							}
 						}
+						if(name == null){
+							throw new RuntimeException("name should not be null!");
+						}
+						t = getImplementationIfExist(t);
 						if (MetaVarImpl.class.isAssignableFrom(t)) {
 							try {
 								Constructor<?> cons = t
@@ -175,11 +193,13 @@ public class LuaBuilder implements MetaScriptBuilder{
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+						} else {
+							throw new RuntimeException("invalid argument type!("+t.getCanonicalName()+")");
 						}
 						outStream.print(name + (i == last ? "" : ","));
 						i++;
 					}
-					outStream.println(") {");
+					outStream.println(")");
 					Object[] mArgs2 = new Object[mArgs.size()];
 					i = 0;
 					for (Object o : mArgs) {
@@ -189,7 +209,7 @@ public class LuaBuilder implements MetaScriptBuilder{
 					MethodInvocationAspect.executeMode = true;
 					m.invoke(nmo.getObject(), mArgs2);
 					instance.decreaseTab();
-					outStream.println("}");
+					outStream.println("end");
 				}
 
 			} catch (NoSuchMethodException e) {
@@ -372,35 +392,35 @@ public class LuaBuilder implements MetaScriptBuilder{
 	@Override
 	public MetaConditionResult g() {
 		_setName(condVar1._getName() + ">" + condVar2._getName());
-		lastConditionStatement = "if(" + _getName() + ")";
+		GlobalBuilderInfo.lastConditionStatement = "if(" + _getName() + ") then";
 		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaConditionResult s() {
 		_setName(condVar1._getName() + "<" + condVar2._getName());
-		lastConditionStatement = "if(" + _getName() + ")";
+		GlobalBuilderInfo.lastConditionStatement = "if(" + _getName() + ") then";
 		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaConditionResult e() {
 		_setName(condVar1._getName() + "==" + condVar2._getName());
-		lastConditionStatement = "if(" + _getName() + ")";
+		GlobalBuilderInfo.lastConditionStatement = "if(" + _getName() + ") then";
 		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaConditionResult ge() {
 		_setName(condVar1._getName() + ">=" + condVar2._getName());
-		lastConditionStatement = "if(" + _getName() + ")";
+		GlobalBuilderInfo.lastConditionStatement = "if(" + _getName() + ") then";
 		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaConditionResult se() {
 		_setName(condVar1._getName() + "<" + condVar2._getName());
-		lastConditionStatement = "if(" + _getName() + ")";
+		GlobalBuilderInfo.lastConditionStatement = "if(" + _getName() + ") then";
 		return (MetaConditionResult)cloneIt();
 	}
 
@@ -434,29 +454,29 @@ public class LuaBuilder implements MetaScriptBuilder{
 
 	@Override
 	public MetaCommand and() {
-		lastConditionStatement = null;
+		GlobalBuilderInfo.lastConditionStatement = null;
 		println("if((" + condVar1._getName() + ") && ("
-				+ condVar2._getName() + "))");
+				+ condVar2._getName() + ")) then");
 		increaseTab();
 		return (MetaCommand)cloneIt();
 	}
 
 	@Override
 	public MetaCommand or() {
-		lastConditionStatement = null;
+		GlobalBuilderInfo.lastConditionStatement = null;
 		println("if((" + condVar1._getName() + ") || ("
-				+ condVar2._getName() + "))");
+				+ condVar2._getName() + ")) then");
 		increaseTab();
 		return (MetaCommand)cloneIt();
 	}
 
 	@Override
 	public void finalizeConditionStatements() {
-		if(lastConditionStatement!=null){
-			println(lastConditionStatement);
+		if(GlobalBuilderInfo.lastConditionStatement!=null){
+			println(GlobalBuilderInfo.lastConditionStatement);
 			increaseTab();
 		}
-		lastConditionStatement = null;
+		GlobalBuilderInfo.lastConditionStatement = null;
 	}
 
 	private Object cloneIt(){

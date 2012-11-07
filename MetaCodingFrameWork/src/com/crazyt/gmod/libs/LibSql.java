@@ -27,35 +27,35 @@ public class LibSql extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Begin(){return null;};
+	public MetaVar Begin(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Tells the engine to execute a series of queries queued for execution.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Commit(){return null;};
+	public MetaVar Commit(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the last error from a SQLite query.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarString LastError(){return null;};
+	public MetaVarString LastError(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Performs a query on the local SQLite database, returns a table as result set, nil on failure.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable Query(MetaVarString queryVar){return null;};
+	public MetaVarTable Query(MetaVarString queryVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Escapes dangerous characters and symbols from user input used in a SQL Query.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarString SQLStr(MetaVarString stringVar){return null;};
+	public MetaVarString SQLStr(MetaVarString stringVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns if the table with the specified name exists.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean TableExists(MetaVarString tableNameVar){return null;};
+	public MetaVarBoolean TableExists(MetaVarString tableNameVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

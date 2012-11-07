@@ -27,63 +27,63 @@ public class LibTimer extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean Adjust(com.crazyt.gmod.IMetaVarAny identifierVar,MetaVarNumber delayVar,MetaVarNumber repsVar,MetaVarFunction funcVar){return null;};
+	public MetaVarBoolean Adjust(com.crazyt.gmod.IMetaVarAny identifierVar,MetaVarNumber delayVar,MetaVarNumber repsVar,MetaVarFunction funcVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Creates a new timer.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Create(MetaVarString identifierVar,MetaVarNumber delayVar,MetaVarNumber repetitionsVar,MetaVarFunction funcVar){return null;};
+	public MetaVar Create(MetaVarString identifierVar,MetaVarNumber delayVar,MetaVarNumber repetitionsVar,MetaVarFunction funcVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Removes the timer with the given name.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Destroy(com.crazyt.gmod.IMetaVarAny identifierVar){return null;};
+	public MetaVar Destroy(com.crazyt.gmod.IMetaVarAny identifierVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns whenever the given timer exists.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean Exists(com.crazyt.gmod.IMetaVarAny identifierVar){return null;};
+	public MetaVarBoolean Exists(com.crazyt.gmod.IMetaVarAny identifierVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Pauses the given timer.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean Pause(com.crazyt.gmod.IMetaVarAny identifierVar){return null;};
+	public MetaVarBoolean Pause(com.crazyt.gmod.IMetaVarAny identifierVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Removes the timer with the given name.
 	*/
-	//public MetaVar Remove(com.crazyt.gmod.IMetaVarAny identifierVar){return null;};
+	//public MetaVar Remove(com.crazyt.gmod.IMetaVarAny identifierVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Runs the given function after a specified delay.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean Simple(MetaVarNumber delayVar,MetaVarFunction funcVar){return null;};
+	public MetaVarBoolean Simple(MetaVarNumber delayVar,MetaVarFunction funcVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Restarts the given timer.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean Start(com.crazyt.gmod.IMetaVarAny identifierVar){return null;};
+	public MetaVarBoolean Start(com.crazyt.gmod.IMetaVarAny identifierVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Stops the given timer.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean Stop(com.crazyt.gmod.IMetaVarAny identifierVar){return null;};
+	public MetaVarBoolean Stop(com.crazyt.gmod.IMetaVarAny identifierVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Runs either <a href="http://wiki.garrysmod.com/page/Libraries/timer" title="Libraries/timer">timer</a>.<a href="http://wiki.garrysmod.com/page/Libraries/timer/Pause" title="Libraries/timer/Pause">Pause</a> or <a href="http://wiki.garrysmod.com/page/Libraries/timer" title="Libraries/timer">timer</a>.<a href="http://wiki.garrysmod.com/page/Libraries/timer/UnPause" title="Libraries/timer/UnPause">UnPause</a> based on the timer's current status
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean Toggle(com.crazyt.gmod.IMetaVarAny identifierVar){return null;};
+	public MetaVarBoolean Toggle(com.crazyt.gmod.IMetaVarAny identifierVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Unpauses the timer.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean UnPause(com.crazyt.gmod.IMetaVarAny identifierVar){return null;};
+	public MetaVarBoolean UnPause(com.crazyt.gmod.IMetaVarAny identifierVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

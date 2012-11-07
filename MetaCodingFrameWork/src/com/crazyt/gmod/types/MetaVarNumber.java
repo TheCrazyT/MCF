@@ -1,14 +1,11 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("number")
-public class MetaVarNumber extends com.crazyt.mcf.MetaVarInt implements IMetaVarAny{
-	public MetaVarNumber(String n) {
-		super(n);
-	}
+@Implementation(MetaVarNumberImpl.class)
+public interface MetaVarNumber extends com.crazyt.mcf.MetaVarInt,IMetaVarAny{
 }

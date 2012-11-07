@@ -27,5 +27,5 @@ public class LibControlpanel extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVarPanel Get(MetaVarString nameVar){return null;};
+	public MetaVarPanel Get(MetaVarString nameVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

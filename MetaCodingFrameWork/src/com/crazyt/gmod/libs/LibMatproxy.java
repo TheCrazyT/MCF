@@ -27,5 +27,5 @@ public class LibMatproxy extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVar Add(MetaVarMatProxyData MatProxyDataVar){return null;};
+	public MetaVar Add(MetaVarMatProxyData MatProxyDataVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

@@ -1,29 +1,23 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("Trace")
-public class MetaVarTrace extends MetaVarImpl implements IMetaVarAny{
-	private MetaVarVector start;
+@Implementation(MetaVarTraceImpl.class)
+public interface MetaVarTrace extends MetaVar,IMetaVarAny{
 	@SimpleName("start")
-	public MetaVarVector getStart(){ return start;}
+	public MetaVarVector getStart();
 	@SimpleName("start")
-	public void setStart(MetaVarVector value){ start=value;}
-	private MetaVarVector endpos;
+	public void setStart(MetaVarVector value);
 	@SimpleName("endpos")
-	public MetaVarVector getEndpos(){ return endpos;}
+	public MetaVarVector getEndpos();
 	@SimpleName("endpos")
-	public void setEndpos(MetaVarVector value){ endpos=value;}
-	private MetaVarNumber mask;
+	public void setEndpos(MetaVarVector value);
 	@SimpleName("mask")
-	public MetaVarNumber getMask(){ return mask;}
+	public MetaVarNumber getMask();
 	@SimpleName("mask")
-	public void setMask(MetaVarNumber value){ mask=value;}
-	public MetaVarTrace(String n) {
-		super(n);
-	}
+	public void setMask(MetaVarNumber value);
 }

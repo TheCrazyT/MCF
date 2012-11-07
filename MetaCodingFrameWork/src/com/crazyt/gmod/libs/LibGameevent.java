@@ -27,5 +27,5 @@ public class LibGameevent extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Listen(MetaVarString eventNameVar){return null;};
+	public MetaVar Listen(MetaVarString eventNameVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

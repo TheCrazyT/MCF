@@ -27,5 +27,5 @@ public class LibProperties extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVar HaloThink(){return null;};
+	public MetaVar HaloThink(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

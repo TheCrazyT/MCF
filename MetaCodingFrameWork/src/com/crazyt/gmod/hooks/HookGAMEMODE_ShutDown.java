@@ -5,7 +5,7 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_ShutDown")
-public abstract class HookGAMEMODE_ShutDown extends MetaVarFunction{
+public abstract class HookGAMEMODE_ShutDown extends MetaVarFunctionImpl{
 	public HookGAMEMODE_ShutDown(String n) {
 		super(n);
 	}

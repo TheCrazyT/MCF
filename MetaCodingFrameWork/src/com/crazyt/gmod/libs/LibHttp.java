@@ -27,11 +27,11 @@ public class LibHttp extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Fetch(MetaVarString urlVar,MetaVarFunction onSuccessVar,MetaVarFunction onFailureVar){return null;};
+	public MetaVar Fetch(MetaVarString urlVar,MetaVarFunction onSuccessVar,MetaVarFunction onFailureVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Launches a POST request
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Post(MetaVarString urlVar,MetaVarTable parametersVar,MetaVarFunction onSuccessVar,MetaVarFunction onFailureVar){return null;};
+	public MetaVar Post(MetaVarString urlVar,MetaVarTable parametersVar,MetaVarFunction onSuccessVar,MetaVarFunction onFailureVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

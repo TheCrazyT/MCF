@@ -1,0 +1,26 @@
+"Gamemode"
+ {
+	"base"		"base"
+ 	"name"		"GMtest"
+ 	"title"		"Title"
+ 	"version"	"0.1" 
+ 	"menusystem"	"1"
+ 	"workshopid"	""
+ 	"up_date"	"02/12/2006"
+ 
+ 	"author_name"	""
+ 	"author_email"	""
+ 	"author_url"	""
+ 
+ 	"info"		""
+ 	"icon" 	 	""
+ 	"hide"		"0"
+ 
+	"mappattern" // This sets all maps with gt_ before the name to default the map gamemode to "GM_test"
+	{
+		"1"	"^gt_"
+	}
+	"settings"
+	{
+	}
+  }

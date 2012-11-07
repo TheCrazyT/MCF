@@ -1,79 +1,63 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("Bullet")
-public class MetaVarBullet extends MetaVarImpl implements IMetaVarAny{
-	private MetaVarEntity Attacker;
+@Implementation(MetaVarBulletImpl.class)
+public interface MetaVarBullet extends MetaVar,IMetaVarAny{
 	@SimpleName("Attacker")
-	public MetaVarEntity getAttacker(){ return Attacker;}
+	public MetaVarEntity getAttacker();
 	@SimpleName("Attacker")
-	public void setAttacker(MetaVarEntity value){ Attacker=value;}
-	private MetaVarEntity Inflictor;
+	public void setAttacker(MetaVarEntity value);
 	@SimpleName("Inflictor")
-	public MetaVarEntity getInflictor(){ return Inflictor;}
+	public MetaVarEntity getInflictor();
 	@SimpleName("Inflictor")
-	public void setInflictor(MetaVarEntity value){ Inflictor=value;}
-	private MetaVarFunction Callback;
+	public void setInflictor(MetaVarEntity value);
 	@SimpleName("Callback")
-	public MetaVarFunction getCallback(){ return Callback;}
+	public MetaVarFunction getCallback();
 	@SimpleName("Callback")
-	public void setCallback(MetaVarFunction value){ Callback=value;}
-	private MetaVarNumber Damage;
+	public void setCallback(MetaVarFunction value);
 	@SimpleName("Damage")
-	public MetaVarNumber getDamage(){ return Damage;}
+	public MetaVarNumber getDamage();
 	@SimpleName("Damage")
-	public void setDamage(MetaVarNumber value){ Damage=value;}
-	private MetaVarNumber Force;
+	public void setDamage(MetaVarNumber value);
 	@SimpleName("Force")
-	public MetaVarNumber getForce(){ return Force;}
+	public MetaVarNumber getForce();
 	@SimpleName("Force")
-	public void setForce(MetaVarNumber value){ Force=value;}
-	private MetaVarNumber Hull;
+	public void setForce(MetaVarNumber value);
 	@SimpleName("Hull")
-	public MetaVarNumber getHull(){ return Hull;}
+	public MetaVarNumber getHull();
 	@SimpleName("Hull")
-	public void setHull(MetaVarNumber value){ Hull=value;}
-	private MetaVarNumber Num;
+	public void setHull(MetaVarNumber value);
 	@SimpleName("Num")
-	public MetaVarNumber getNum(){ return Num;}
+	public MetaVarNumber getNum();
 	@SimpleName("Num")
-	public void setNum(MetaVarNumber value){ Num=value;}
-	private MetaVarNumber Tracer;
+	public void setNum(MetaVarNumber value);
 	@SimpleName("Tracer")
-	public MetaVarNumber getTracer(){ return Tracer;}
+	public MetaVarNumber getTracer();
 	@SimpleName("Tracer")
-	public void setTracer(MetaVarNumber value){ Tracer=value;}
-	private MetaVarString AmmoType;
+	public void setTracer(MetaVarNumber value);
 	@SimpleName("AmmoType")
-	public MetaVarString getAmmoType(){ return AmmoType;}
+	public MetaVarString getAmmoType();
 	@SimpleName("AmmoType")
-	public void setAmmoType(MetaVarString value){ AmmoType=value;}
-	private MetaVarString TracerName;
+	public void setAmmoType(MetaVarString value);
 	@SimpleName("TracerName")
-	public MetaVarString getTracerName(){ return TracerName;}
+	public MetaVarString getTracerName();
 	@SimpleName("TracerName")
-	public void setTracerName(MetaVarString value){ TracerName=value;}
-	private MetaVarVector Dir;
+	public void setTracerName(MetaVarString value);
 	@SimpleName("Dir")
-	public MetaVarVector getDir(){ return Dir;}
+	public MetaVarVector getDir();
 	@SimpleName("Dir")
-	public void setDir(MetaVarVector value){ Dir=value;}
-	private MetaVarVector Spread;
+	public void setDir(MetaVarVector value);
 	@SimpleName("Spread")
-	public MetaVarVector getSpread(){ return Spread;}
+	public MetaVarVector getSpread();
 	@SimpleName("Spread")
-	public void setSpread(MetaVarVector value){ Spread=value;}
-	private MetaVarVector Src;
+	public void setSpread(MetaVarVector value);
 	@SimpleName("Src")
-	public MetaVarVector getSrc(){ return Src;}
+	public MetaVarVector getSrc();
 	@SimpleName("Src")
-	public void setSrc(MetaVarVector value){ Src=value;}
-	public MetaVarBullet(String n) {
-		super(n);
-	}
+	public void setSrc(MetaVarVector value);
 }

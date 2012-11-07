@@ -1,39 +1,31 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("RenderCaptureData")
-public class MetaVarRenderCaptureData extends MetaVarImpl implements IMetaVarAny{
-	private MetaVarString format;
+@Implementation(MetaVarRenderCaptureDataImpl.class)
+public interface MetaVarRenderCaptureData extends MetaVar,IMetaVarAny{
 	@SimpleName("format")
-	public MetaVarString getFormat(){ return format;}
+	public MetaVarString getFormat();
 	@SimpleName("format")
-	public void setFormat(MetaVarString value){ format=value;}
-	private MetaVarNumber h;
+	public void setFormat(MetaVarString value);
 	@SimpleName("h")
-	public MetaVarNumber getH(){ return h;}
+	public MetaVarNumber getH();
 	@SimpleName("h")
-	public void setH(MetaVarNumber value){ h=value;}
-	private MetaVarNumber w;
+	public void setH(MetaVarNumber value);
 	@SimpleName("w")
-	public MetaVarNumber getW(){ return w;}
+	public MetaVarNumber getW();
 	@SimpleName("w")
-	public void setW(MetaVarNumber value){ w=value;}
-	private MetaVarNumber x;
+	public void setW(MetaVarNumber value);
 	@SimpleName("x")
-	public MetaVarNumber getX(){ return x;}
+	public MetaVarNumber getX();
 	@SimpleName("x")
-	public void setX(MetaVarNumber value){ x=value;}
-	private MetaVarNumber y;
+	public void setX(MetaVarNumber value);
 	@SimpleName("y")
-	public MetaVarNumber getY(){ return y;}
+	public MetaVarNumber getY();
 	@SimpleName("y")
-	public void setY(MetaVarNumber value){ y=value;}
-	public MetaVarRenderCaptureData(String n) {
-		super(n);
-	}
+	public void setY(MetaVarNumber value);
 }

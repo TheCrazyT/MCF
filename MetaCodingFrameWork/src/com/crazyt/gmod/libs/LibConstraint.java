@@ -27,83 +27,83 @@ public class LibConstraint extends BasicFunctions{
 	*/
 	@External
 	@ServerFunc
-	public MetaVarBoolean CanConstrain(MetaVarEntity entVar,MetaVarNumber boneVar){return null;};
+	public MetaVarBoolean CanConstrain(MetaVarEntity entVar,MetaVarNumber boneVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Creates an invisible, non-moveable anchor point in the world to which things can be attached.
 	*/
 	@External
 	@ServerFunc
-	public MetaVarEntity CreateStaticAnchorPoint(MetaVarVector posVar){return null;};
+	public MetaVarEntity CreateStaticAnchorPoint(MetaVarVector posVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the constraint of a specified type between two entities, if it exists
 	*/
 	@External
 	@ServerFunc
-	public MetaVarEntity Find(MetaVarEntity ent1Var,MetaVarEntity ent2Var,MetaVarString typeVar,MetaVarNumber bone1Var,MetaVarNumber bone2Var){return null;};
+	public MetaVarEntity Find(MetaVarEntity ent1Var,MetaVarEntity ent2Var,MetaVarString typeVar,MetaVarNumber bone1Var,MetaVarNumber bone2Var){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the first constraint of a specific type directly connected to the entity found
 	*/
 	@External
 	@ServerFunc
-	public MetaVarEntity FindConstraint(MetaVarEntity entVar,MetaVarString typeVar){return null;};
+	public MetaVarEntity FindConstraint(MetaVarEntity entVar,MetaVarString typeVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the other entity involved in the first constraint of a specific type directly connected to the entity
 	*/
 	@External
 	@ServerFunc
-	public MetaVarEntity FindConstraintEntity(MetaVarEntity entVar,MetaVarString typeVar){return null;};
+	public MetaVarEntity FindConstraintEntity(MetaVarEntity entVar,MetaVarString typeVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns a table of all constraints of a specific type directly connected to the entity
 	*/
 	@External
 	@ServerFunc
-	public MetaVarTable FindConstraints(MetaVarEntity entVar,MetaVarString typeVar){return null;};
+	public MetaVarTable FindConstraints(MetaVarEntity entVar,MetaVarString typeVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Make this entity forget any constraints it knows about
 	*/
 	@External
 	@ServerFunc
-	public MetaVar ForgetConstraints(MetaVarEntity entVar){return null;};
+	public MetaVar ForgetConstraints(MetaVarEntity entVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns a table of all entities recursively constrained to an entitiy.
 	*/
 	@External
 	@ServerFunc
-	public MetaVarTable GetAllConstrainedEntities(MetaVarEntity entVar){return null;};
+	public MetaVarTable GetAllConstrainedEntities(MetaVarEntity entVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns a table of all constraints directly connected to the entity
 	*/
 	@External
 	@ServerFunc
-	public MetaVarTable GetTable(MetaVarEntity entVar){return null;};
+	public MetaVarTable GetTable(MetaVarEntity entVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns true if the entity has constraints attached to it
 	*/
 	@External
 	@ServerFunc
-	public MetaVarBoolean HasConstraints(MetaVarEntity entVar){return null;};
+	public MetaVarBoolean HasConstraints(MetaVarEntity entVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Creates a keep upright constraint.
 	*/
 	@External
 	@ServerFunc
-	public MetaVarEntity Keepupright(MetaVarEntity entVar,MetaVarAngle angVar,MetaVarNumber boneVar,MetaVarNumber angularLimitVar){return null;};
+	public MetaVarEntity Keepupright(MetaVarEntity entVar,MetaVarAngle angVar,MetaVarNumber boneVar,MetaVarNumber angularLimitVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Attempts to remove all constraints associated with an entity
 	*/
 	@External
 	@ServerFunc
-	public MetaVarBoolean RemoveAll(MetaVarEntity entVar){return null;};
+	public MetaVarBoolean RemoveAll(MetaVarEntity entVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Attempts to remove all constraints of a specified type associated with an entity
 	*/
 	@External
 	@ServerFunc
-	public MetaVarBoolean RemoveConstraints(MetaVarEntity entVar,MetaVarString typeVar){return null;};
+	public MetaVarBoolean RemoveConstraints(MetaVarEntity entVar,MetaVarString typeVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Creates a weld constraint
 	*/
 	@External
 	@ServerFunc
-	public MetaVarEntity Weld(MetaVarEntity ent1Var,MetaVarEntity ent2Var,MetaVarNumber bone1Var,MetaVarNumber bone2Var,MetaVarNumber forcelimitVar,MetaVarBoolean nocollideVar,MetaVarBoolean deleteent1onbreakVar){return null;};
+	public MetaVarEntity Weld(MetaVarEntity ent1Var,MetaVarEntity ent2Var,MetaVarNumber bone1Var,MetaVarNumber bone2Var,MetaVarNumber forcelimitVar,MetaVarBoolean nocollideVar,MetaVarBoolean deleteent1onbreakVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

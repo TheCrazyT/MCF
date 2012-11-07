@@ -27,17 +27,17 @@ public class LibUsermessage extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable GetTable(){return null;};
+	public MetaVarTable GetTable(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets a hook for the specified to be called when a usermessage with the specified name arrives
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Hook(MetaVarString nameVar,MetaVarFunction callbackVar){return null;};
+	public MetaVar Hook(MetaVarString nameVar,MetaVarFunction callbackVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Called by the engine when a usermessage arrives, this method calls the hook function specified by <a href="http://wiki.garrysmod.com/page/Libraries/usermessage" title="Libraries/usermessage">usermessage</a>.<a href="http://wiki.garrysmod.com/page/Libraries/usermessage/Hook" title="Libraries/usermessage/Hook">Hook</a> if any.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar IncomingMessage(MetaVarString nameVar,MetaVarBf_read msgVar){return null;};
+	public MetaVar IncomingMessage(MetaVarString nameVar,MetaVarBf_read msgVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

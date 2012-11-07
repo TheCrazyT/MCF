@@ -27,5 +27,5 @@ public class LibGmod extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable GetGamemode(){return null;};
+	public MetaVarTable GetGamemode(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

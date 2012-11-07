@@ -27,108 +27,108 @@ public class LibGame extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar AddAmmoType(MetaVarAmmoData ammoDataVar){return null;};
+	public MetaVar AddAmmoType(MetaVarAmmoData ammoDataVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Adds a new decal.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar AddDecal(MetaVarString decalNameVar,MetaVarString fileNameVar){return null;};
+	public MetaVar AddDecal(MetaVarString decalNameVar,MetaVarString fileNameVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Loads a particle file.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar AddParticles(MetaVarString particleFileNameVar){return null;};
+	public MetaVar AddParticles(MetaVarString particleFileNameVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns a table containing all ammo types added via <a href="http://wiki.garrysmod.com/page/Libraries/game" title="Libraries/game">game</a>.<a href="http://wiki.garrysmod.com/page/Libraries/game/AddAmmoType" title="Libraries/game/AddAmmoType">AddAmmoType</a> sorted by it's name value.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable BuildAmmoTypes(){return null;};
+	public MetaVarTable BuildAmmoTypes(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	If called serverside it will remove ALL entities which were not created by the map(not players or weapons held by players).
 On the client it will ONLY remove entities created via <a href="http://wiki.garrysmod.com/page/Libraries/ents" title="Libraries/ents">ents</a>.<a href="http://wiki.garrysmod.com/page/Libraries/ents/CreateClientProp" title="Libraries/ents/CreateClientProp">CreateClientProp</a>.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar CleanUpMap(MetaVarBoolean dontSendToClientsVar,MetaVarTable ExtraFiltersVar){return null;};
+	public MetaVar CleanUpMap(MetaVarBoolean dontSendToClientsVar,MetaVarTable ExtraFiltersVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Runs a console command.
 	*/
 	@External
 	@ServerFunc
-	public MetaVar ConsoleCommand(){return null;};
+	public MetaVar ConsoleCommand(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the name of the current map.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarString GetMap(){return null;};
+	public MetaVarString GetMap(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the next map that would be loaded according to the file that is set by the mapcyclefile convar.
 	*/
 	@External
 	@ServerFunc
-	public MetaVarString GetMapNext(){return null;};
+	public MetaVarString GetMapNext(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the VBSP version of the current map.
 	*/
 	@External
 	@ServerFunc
-	public MetaVarNumber GetMapVersion(){return null;};
+	public MetaVarNumber GetMapVersion(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the timescale of the game
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber GetTimeScale(){return null;};
+	public MetaVarNumber GetTimeScale(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns Entity[0] worldspawn
 	*/
 	@External
 	@ServerFunc
-	public MetaVarEntity GetWorld(){return null;};
+	public MetaVarEntity GetWorld(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns whenever the server or the server we are connected to is a dedicated server.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean IsDedicated(){return null;};
+	public MetaVarBoolean IsDedicated(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Loads the next map according to the file that is set by the mapcyclefile convar.
 	*/
 	@External
 	@ServerFunc
-	public MetaVar LoadNextMap(){return null;};
+	public MetaVar LoadNextMap(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the map load type of the current map.
 	*/
 	@External
 	@ServerFunc
-	public MetaVarString MapLoadType(){return null;};
+	public MetaVarString MapLoadType(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the maximum number of players for this server.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber MaxPlayers(){return null;};
+	public MetaVarNumber MaxPlayers(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the time scale of the game.
 	*/
 	@External
 	@ServerFunc
-	public MetaVar SetTimeScale(MetaVarNumber timeScaleVar){return null;};
+	public MetaVar SetTimeScale(MetaVarNumber timeScaleVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns whenever the current session is a single player game.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean SinglePlayer(){return null;};
+	public MetaVarBoolean SinglePlayer(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns position the player should start from, this is not the same thing as spawn points, it is used to properly transit the player between maps.
 	*/
 	@External
 	@ServerFunc
-	public MetaVarVector StartSpot(){return null;};
+	public MetaVarVector StartSpot(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

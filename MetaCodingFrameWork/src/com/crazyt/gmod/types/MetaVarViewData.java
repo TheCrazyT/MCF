@@ -1,124 +1,99 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("ViewData")
-public class MetaVarViewData extends MetaVarImpl implements IMetaVarAny{
-	private MetaVarVector origin;
+@Implementation(MetaVarViewDataImpl.class)
+public interface MetaVarViewData extends MetaVar,IMetaVarAny{
 	@SimpleName("origin")
-	public MetaVarVector getOrigin(){ return origin;}
+	public MetaVarVector getOrigin();
 	@SimpleName("origin")
-	public void setOrigin(MetaVarVector value){ origin=value;}
-	private MetaVarAngle angles;
+	public void setOrigin(MetaVarVector value);
 	@SimpleName("angles")
-	public MetaVarAngle getAngles(){ return angles;}
+	public MetaVarAngle getAngles();
 	@SimpleName("angles")
-	public void setAngles(MetaVarAngle value){ angles=value;}
-	private MetaVarNumber aspectratio;
+	public void setAngles(MetaVarAngle value);
 	@SimpleName("aspectratio")
-	public MetaVarNumber getAspectratio(){ return aspectratio;}
+	public MetaVarNumber getAspectratio();
 	@SimpleName("aspectratio")
-	public void setAspectratio(MetaVarNumber value){ aspectratio=value;}
-	private MetaVarNumber x;
+	public void setAspectratio(MetaVarNumber value);
 	@SimpleName("x")
-	public MetaVarNumber getX(){ return x;}
+	public MetaVarNumber getX();
 	@SimpleName("x")
-	public void setX(MetaVarNumber value){ x=value;}
-	private MetaVarNumber y;
+	public void setX(MetaVarNumber value);
 	@SimpleName("y")
-	public MetaVarNumber getY(){ return y;}
+	public MetaVarNumber getY();
 	@SimpleName("y")
-	public void setY(MetaVarNumber value){ y=value;}
-	private MetaVarNumber w;
+	public void setY(MetaVarNumber value);
 	@SimpleName("w")
-	public MetaVarNumber getW(){ return w;}
+	public MetaVarNumber getW();
 	@SimpleName("w")
-	public void setW(MetaVarNumber value){ w=value;}
-	private MetaVarNumber h;
+	public void setW(MetaVarNumber value);
 	@SimpleName("h")
-	public MetaVarNumber getH(){ return h;}
+	public MetaVarNumber getH();
 	@SimpleName("h")
-	public void setH(MetaVarNumber value){ h=value;}
-	private MetaVarBoolean dopostprocess;
+	public void setH(MetaVarNumber value);
 	@SimpleName("dopostprocess")
-	public MetaVarBoolean getDopostprocess(){ return dopostprocess;}
+	public MetaVarBoolean getDopostprocess();
 	@SimpleName("dopostprocess")
-	public void setDopostprocess(MetaVarBoolean value){ dopostprocess=value;}
-	private MetaVarBoolean drawhud;
+	public void setDopostprocess(MetaVarBoolean value);
 	@SimpleName("drawhud")
-	public MetaVarBoolean getDrawhud(){ return drawhud;}
+	public MetaVarBoolean getDrawhud();
 	@SimpleName("drawhud")
-	public void setDrawhud(MetaVarBoolean value){ drawhud=value;}
-	private MetaVarBoolean drawmonitors;
+	public void setDrawhud(MetaVarBoolean value);
 	@SimpleName("drawmonitors")
-	public MetaVarBoolean getDrawmonitors(){ return drawmonitors;}
+	public MetaVarBoolean getDrawmonitors();
 	@SimpleName("drawmonitors")
-	public void setDrawmonitors(MetaVarBoolean value){ drawmonitors=value;}
-	private MetaVarBoolean drawviewmodel;
+	public void setDrawmonitors(MetaVarBoolean value);
 	@SimpleName("drawviewmodel")
-	public MetaVarBoolean getDrawviewmodel(){ return drawviewmodel;}
+	public MetaVarBoolean getDrawviewmodel();
 	@SimpleName("drawviewmodel")
-	public void setDrawviewmodel(MetaVarBoolean value){ drawviewmodel=value;}
-	private MetaVarNumber viewmodelfov;
+	public void setDrawviewmodel(MetaVarBoolean value);
 	@SimpleName("viewmodelfov")
-	public MetaVarNumber getViewmodelfov(){ return viewmodelfov;}
+	public MetaVarNumber getViewmodelfov();
 	@SimpleName("viewmodelfov")
-	public void setViewmodelfov(MetaVarNumber value){ viewmodelfov=value;}
-	private MetaVarNumber fov;
+	public void setViewmodelfov(MetaVarNumber value);
 	@SimpleName("fov")
-	public MetaVarNumber getFov(){ return fov;}
+	public MetaVarNumber getFov();
 	@SimpleName("fov")
-	public void setFov(MetaVarNumber value){ fov=value;}
-	private MetaVarBoolean ortho;
+	public void setFov(MetaVarNumber value);
 	@SimpleName("ortho")
-	public MetaVarBoolean getOrtho(){ return ortho;}
+	public MetaVarBoolean getOrtho();
 	@SimpleName("ortho")
-	public void setOrtho(MetaVarBoolean value){ ortho=value;}
-	private MetaVarNumber ortholeft;
+	public void setOrtho(MetaVarBoolean value);
 	@SimpleName("ortholeft")
-	public MetaVarNumber getOrtholeft(){ return ortholeft;}
+	public MetaVarNumber getOrtholeft();
 	@SimpleName("ortholeft")
-	public void setOrtholeft(MetaVarNumber value){ ortholeft=value;}
-	private MetaVarNumber orthoright;
+	public void setOrtholeft(MetaVarNumber value);
 	@SimpleName("orthoright")
-	public MetaVarNumber getOrthoright(){ return orthoright;}
+	public MetaVarNumber getOrthoright();
 	@SimpleName("orthoright")
-	public void setOrthoright(MetaVarNumber value){ orthoright=value;}
-	private MetaVarNumber orthotop;
+	public void setOrthoright(MetaVarNumber value);
 	@SimpleName("orthotop")
-	public MetaVarNumber getOrthotop(){ return orthotop;}
+	public MetaVarNumber getOrthotop();
 	@SimpleName("orthotop")
-	public void setOrthotop(MetaVarNumber value){ orthotop=value;}
-	private MetaVarNumber orthobottom;
+	public void setOrthotop(MetaVarNumber value);
 	@SimpleName("orthobottom")
-	public MetaVarNumber getOrthobottom(){ return orthobottom;}
+	public MetaVarNumber getOrthobottom();
 	@SimpleName("orthobottom")
-	public void setOrthobottom(MetaVarNumber value){ orthobottom=value;}
-	private MetaVarNumber znear;
+	public void setOrthobottom(MetaVarNumber value);
 	@SimpleName("znear")
-	public MetaVarNumber getZnear(){ return znear;}
+	public MetaVarNumber getZnear();
 	@SimpleName("znear")
-	public void setZnear(MetaVarNumber value){ znear=value;}
-	private MetaVarNumber zfar;
+	public void setZnear(MetaVarNumber value);
 	@SimpleName("zfar")
-	public MetaVarNumber getZfar(){ return zfar;}
+	public MetaVarNumber getZfar();
 	@SimpleName("zfar")
-	public void setZfar(MetaVarNumber value){ zfar=value;}
-	private MetaVarNumber znearviewmodel;
+	public void setZfar(MetaVarNumber value);
 	@SimpleName("znearviewmodel")
-	public MetaVarNumber getZnearviewmodel(){ return znearviewmodel;}
+	public MetaVarNumber getZnearviewmodel();
 	@SimpleName("znearviewmodel")
-	public void setZnearviewmodel(MetaVarNumber value){ znearviewmodel=value;}
-	private MetaVarNumber zfarviewmodel;
+	public void setZnearviewmodel(MetaVarNumber value);
 	@SimpleName("zfarviewmodel")
-	public MetaVarNumber getZfarviewmodel(){ return zfarviewmodel;}
+	public MetaVarNumber getZfarviewmodel();
 	@SimpleName("zfarviewmodel")
-	public void setZfarviewmodel(MetaVarNumber value){ zfarviewmodel=value;}
-	public MetaVarViewData(String n) {
-		super(n);
-	}
+	public void setZfarviewmodel(MetaVarNumber value);
 }

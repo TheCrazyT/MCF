@@ -24,7 +24,14 @@ public aspect MethodInvocationAspect {
     pointcut hooks(): 
     execution(public new(String)) && within(@Hook *);
 
-    private MetaCommand getCommandProcessor(Object o){
+	private static Class<?> getImplementationIfExist(Class<?> clazz){
+		if(clazz.isAnnotationPresent(Implementation.class)){
+			return clazz.getAnnotation(Implementation.class).value();
+		}
+		return clazz;
+	}
+
+	private MetaCommand getCommandProcessor(Object o){
 		if(metaCommand == null){
 			Class<?> clazz = o.getClass();
 			for(Field f:clazz.getDeclaredFields()){
@@ -63,6 +70,7 @@ public aspect MethodInvocationAspect {
 			if(returnType.equals(MetaVar.class)){
 				returnType = MetaVarImpl.class;
 			}
+			returnType = getImplementationIfExist(returnType);
 			Constructor<?> cons = returnType.getConstructor(String.class);
 			return cons.newInstance(cp._getName());
 		} catch (NoSuchMethodException e) {
@@ -89,6 +97,7 @@ public aspect MethodInvocationAspect {
 	}
 
     Object around():libraryAccess() {
+    	executeMode = false;
     	Class<?> returnType = null;
     	MetaCommand cp = null;
 		try {
@@ -161,6 +170,7 @@ public aspect MethodInvocationAspect {
 	    	
 			cp._addExternalFunctionCall(ms,name,thisJoinPoint.getArgs());
 	    	returnType = ms.getReturnType();
+	    	returnType = getImplementationIfExist(returnType);
 		} catch (Throwable t) {
 			System.out.println("some aspect error happened");
 			throw new RuntimeException(t);
@@ -168,10 +178,10 @@ public aspect MethodInvocationAspect {
 //    	System.out.println("end ext command:" + thisJoinPoint.getThis().getClass().getCanonicalName()+"."+thisJoinPoint.getSignature().getName());
     	
 		try {
-			if(returnType.equals(MetaVar.class)){
-				returnType = MetaVarImpl.class;
-			}
 			Constructor<?> cons = returnType.getConstructor(String.class);
+			if(cp._getName()==null){
+				throw new RuntimeException("unexpected error!");
+			}
 			return cons.newInstance(cp._getName());
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
@@ -192,12 +202,12 @@ public aspect MethodInvocationAspect {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
-		return null;
+    	throw new RuntimeException("unexpected error!");
     }
     
     after() returning:hooks(){
-		
+		executeMode = false;
+
 		MetaCommand cp = null;
 		try {
 			cp = getCommandProcessor(thisJoinPoint.getThis());

@@ -27,11 +27,11 @@ public class LibResource extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar AddFile(MetaVarString pathVar){return null;};
+	public MetaVar AddFile(MetaVarString pathVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Adds the specified file to the files the client should download.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar AddSingleFile(MetaVarString pathVar){return null;};
+	public MetaVar AddSingleFile(MetaVarString pathVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

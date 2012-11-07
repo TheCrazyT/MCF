@@ -27,11 +27,11 @@ public class LibDebug extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Trace(){return null;};
+	public MetaVar Trace(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the internal Lua registry tables.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable getregistry(){return null;};
+	public MetaVarTable getregistry(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

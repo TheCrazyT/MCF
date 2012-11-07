@@ -27,5 +27,5 @@ public class LibCvars extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar AddChangeCallback(MetaVarString nameVar,MetaVarFunction funcVar){return null;};
+	public MetaVar AddChangeCallback(MetaVarString nameVar,MetaVarFunction funcVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

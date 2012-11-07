@@ -27,77 +27,77 @@ public class LibMesh extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVar AdvanceVertex(){return null;};
+	public MetaVar AdvanceVertex(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Starts a new dynamic mesh.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar Begin(MetaVarNumber primitiveTypeVar,MetaVarNumber primiteCountVar){return null;};
+	public MetaVar Begin(MetaVarNumber primitiveTypeVar,MetaVarNumber primiteCountVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the color to be used for the next vertex.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar Color(MetaVarNumber rVar,MetaVarNumber gVar,MetaVarNumber bVar,MetaVarNumber aVar){return null;};
+	public MetaVar Color(MetaVarNumber rVar,MetaVarNumber gVar,MetaVarNumber bVar,MetaVarNumber aVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Ends the mesh and renders it.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar End(){return null;};
+	public MetaVar End(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the normal to be used for the next vertex.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar Normal(MetaVarVector normalVar){return null;};
+	public MetaVar Normal(MetaVarVector normalVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the position to be used for the next vertex.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar Position(MetaVarVector positionVar){return null;};
+	public MetaVar Position(MetaVarVector positionVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Draws a quad using 4 vertices.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar Quad(MetaVarVector vertex1Var,MetaVarVector vertex2Var,MetaVarVector vertex3Var,MetaVarVector vertex4Var){return null;};
+	public MetaVar Quad(MetaVarVector vertex1Var,MetaVarVector vertex2Var,MetaVarVector vertex3Var,MetaVarVector vertex4Var){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Draws a quad using a position, a normal and the size.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar QuadEasy(MetaVarVector positionVar,MetaVarVector normalVar,MetaVarNumber sizeXVar,MetaVarNumber sizeYVar){return null;};
+	public MetaVar QuadEasy(MetaVarVector positionVar,MetaVarVector normalVar,MetaVarNumber sizeXVar,MetaVarNumber sizeYVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the specular map values.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar Specular(MetaVarNumber rVar,MetaVarNumber gVar,MetaVarNumber bVar,MetaVarNumber aVar){return null;};
+	public MetaVar Specular(MetaVarNumber rVar,MetaVarNumber gVar,MetaVarNumber bVar,MetaVarNumber aVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the s tangent to be used.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar TangentS(MetaVarVector sTangerVar){return null;};
+	public MetaVar TangentS(MetaVarVector sTangerVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the texture coordinates for the next vertex.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar TexCoord(MetaVarNumber stageVar,MetaVarNumber uVar,MetaVarNumber vVar){return null;};
+	public MetaVar TexCoord(MetaVarNumber stageVar,MetaVarNumber uVar,MetaVarNumber vVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the T tangent to be used.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar TangentT(MetaVarVector tTangerVar){return null;};
+	public MetaVar TangentT(MetaVarVector tTangerVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the amount of vertex that have yet been pushes.
 	*/
 	@External
 	@ClientFunc
-	public MetaVarNumber VertexCount(){return null;};
+	public MetaVarNumber VertexCount(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

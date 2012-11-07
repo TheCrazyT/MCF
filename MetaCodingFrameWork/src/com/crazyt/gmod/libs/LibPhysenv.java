@@ -27,41 +27,41 @@ public class LibPhysenv extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar AddSurfaceData(MetaVarString propertiesVar){return null;};
+	public MetaVar AddSurfaceData(MetaVarString propertiesVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the air density.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber GetAirDensity(){return null;};
+	public MetaVarNumber GetAirDensity(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Gets the global gravity.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarVector GetGravity(){return null;};
+	public MetaVarVector GetGravity(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Gets the current performance settings in table form.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar GetPerformanceSettings(){return null;};
+	public MetaVar GetPerformanceSettings(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the air density.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetAirDensity(MetaVarNumber airDensityVar){return null;};
+	public MetaVar SetAirDensity(MetaVarNumber airDensityVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the directional gravity, does not work on players.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetGravity(MetaVarVector gravityVar){return null;};
+	public MetaVar SetGravity(MetaVarVector gravityVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the performance settings.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetPerformanceSettings(MetaVarPhysEnvPerformanceSettings performanceSettingsVar){return null;};
+	public MetaVar SetPerformanceSettings(MetaVarPhysEnvPerformanceSettings performanceSettingsVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

@@ -27,65 +27,65 @@ public class LibFile extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Append(MetaVarString nameVar,MetaVarString contentVar){return null;};
+	public MetaVar Append(MetaVarString nameVar,MetaVarString contentVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Deletes a file that is relative to the <i>data</i> folder.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Delete(MetaVarString nameVar){return null;};
+	public MetaVar Delete(MetaVarString nameVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Creates a directory that is relative to the <i>data</i> folder.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar CreateDir(MetaVarString nameVar){return null;};
+	public MetaVar CreateDir(MetaVarString nameVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns a boolean of whether the file or directory exists or not.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Exists(MetaVarString nameVar,MetaVarString pathVar){return null;};
+	public MetaVar Exists(MetaVarString nameVar,MetaVarString pathVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns a table of files and directories.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable Find(MetaVarString nameVar,MetaVarString pathVar,MetaVarString sortingVar){return null;};
+	public MetaVarTable Find(MetaVarString nameVar,MetaVarString pathVar,MetaVarString sortingVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns if the given file is a directory.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean IsDir(MetaVarString fileNameVar,MetaVarString pathVar){return null;};
+	public MetaVarBoolean IsDir(MetaVarString fileNameVar,MetaVarString pathVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the file's size in bytes.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Size(MetaVarString fileNameVar,MetaVarString pathVar){return null;};
+	public MetaVar Size(MetaVarString fileNameVar,MetaVarString pathVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Attempts to open a file with the given mode.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarFile Open(MetaVarString fileNameVar,MetaVarString fileModeVar,MetaVarString pathVar){return null;};
+	public MetaVarFile Open(MetaVarString fileNameVar,MetaVarString fileModeVar,MetaVarString pathVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the content of a file.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Read(MetaVarString fileNameVar,MetaVarString pathVar){return null;};
+	public MetaVar Read(MetaVarString fileNameVar,MetaVarString pathVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns when the file was lasted modified in Unix time.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Time(MetaVarString fileNameVar,MetaVarString pathVar){return null;};
+	public MetaVar Time(MetaVarString fileNameVar,MetaVarString pathVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Writes the given string to a file.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Write(MetaVarString fileNameVar,MetaVarString contentVar){return null;};
+	public MetaVar Write(MetaVarString fileNameVar,MetaVarString contentVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

@@ -27,59 +27,59 @@ public class LibEnts extends BasicFunctions{
 	*/
 	@External
 	@ServerFunc
-	public MetaVarEntity Create(MetaVarString classVar){return null;};
+	public MetaVarEntity Create(MetaVarString classVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Creates a clientside only prop
 	*/
 	@External
 	@ClientFunc
-	public MetaVarEntity CreateClientProp(MetaVarString modelVar){return null;};
+	public MetaVarEntity CreateClientProp(MetaVarString modelVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Gets all entities with the given class, supports wildcards.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable FindByClass(MetaVarString classVar){return null;};
+	public MetaVarTable FindByClass(MetaVarString classVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Gets all entities with the given model, supports wildcards.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable FindByModel(MetaVarString modelVar){return null;};
+	public MetaVarTable FindByModel(MetaVarString modelVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Gets all entities with the given hammer targetname
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable FindByName(MetaVarString nameVar){return null;};
+	public MetaVarTable FindByName(MetaVarString nameVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Gets all entities within the specified box.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable FindInBox(MetaVarVector boxMinsVar,MetaVarVector boxMaxsVar){return null;};
+	public MetaVarTable FindInBox(MetaVarVector boxMinsVar,MetaVarVector boxMaxsVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Gets all entities within the specified cone.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable FindInCone(MetaVarVector originVar,MetaVarVector normalVar,MetaVarNumber radiusVar,MetaVarNumber angleVar){return null;};
+	public MetaVarTable FindInCone(MetaVarVector originVar,MetaVarVector normalVar,MetaVarNumber radiusVar,MetaVarNumber angleVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Gets all entities within the specified sphere.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable FindInSphere(MetaVarVector originVar,MetaVarVector radiusVar){return null;};
+	public MetaVarTable FindInSphere(MetaVarVector originVar,MetaVarVector radiusVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns a table of all existing entities.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarTable GetAll(){return null;};
+	public MetaVarTable GetAll(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Gets an entity by its index.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarEntity GetByIndex(MetaVarNumber entIdxVar){return null;};
+	public MetaVarEntity GetByIndex(MetaVarNumber entIdxVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

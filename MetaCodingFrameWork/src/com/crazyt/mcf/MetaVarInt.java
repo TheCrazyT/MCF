@@ -1,9 +1,5 @@
 package com.crazyt.mcf;
-
-public class MetaVarInt extends MetaVarImpl {
-
-	public MetaVarInt(String n) {
-		super(n);
-	}
+@Implementation(MetaVarIntImpl.class)
+public interface MetaVarInt extends MetaVar {
 
 }

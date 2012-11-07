@@ -5,7 +5,7 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_HUDPaintBackground")
-public abstract class HookGAMEMODE_HUDPaintBackground extends MetaVarFunction{
+public abstract class HookGAMEMODE_HUDPaintBackground extends MetaVarFunctionImpl{
 	public HookGAMEMODE_HUDPaintBackground(String n) {
 		super(n);
 	}

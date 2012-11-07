@@ -27,5 +27,5 @@ public class LibJit extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean status(){return null;};
+	public MetaVarBoolean status(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

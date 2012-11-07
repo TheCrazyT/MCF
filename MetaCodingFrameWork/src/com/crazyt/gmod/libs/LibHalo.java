@@ -27,11 +27,11 @@ public class LibHalo extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVar Add(MetaVarTable entitiesVar,MetaVarColor colorVar,MetaVarNumber blurXVar,MetaVarNumber blurYVar,MetaVarNumber passesVar,MetaVarBoolean additiveVar,MetaVarBoolean ignoreZVar){return null;};
+	public MetaVar Add(MetaVarTable entitiesVar,MetaVarColor colorVar,MetaVarNumber blurXVar,MetaVarNumber blurYVar,MetaVarNumber passesVar,MetaVarBoolean additiveVar,MetaVarBoolean ignoreZVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Renders a halo according to the specified table, only used internally, called from a PostDrawEffects hook added by the holo library
 	*/
 	@External
 	@ClientFunc
-	public MetaVar Render(MetaVarTable entryVar){return null;};
+	public MetaVar Render(MetaVarTable entryVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

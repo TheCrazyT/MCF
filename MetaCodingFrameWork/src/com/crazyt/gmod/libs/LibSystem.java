@@ -27,53 +27,53 @@ public class LibSystem extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber AppTime(){return null;};
+	public MetaVarNumber AppTime(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the current battery power.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber BatteryPower(){return null;};
+	public MetaVarNumber BatteryPower(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the country determined by the localisation settings of the OS.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarString GetCountry(){return null;};
+	public MetaVarString GetCountry(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the whether the game window has focus.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean HasFocus(){return null;};
+	public MetaVarBoolean HasFocus(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns whether the current OS is Linux.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean IsLinux(){return null;};
+	public MetaVarBoolean IsLinux(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns whether the current OS is OSX.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean IsOSX(){return null;};
+	public MetaVarBoolean IsOSX(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns whether the current OS is Windows.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarBoolean IsWindows(){return null;};
+	public MetaVarBoolean IsWindows(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the synchronized steam time.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber SteamTime(){return null;};
+	public MetaVarNumber SteamTime(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the total uptime of operating system.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber UpTime(){return null;};
+	public MetaVarNumber UpTime(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

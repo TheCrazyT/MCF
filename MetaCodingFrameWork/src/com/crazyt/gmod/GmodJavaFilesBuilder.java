@@ -84,10 +84,11 @@ public class GmodJavaFilesBuilder {
 		
 //		propertySubst.put("name","name_p");
 		
-		customExtension.put("string","com.crazyt.mcf.MetaVarString");
+		//TODO: implements * is just a small hack, need to improve this later
+		customExtension.put("string","com.crazyt.mcf.MetaVar,com.crazyt.mcf.MetaVarString,com.crazyt.gmod.types.MetaVarVararg,IMetaVarAny{ //");
 		customExtension.put("number","com.crazyt.mcf.MetaVarInt");
-		customExtension.put("boolean","com.crazyt.mcf.MetaVarBooleanImpl");
-		customExtension.put("table","com.crazyt.mcf.MetaVarTableImpl");
+		customExtension.put("boolean","com.crazyt.mcf.MetaVarBoolean");
+		customExtension.put("table","com.crazyt.mcf.MetaVarTable");
 		
 		metaVarSubst.put("any", "com.crazyt.gmod.IMetaVarAny");
 	}
@@ -202,6 +203,9 @@ public class GmodJavaFilesBuilder {
 		p.println("public abstract class "+name+" extends BasicFunctions {");
 	}
 	private static void parseProperties(PrintStream p,String urlStr){
+		parseProperties(p, urlStr, false);
+	}
+	private static void parseProperties(PrintStream p,String urlStr,Boolean isInterface){
 		String propPat = "(?s)<tr>\r?\n<td> <a href=\"/page/Classes[^\"]+\" title=\"[^\"]+\">([^<]+)</a>\r?\n</td>\r?\n<td>(.+?)\r?\n</td>\r?\n<td>(.+?\r?\n)</td></tr>";
 
 		Pattern propPattern = Pattern.compile(propPat);
@@ -226,16 +230,23 @@ public class GmodJavaFilesBuilder {
 			String propName2 = propName.toUpperCase().substring(0, 1)
 					+ propName.substring(1);
 			
-			p.println("\tprivate MetaVar" + propType + " " + propName + ";");
-
-			p.println("\t@SimpleName(\""+orgPropName+"\")");
-			p.println("\tpublic MetaVar" + propType + " get" + propName2
-					+ "(){ return " + propName + ";}");
-			p.println("\t@SimpleName(\""+orgPropName+"\")");
-			p.println("\tpublic void set" + propName2 + "(MetaVar" + propType
-					+ " value){ " + propName + "=value;}");
+			if(!isInterface){
+				p.println("\tprivate MetaVar" + propType + " " + propName + ";");
+				p.println("\t@SimpleName(\""+orgPropName+"\")");
+				p.println("\tpublic MetaVar" + propType + " get" + propName2
+						+ "(){ return " + propName + ";}");
+				p.println("\t@SimpleName(\""+orgPropName+"\")");
+				p.println("\tpublic void set" + propName2 + "(MetaVar" + propType
+						+ " value){ " + propName + "=value;}");
+			}else{
+				p.println("\t@SimpleName(\""+orgPropName+"\")");
+				p.println("\tpublic MetaVar" + propType + " get" + propName2
+						+ "();");
+				p.println("\t@SimpleName(\""+orgPropName+"\")");
+				p.println("\tpublic void set" + propName2 + "(MetaVar" + propType
+						+ " value);");
+			}
 		}
-		
 	}
 	private static void parseLibraries(PrintStream p,String urlStr){
 		String libPat = "<a href=\"(/page/Libraries/[^\"]+)\" title=\"[^\"]+\">([^<]+)</a>";
@@ -255,10 +266,13 @@ public class GmodJavaFilesBuilder {
 			p.println("\t@Library(\""+name+"\")");
 
 			name = name.toUpperCase().substring(0, 1) + name.substring(1);
-			p.println("\tpublic Lib" + name + " get" + name + "(){return null;};");
+			p.println("\tpublic Lib" + name + " get" + name + "(){throw new RuntimeException(\"Should never be executed directly, there is probably an error in the Aspect-coding.\");};");
 		}
 	}
 	private static void parseFunctions(PrintStream p,String urlStr){
+		parseFunctions(p, urlStr, false);
+	}
+	private static void parseFunctions(PrintStream p,String urlStr,Boolean isInterface){
 		String funcUrlPat = "(?s)<td> *<a +href=\"[^\"]+\" +title=\"[^\"]+\">([^<]+)</a>\r?\n\\</td>\r?\n<td> *(?:<b>(?:[^<]+)</b>(?::|.))?\\<a +href=\"([^\"]+)\" title=\"[^\"]+\">([^<]+)</a>";
 		String argPat = "(?s)<p>[0-9]+\\.[^<]+<b>([^<]+)</b> *\\(<a href=\"([^\"]+)\" title=\"[^\"]+\"[^>]*>([^<]+)</a>\\)";
 		String namePat = "(?s)<tr>\r?\n<td><strong>Name:</strong></td>\r?\n<td>(?:[^.]+\\.)?([^<]+)</td>";
@@ -347,7 +361,11 @@ public class GmodJavaFilesBuilder {
 							p.print(",");						
 						}
 					}
-					p.println("){return null;};");
+					if (!isInterface) {
+						p.println("){throw new RuntimeException(\"Should never be executed directly, there is probably an error in the Aspect-coding.\");};");
+					} else {
+						p.println(");");
+					}
 				}
 			}
 		}
@@ -440,7 +458,7 @@ public class GmodJavaFilesBuilder {
 				p2.println("import com.crazyt.mcf.Hook;");
 				p2.println("import com.crazyt.mcf.SimpleName;");
 				p2.println("@Hook(\""+funcName+"\")");
-				p2.println("public abstract class Hook" + funcName + " extends MetaVarFunction{");
+				p2.println("public abstract class Hook" + funcName + " extends MetaVarFunctionImpl{");
 				p2.println("\tpublic Hook" + funcName + "(String n) {");
 				p2.println("\t\tsuper(n);");
 				p2.println("\t}");
@@ -592,7 +610,7 @@ public class GmodJavaFilesBuilder {
 						+ attName.substring(1);
 				System.out.println("MetaVar    :" + k);
 				PrintStream p2 = newFile(path + "types/MetaVar" + attName + ".java");
-				String ext = "MetaVarImpl";
+				String ext = "MetaVar";
 				if (customExtension.containsKey(k.toLowerCase())) {
 					ext = customExtension.get(k.toLowerCase());
 				}
@@ -600,24 +618,45 @@ public class GmodJavaFilesBuilder {
 				p2.println("package com.crazyt.gmod.types;");
 				p2.println("import com.crazyt.gmod.*;");
 				p2.println("import com.crazyt.mcf.MetaVar;");
-				p2.println("import com.crazyt.mcf.MetaVarImpl;");
 				p2.println("import com.crazyt.mcf.MetaCommand;");
 				p2.println("import com.crazyt.mcf.External;");
 				p2.println("import com.crazyt.mcf.SimpleName;");
+				p2.println("import com.crazyt.mcf.Implementation;");
 				p2.println("@External");
-				p2.println("@SimpleName(\"" + k + "\")");
-				p2.println("public class MetaVar" + attName + " extends " + ext
-						+ " implements IMetaVarAny{");
+				p2.println("@Implementation(MetaVar" + attName
+						+ "Impl.class)");
+				p2.println("public interface MetaVar" + attName + " extends " + ext
+						+ ",IMetaVarAny{");
 				parseProperties(p2,
-						"http://wiki.garrysmod.com" + attributePaths.get(k.toLowerCase()));
-				p2.println("	public MetaVar" + attName + "(String n) {");
-				p2.println("		super(n);");
-				p2.println("	}");
-				// parseFunctions(p2,BASE_URL + "/page/Classes/"+attName);
+						BASE_URL + attributePaths.get(k.toLowerCase()),true);
 				parseFunctions(p2,
-						BASE_URL + attributePaths.get(k.toLowerCase()));
+						BASE_URL + attributePaths.get(k.toLowerCase()),true);
 				p2.println("}");
 				p2.close();
+
+				PrintStream p3 = newFile(path + "types/MetaVar" + attName + "Impl.java");
+				p3.println("package com.crazyt.gmod.types;");
+				p3.println("import com.crazyt.gmod.*;");
+				p3.println("import com.crazyt.mcf.MetaVar;");
+				p3.println("import com.crazyt.mcf.MetaVarImpl;");
+				p3.println("import com.crazyt.mcf.MetaCommand;");
+				p3.println("import com.crazyt.mcf.External;");
+				p3.println("import com.crazyt.mcf.SimpleName;");
+				p3.println("@External");
+				p3.println("@SimpleName(\"" + k + "\")");
+				p3.println("public class MetaVar" + attName
+						+ "Impl extends MetaVarImpl implements MetaVar"
+						+ attName + "{");
+				parseProperties(p3,
+						BASE_URL + attributePaths.get(k.toLowerCase()));
+				parseFunctions(p3,
+						BASE_URL + attributePaths.get(k.toLowerCase()));
+				p3.println("	public MetaVar" + attName + "Impl(String n) {");
+				p3.println("		super(n);");
+				p3.println("	}");
+				p3.println("}");
+				p3.close();
+
 				attributeTypesBasicClone.add(k);
 			}
 		}

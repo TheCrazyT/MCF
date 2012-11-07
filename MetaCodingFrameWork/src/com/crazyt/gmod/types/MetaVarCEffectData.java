@@ -1,206 +1,203 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("CEffectData")
-public class MetaVarCEffectData extends MetaVarImpl implements IMetaVarAny{
-	public MetaVarCEffectData(String n) {
-		super(n);
-	}
+@Implementation(MetaVarCEffectDataImpl.class)
+public interface MetaVarCEffectData extends MetaVar,IMetaVarAny{
 	/**
 	Gets the angles of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarAngle GetAngles(){return null;};
+	public MetaVarAngle GetAngles();
 	/**
 	Returns the attachment id for the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber GetAttachment(){return null;};
+	public MetaVarNumber GetAttachment();
 	/**
 	Gets the byte which represents the color of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber GetColor(){return null;};
+	public MetaVarNumber GetColor();
 	/**
 	Gets the damage type of the effect using <a href="http://wiki.garrysmod.com/page/Enums/DMG" title="Enums/DMG">DMG_ Enumss</a>.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber GetDamageType(){return null;};
+	public MetaVarNumber GetDamageType();
 	/**
 	Returns the entity index of the entity set for the effect.
 	*/
 	@External
 	@ServerFunc
-	public MetaVarNumber GetEntIndex(){return null;};
+	public MetaVarNumber GetEntIndex();
 	/**
 	Gets the entity assigned to the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarEntity GetEntity(){return null;};
+	public MetaVarEntity GetEntity();
 	/**
 	Gets the flags of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber GetFlags(){return null;};
+	public MetaVarNumber GetFlags();
 	/**
 	Gets the hit box index of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber GetHitBox(){return null;};
+	public MetaVarNumber GetHitBox();
 	/**
 	Returns the magnitude of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber GetMagnitude(){return null;};
+	public MetaVarNumber GetMagnitude();
 	/**
 	Returns the material index of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber GetMaterialIndex(){return null;};
+	public MetaVarNumber GetMaterialIndex();
 	/**
 	Gets the normal of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarVector GetNormal(){return null;};
+	public MetaVarVector GetNormal();
 	/**
 	Returns the origin position of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarVector GetOrigin(){return null;};
+	public MetaVarVector GetOrigin();
 	/**
 	Gets the radius of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber GetRadius(){return null;};
+	public MetaVarNumber GetRadius();
 	/**
 	Gets the scale of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber GetScale(){return null;};
+	public MetaVarNumber GetScale();
 	/**
 	Returns the start position of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarVector GetStart(){return null;};
+	public MetaVarVector GetStart();
 	/**
 	Returns the surface property index of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVarNumber GetSurfaceProp(){return null;};
+	public MetaVarNumber GetSurfaceProp();
 	/**
 	Sets the angle of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetAngles(MetaVarAngle effectAnglesVar){return null;};
+	public MetaVar SetAngles(MetaVarAngle effectAnglesVar);
 	/**
 	Sets the attachment id of the effect to be created with this effect data.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetAttachment(MetaVarNumber attachmentIDVar){return null;};
+	public MetaVar SetAttachment(MetaVarNumber attachmentIDVar);
 	/**
 	Sets the color of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetColor(MetaVarNumber colorVar){return null;};
+	public MetaVar SetColor(MetaVarNumber colorVar);
 	/**
 	Sets the damage type of the effect to be created with this effect data.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetDamageType(MetaVarNumber damageTypeVar){return null;};
+	public MetaVar SetDamageType(MetaVarNumber damageTypeVar);
 	/**
 	Sets the entity of the effect via its index.
 	*/
 	@External
 	@ServerFunc
-	public MetaVar SetEntIndex(MetaVarNumber entIndexVar){return null;};
+	public MetaVar SetEntIndex(MetaVarNumber entIndexVar);
 	/**
 	Sets the entity of the effect to be created with this effect data.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetEntity(MetaVarEntity entityVar){return null;};
+	public MetaVar SetEntity(MetaVarEntity entityVar);
 	/**
 	Sets the flags of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetFlags(MetaVarNumber flagsVar){return null;};
+	public MetaVar SetFlags(MetaVarNumber flagsVar);
 	/**
 	Sets the hit box index of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetHitBox(MetaVarNumber hitBoxIndexVar){return null;};
+	public MetaVar SetHitBox(MetaVarNumber hitBoxIndexVar);
 	/**
 	Sets the magnitude of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetMagnitude(MetaVarNumber magnitudeVar){return null;};
+	public MetaVar SetMagnitude(MetaVarNumber magnitudeVar);
 	/**
 	Sets the material index of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetMaterialIndex(MetaVarNumber materialIndexVar){return null;};
+	public MetaVar SetMaterialIndex(MetaVarNumber materialIndexVar);
 	/**
 	Sets the normal of the effect to be created with this effect data.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetNormal(MetaVarVector normalVar){return null;};
+	public MetaVar SetNormal(MetaVarVector normalVar);
 	/**
 	Sets the origin of the effect to be created with this effect data.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetOrigin(MetaVarVector originVar){return null;};
+	public MetaVar SetOrigin(MetaVarVector originVar);
 	/**
 	Sets the radius of the effect to be created with this effect data.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetRadius(MetaVarNumber radiusVar){return null;};
+	public MetaVar SetRadius(MetaVarNumber radiusVar);
 	/**
 	Sets the scale of the effect to be created with this effect data.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetScale(MetaVarNumber scaleVar){return null;};
+	public MetaVar SetScale(MetaVarNumber scaleVar);
 	/**
 	Sets the start of the effect to be created with this effect data.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetStart(MetaVarVector startVar){return null;};
+	public MetaVar SetStart(MetaVarVector startVar);
 	/**
 	Sets the surface property index of the effect.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar SetSurfaceProp(MetaVarNumber surfacePropertiesVar){return null;};
+	public MetaVar SetSurfaceProp(MetaVarNumber surfacePropertiesVar);
 }

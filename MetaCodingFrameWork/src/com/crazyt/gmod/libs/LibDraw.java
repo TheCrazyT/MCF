@@ -27,5 +27,5 @@ public class LibDraw extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVar SimpleText(MetaVarString TextVar,MetaVarString fontVar,MetaVarNumber xVar,MetaVarNumber yVar,MetaVarColor colorVar,MetaVarNumber alignXVar,MetaVarNumber alignYVar){return null;};
+	public MetaVar SimpleText(MetaVarString TextVar,MetaVarString fontVar,MetaVarNumber xVar,MetaVarNumber yVar,MetaVarColor colorVar,MetaVarNumber alignXVar,MetaVarNumber alignYVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

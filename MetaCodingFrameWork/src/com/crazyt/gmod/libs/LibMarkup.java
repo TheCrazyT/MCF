@@ -27,5 +27,5 @@ public class LibMarkup extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVarMarkupObject Parse(MetaVarString markupVar,MetaVarNumber maxwidthVar){return null;};
+	public MetaVarMarkupObject Parse(MetaVarString markupVar,MetaVarNumber maxwidthVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

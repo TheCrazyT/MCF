@@ -27,9 +27,9 @@ public class LibConcommand extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Add(MetaVarString nameVar,MetaVarFunction commandFuncVar,MetaVarFunction autoCompleteFuncVar,MetaVarString helpTextVar,MetaVarNumber flagsVar){return null;};
+	public MetaVar Add(MetaVarString nameVar,MetaVarFunction commandFuncVar,MetaVarFunction autoCompleteFuncVar,MetaVarString helpTextVar,MetaVarNumber flagsVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Removes a console command.
 	*/
-	//public MetaVar Remove(MetaVarString nameVar){return null;};
+	//public MetaVar Remove(MetaVarString nameVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

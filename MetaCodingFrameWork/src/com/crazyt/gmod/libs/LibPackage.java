@@ -27,5 +27,5 @@ public class LibPackage extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar seeall(MetaVarTable tableVar){return null;};
+	public MetaVar seeall(MetaVarTable tableVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

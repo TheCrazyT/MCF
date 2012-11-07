@@ -1,59 +1,47 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("VideoData")
-public class MetaVarVideoData extends MetaVarImpl implements IMetaVarAny{
-	private MetaVarString container;
+@Implementation(MetaVarVideoDataImpl.class)
+public interface MetaVarVideoData extends MetaVar,IMetaVarAny{
 	@SimpleName("container")
-	public MetaVarString getContainer(){ return container;}
+	public MetaVarString getContainer();
 	@SimpleName("container")
-	public void setContainer(MetaVarString value){ container=value;}
-	private MetaVarString video;
+	public void setContainer(MetaVarString value);
 	@SimpleName("video")
-	public MetaVarString getVideo(){ return video;}
+	public MetaVarString getVideo();
 	@SimpleName("video")
-	public void setVideo(MetaVarString value){ video=value;}
-	private MetaVarString audio;
+	public void setVideo(MetaVarString value);
 	@SimpleName("audio")
-	public MetaVarString getAudio(){ return audio;}
+	public MetaVarString getAudio();
 	@SimpleName("audio")
-	public void setAudio(MetaVarString value){ audio=value;}
-	private MetaVarNumber quality;
+	public void setAudio(MetaVarString value);
 	@SimpleName("quality")
-	public MetaVarNumber getQuality(){ return quality;}
+	public MetaVarNumber getQuality();
 	@SimpleName("quality")
-	public void setQuality(MetaVarNumber value){ quality=value;}
-	private MetaVarNumber bitrate;
+	public void setQuality(MetaVarNumber value);
 	@SimpleName("bitrate")
-	public MetaVarNumber getBitrate(){ return bitrate;}
+	public MetaVarNumber getBitrate();
 	@SimpleName("bitrate")
-	public void setBitrate(MetaVarNumber value){ bitrate=value;}
-	private MetaVarNumber fps;
+	public void setBitrate(MetaVarNumber value);
 	@SimpleName("fps")
-	public MetaVarNumber getFps(){ return fps;}
+	public MetaVarNumber getFps();
 	@SimpleName("fps")
-	public void setFps(MetaVarNumber value){ fps=value;}
-	private MetaVarString name;
+	public void setFps(MetaVarNumber value);
 	@SimpleName("name")
-	public MetaVarString getName(){ return name;}
+	public MetaVarString getName();
 	@SimpleName("name")
-	public void setName(MetaVarString value){ name=value;}
-	private MetaVarNumber width;
+	public void setName(MetaVarString value);
 	@SimpleName("width")
-	public MetaVarNumber getWidth(){ return width;}
+	public MetaVarNumber getWidth();
 	@SimpleName("width")
-	public void setWidth(MetaVarNumber value){ width=value;}
-	private MetaVarNumber height;
+	public void setWidth(MetaVarNumber value);
 	@SimpleName("height")
-	public MetaVarNumber getHeight(){ return height;}
+	public MetaVarNumber getHeight();
 	@SimpleName("height")
-	public void setHeight(MetaVarNumber value){ height=value;}
-	public MetaVarVideoData(String n) {
-		super(n);
-	}
+	public void setHeight(MetaVarNumber value);
 }

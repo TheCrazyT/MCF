@@ -27,107 +27,107 @@ public class LibGui extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVar ActivateGameUI(){return null;};
+	public MetaVar ActivateGameUI(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Enables the mouse cursor without restricting player movement, like using Sandbox's Context Menu
 	*/
 	@External
 	@ClientFunc
-	public MetaVar EnableScreenClicker(MetaVarBoolean enabledVar){return null;};
+	public MetaVar EnableScreenClicker(MetaVarBoolean enabledVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Hides the game menu overlay.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar HideGameUI(){return null;};
+	public MetaVar HideGameUI(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Simulates a mouse move to the given position.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar InternalCursorMoved(MetaVarNumber posXVar,MetaVarNumber posYVar){return null;};
+	public MetaVar InternalCursorMoved(MetaVarNumber posXVar,MetaVarNumber posYVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Simulates a key press for the given key.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar InternalKeyCodePressed(MetaVarNumber keyVar){return null;};
+	public MetaVar InternalKeyCodePressed(MetaVarNumber keyVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Simulates a key release for the given key.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar InternalKeyCodeReleased(MetaVarNumber keyVar){return null;};
+	public MetaVar InternalKeyCodeReleased(MetaVarNumber keyVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Simulates a key type typing to the specified key.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar InternalKeyCodeTyped(MetaVarNumber keyVar){return null;};
+	public MetaVar InternalKeyCodeTyped(MetaVarNumber keyVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Simulates a double mouse key press for the given mouse key.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar InternalMouseDoublePressed(MetaVarNumber keyVar){return null;};
+	public MetaVar InternalMouseDoublePressed(MetaVarNumber keyVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Simulates a mouse key press for the given mouse key.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar InternalMousePressed(MetaVarNumber keyVar){return null;};
+	public MetaVar InternalMousePressed(MetaVarNumber keyVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Simulates a mouse key release for the given mouse key.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar InternalMouseReleased(MetaVarNumber keyVar){return null;};
+	public MetaVar InternalMouseReleased(MetaVarNumber keyVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Simulates a mouse wheel scroll with the given delta.
 	*/
 	@External
 	@ClientFunc
-	public MetaVar InternalMouseWheeled(MetaVarNumber deltaVar){return null;};
+	public MetaVar InternalMouseWheeled(MetaVarNumber deltaVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns whenever the console is visible.
 	*/
 	@External
 	@ClientFunc
-	public MetaVarBoolean IsConsoleVisible(){return null;};
+	public MetaVarBoolean IsConsoleVisible(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns whenever the game menu overlay.
 	*/
 	@External
 	@ClientFunc
-	public MetaVarBoolean IsGameUIVisible(){return null;};
+	public MetaVarBoolean IsGameUIVisible(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the cursor's position on the screen
 	*/
 	@External
 	@ClientFunc
-	public MetaVarNumber MousePos(){return null;};
+	public MetaVarNumber MousePos(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns x component of the mouse position.
 	*/
 	@External
 	@ClientFunc
-	public MetaVarNumber MouseX(){return null;};
+	public MetaVarNumber MouseX(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns y component of the mouse position.
 	*/
 	@External
 	@ClientFunc
-	public MetaVarNumber MouseY(){return null;};
+	public MetaVarNumber MouseY(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Converts the specified screen position to a direction vector local to the player's view
 	*/
 	@External
 	@ClientFunc
-	public MetaVarVector ScreenToVector(MetaVarNumber mouseXVar,MetaVarNumber mouseYVar){return null;};
+	public MetaVarVector ScreenToVector(MetaVarNumber mouseXVar,MetaVarNumber mouseYVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the cursor's position on the screen, relative to the topleft corner of the window
 	*/
 	@External
 	@ClientFunc
-	public MetaVar SetMousePos(MetaVarNumber mouseXVar,MetaVarNumber mouseYVar){return null;};
+	public MetaVar SetMousePos(MetaVarNumber mouseXVar,MetaVarNumber mouseYVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

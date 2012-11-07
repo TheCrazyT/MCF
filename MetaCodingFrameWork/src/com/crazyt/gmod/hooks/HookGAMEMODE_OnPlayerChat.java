@@ -5,7 +5,7 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_OnPlayerChat")
-public abstract class HookGAMEMODE_OnPlayerChat extends MetaVarFunction{
+public abstract class HookGAMEMODE_OnPlayerChat extends MetaVarFunctionImpl{
 	public HookGAMEMODE_OnPlayerChat(String n) {
 		super(n);
 	}

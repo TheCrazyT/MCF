@@ -5,7 +5,7 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_InitPostEntity")
-public abstract class HookGAMEMODE_InitPostEntity extends MetaVarFunction{
+public abstract class HookGAMEMODE_InitPostEntity extends MetaVarFunctionImpl{
 	public HookGAMEMODE_InitPostEntity(String n) {
 		super(n);
 	}

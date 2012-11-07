@@ -27,5 +27,5 @@ public class LibVideo extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVarIVideoWriter Record(MetaVarVideoData configVar){return null;};
+	public MetaVarIVideoWriter Record(MetaVarVideoData configVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

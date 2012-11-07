@@ -27,11 +27,11 @@ public class LibSound extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Add(MetaVarSoundData sound_dataVar){return null;};
+	public MetaVar Add(MetaVarSoundData sound_dataVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Plays a sound from the specified position in the world.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Play(MetaVarString NameVar,MetaVarVector PosVar,MetaVarNumber LevelVar,MetaVarNumber PitchVar,MetaVarNumber VolumeVar){return null;};
+	public MetaVar Play(MetaVarString NameVar,MetaVarVector PosVar,MetaVarNumber LevelVar,MetaVarNumber PitchVar,MetaVarNumber VolumeVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

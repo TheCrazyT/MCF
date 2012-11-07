@@ -5,7 +5,7 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_KeyRelease")
-public abstract class HookGAMEMODE_KeyRelease extends MetaVarFunction{
+public abstract class HookGAMEMODE_KeyRelease extends MetaVarFunctionImpl{
 	public HookGAMEMODE_KeyRelease(String n) {
 		super(n);
 	}

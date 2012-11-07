@@ -5,7 +5,7 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_AdjustMouseSensitivity")
-public abstract class HookGAMEMODE_AdjustMouseSensitivity extends MetaVarFunction{
+public abstract class HookGAMEMODE_AdjustMouseSensitivity extends MetaVarFunctionImpl{
 	public HookGAMEMODE_AdjustMouseSensitivity(String n) {
 		super(n);
 	}

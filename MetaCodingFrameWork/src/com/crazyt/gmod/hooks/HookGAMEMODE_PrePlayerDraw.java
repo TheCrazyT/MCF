@@ -5,7 +5,7 @@ import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_PrePlayerDraw")
-public abstract class HookGAMEMODE_PrePlayerDraw extends MetaVarFunction{
+public abstract class HookGAMEMODE_PrePlayerDraw extends MetaVarFunctionImpl{
 	public HookGAMEMODE_PrePlayerDraw(String n) {
 		super(n);
 	}

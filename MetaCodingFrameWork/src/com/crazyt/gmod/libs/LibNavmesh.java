@@ -27,5 +27,5 @@ public class LibNavmesh extends BasicFunctions{
 	*/
 	@External
 	@ServerFunc
-	public MetaVar GetMap(){return null;};
+	public MetaVar GetMap(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

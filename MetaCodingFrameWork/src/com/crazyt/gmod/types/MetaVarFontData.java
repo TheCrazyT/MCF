@@ -1,84 +1,67 @@
 package com.crazyt.gmod.types;
 import com.crazyt.gmod.*;
 import com.crazyt.mcf.MetaVar;
-import com.crazyt.mcf.MetaVarImpl;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
+import com.crazyt.mcf.Implementation;
 @External
-@SimpleName("FontData")
-public class MetaVarFontData extends MetaVarImpl implements IMetaVarAny{
-	private MetaVarString font;
+@Implementation(MetaVarFontDataImpl.class)
+public interface MetaVarFontData extends MetaVar,IMetaVarAny{
 	@SimpleName("font")
-	public MetaVarString getFont(){ return font;}
+	public MetaVarString getFont();
 	@SimpleName("font")
-	public void setFont(MetaVarString value){ font=value;}
-	private MetaVarNumber size;
+	public void setFont(MetaVarString value);
 	@SimpleName("size")
-	public MetaVarNumber getSize(){ return size;}
+	public MetaVarNumber getSize();
 	@SimpleName("size")
-	public void setSize(MetaVarNumber value){ size=value;}
-	private MetaVarNumber weight;
+	public void setSize(MetaVarNumber value);
 	@SimpleName("weight")
-	public MetaVarNumber getWeight(){ return weight;}
+	public MetaVarNumber getWeight();
 	@SimpleName("weight")
-	public void setWeight(MetaVarNumber value){ weight=value;}
-	private MetaVarNumber blursize;
+	public void setWeight(MetaVarNumber value);
 	@SimpleName("blursize")
-	public MetaVarNumber getBlursize(){ return blursize;}
+	public MetaVarNumber getBlursize();
 	@SimpleName("blursize")
-	public void setBlursize(MetaVarNumber value){ blursize=value;}
-	private MetaVarNumber scanlines;
+	public void setBlursize(MetaVarNumber value);
 	@SimpleName("scanlines")
-	public MetaVarNumber getScanlines(){ return scanlines;}
+	public MetaVarNumber getScanlines();
 	@SimpleName("scanlines")
-	public void setScanlines(MetaVarNumber value){ scanlines=value;}
-	private MetaVarBoolean antialias;
+	public void setScanlines(MetaVarNumber value);
 	@SimpleName("antialias")
-	public MetaVarBoolean getAntialias(){ return antialias;}
+	public MetaVarBoolean getAntialias();
 	@SimpleName("antialias")
-	public void setAntialias(MetaVarBoolean value){ antialias=value;}
-	private MetaVarBoolean underline;
+	public void setAntialias(MetaVarBoolean value);
 	@SimpleName("underline")
-	public MetaVarBoolean getUnderline(){ return underline;}
+	public MetaVarBoolean getUnderline();
 	@SimpleName("underline")
-	public void setUnderline(MetaVarBoolean value){ underline=value;}
-	private MetaVarBoolean italic;
+	public void setUnderline(MetaVarBoolean value);
 	@SimpleName("italic")
-	public MetaVarBoolean getItalic(){ return italic;}
+	public MetaVarBoolean getItalic();
 	@SimpleName("italic")
-	public void setItalic(MetaVarBoolean value){ italic=value;}
-	private MetaVarBoolean strikeout;
+	public void setItalic(MetaVarBoolean value);
 	@SimpleName("strikeout")
-	public MetaVarBoolean getStrikeout(){ return strikeout;}
+	public MetaVarBoolean getStrikeout();
 	@SimpleName("strikeout")
-	public void setStrikeout(MetaVarBoolean value){ strikeout=value;}
-	private MetaVarBoolean symbol;
+	public void setStrikeout(MetaVarBoolean value);
 	@SimpleName("symbol")
-	public MetaVarBoolean getSymbol(){ return symbol;}
+	public MetaVarBoolean getSymbol();
 	@SimpleName("symbol")
-	public void setSymbol(MetaVarBoolean value){ symbol=value;}
-	private MetaVarBoolean rotary;
+	public void setSymbol(MetaVarBoolean value);
 	@SimpleName("rotary")
-	public MetaVarBoolean getRotary(){ return rotary;}
+	public MetaVarBoolean getRotary();
 	@SimpleName("rotary")
-	public void setRotary(MetaVarBoolean value){ rotary=value;}
-	private MetaVarBoolean shadow;
+	public void setRotary(MetaVarBoolean value);
 	@SimpleName("shadow")
-	public MetaVarBoolean getShadow(){ return shadow;}
+	public MetaVarBoolean getShadow();
 	@SimpleName("shadow")
-	public void setShadow(MetaVarBoolean value){ shadow=value;}
-	private MetaVarBoolean additive;
+	public void setShadow(MetaVarBoolean value);
 	@SimpleName("additive")
-	public MetaVarBoolean getAdditive(){ return additive;}
+	public MetaVarBoolean getAdditive();
 	@SimpleName("additive")
-	public void setAdditive(MetaVarBoolean value){ additive=value;}
-	private MetaVarBoolean outline;
+	public void setAdditive(MetaVarBoolean value);
 	@SimpleName("outline")
-	public MetaVarBoolean getOutline(){ return outline;}
+	public MetaVarBoolean getOutline();
 	@SimpleName("outline")
-	public void setOutline(MetaVarBoolean value){ outline=value;}
-	public MetaVarFontData(String n) {
-		super(n);
-	}
+	public void setOutline(MetaVarBoolean value);
 }
