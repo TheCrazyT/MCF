@@ -22,6 +22,8 @@ public interface MetaCommand extends MetaVar,MetaConditionCommands{
 
 	public abstract MetaCommand  set(MetaVarString v, String s);
 	
+	public abstract MetaCommand  set(MetaVar v, MetaVar v2);
+	
 	public abstract MetaCommand  set(MetaVarInt v, int i);
 	
 	public abstract MetaCommand  print(MetaVar v);

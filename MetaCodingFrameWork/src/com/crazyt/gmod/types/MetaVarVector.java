@@ -25,7 +25,7 @@ public interface MetaVarVector extends MetaVar,IMetaVarAny{
 	*/
 	@External
 	@ClientFunc
-	public MetaVar ToScreen();
+	public MetaVarToScreenData ToScreen();
 	/**
 	Adds the values of the second vector to the orignal vector, this function can be used to avoid garbage collection.
 	*/

@@ -88,13 +88,13 @@ Can also force the value to be set to a number, bool or string.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar Color(MetaVarNumber rVar,MetaVarNumber gVar,MetaVarNumber bVar,MetaVarNumber aVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarColor Color(MetaVarNumber rVar,MetaVarNumber gVar,MetaVarNumber bVar,MetaVarNumber aVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns a new <a href="http://wiki.garrysmod.com/page/Classes/Color" title="Classes/Color" class="mw-redirect">Color</a> with the RGB components of the given <a href="http://wiki.garrysmod.com/page/Classes/Color" title="Classes/Color" class="mw-redirect">Color</a> and the alpha value specified.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar ColorAlpha(MetaVarColor colorVar,MetaVarNumber alphaVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarColor ColorAlpha(MetaVarColor colorVar,MetaVarNumber alphaVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Converts a <a href="http://wiki.garrysmod.com/page/Structures/Color" title="Structures/Color">Color</a> object into HSV color space.
 	*/
@@ -384,7 +384,7 @@ Can also force the value to be set to a number, bool or string.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar HSVToColor(MetaVarNumber hueVar,MetaVarNumber saturationVar,MetaVarNumber valueVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarColor HSVToColor(MetaVarNumber hueVar,MetaVarNumber saturationVar,MetaVarNumber valueVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Launches a threaded http request with the given parameters
 	*/

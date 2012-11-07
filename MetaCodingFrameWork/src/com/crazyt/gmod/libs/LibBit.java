@@ -8,20 +8,9 @@ import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
 import com.crazyt.mcf.Library;
-import com.crazyt.mcf.BasicFunctions;
-import com.crazyt.mcf.BuildClass;
 @External
 @Library("bit")
-public class LibBit extends BasicFunctions{
-	@BuildClass
-	public MetaCommand metaCommand;
-	@Override
-	protected MetaCommand getMetaCommand() {
-		return metaCommand;
-	};
-	public LibBit(MetaCommand mc){
-		this.metaCommand = mc;
-	}
+public class LibBit{
 	/**
 	Returns the arithmetically shifted value.
 	*/

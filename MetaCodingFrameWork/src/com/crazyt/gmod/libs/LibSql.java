@@ -8,20 +8,9 @@ import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
 import com.crazyt.mcf.Library;
-import com.crazyt.mcf.BasicFunctions;
-import com.crazyt.mcf.BuildClass;
 @External
 @Library("sql")
-public class LibSql extends BasicFunctions{
-	@BuildClass
-	public MetaCommand metaCommand;
-	@Override
-	protected MetaCommand getMetaCommand() {
-		return metaCommand;
-	};
-	public LibSql(MetaCommand mc){
-		this.metaCommand = mc;
-	}
+public class LibSql{
 	/**
 	Tells the engine a set of queries is coming. Will wait until <a href="http://wiki.garrysmod.com/page/Libraries/sql" title="Libraries/sql">sql</a>.<a href="http://wiki.garrysmod.com/page/Libraries/sql/Commit" title="Libraries/sql/Commit">Commit</a> is called to run them.
 	*/

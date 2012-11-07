@@ -151,7 +151,7 @@ public interface MetaVarPlayer extends MetaVar,IMetaVarAny{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar GetEyeTrace();
+	public MetaVarTraceRes GetEyeTrace();
 	/**
 	Returns the FOV of the player.
 	*/

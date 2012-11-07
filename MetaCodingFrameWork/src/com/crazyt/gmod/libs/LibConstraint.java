@@ -8,20 +8,9 @@ import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
 import com.crazyt.mcf.Library;
-import com.crazyt.mcf.BasicFunctions;
-import com.crazyt.mcf.BuildClass;
 @External
 @Library("constraint")
-public class LibConstraint extends BasicFunctions{
-	@BuildClass
-	public MetaCommand metaCommand;
-	@Override
-	protected MetaCommand getMetaCommand() {
-		return metaCommand;
-	};
-	public LibConstraint(MetaCommand mc){
-		this.metaCommand = mc;
-	}
+public class LibConstraint{
 	/**
 	Basic checks to make sure that the specified entity and bone are valid.
 	*/

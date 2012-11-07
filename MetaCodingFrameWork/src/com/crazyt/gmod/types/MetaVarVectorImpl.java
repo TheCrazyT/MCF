@@ -28,7 +28,7 @@ public class MetaVarVectorImpl extends MetaVarImpl implements MetaVarVector{
 	*/
 	@External
 	@ClientFunc
-	public MetaVar ToScreen(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarToScreenData ToScreen(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Adds the values of the second vector to the orignal vector, this function can be used to avoid garbage collection.
 	*/

@@ -151,7 +151,7 @@ public class MetaVarPlayerImpl extends MetaVarImpl implements MetaVarPlayer{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar GetEyeTrace(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarTraceRes GetEyeTrace(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the FOV of the player.
 	*/

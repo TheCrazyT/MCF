@@ -8,20 +8,9 @@ import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
 import com.crazyt.mcf.Library;
-import com.crazyt.mcf.BasicFunctions;
-import com.crazyt.mcf.BuildClass;
 @External
 @Library("cam")
-public class LibCam extends BasicFunctions{
-	@BuildClass
-	public MetaCommand metaCommand;
-	@Override
-	protected MetaCommand getMetaCommand() {
-		return metaCommand;
-	};
-	public LibCam(MetaCommand mc){
-		this.metaCommand = mc;
-	}
+public class LibCam{
 	/**
 	Shakes the screen at a certain position.
 	*/

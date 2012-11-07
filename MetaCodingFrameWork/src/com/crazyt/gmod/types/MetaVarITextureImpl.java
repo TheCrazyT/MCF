@@ -19,7 +19,7 @@ public class MetaVarITextureImpl extends MetaVarImpl implements MetaVarITexture{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar GetColor(MetaVarNumber xVar,MetaVarNumber yVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarColor GetColor(MetaVarNumber xVar,MetaVarNumber yVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the true unmodified height of the texture.
 	*/

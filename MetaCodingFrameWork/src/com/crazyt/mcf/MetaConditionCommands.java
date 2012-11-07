@@ -9,5 +9,4 @@ public interface MetaConditionCommands {
 
 	public abstract MetaCondition  cond(MetaVarString v1, String v2);
 	
-	public abstract void finalizeConditionStatements();
 }

@@ -145,7 +145,7 @@ public class MetaVarEntityImpl extends MetaVarImpl implements MetaVarEntity{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar GetAttachment(MetaVarNumber attachmentIdVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarAngPos GetAttachment(MetaVarNumber attachmentIdVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns a table with <a href="http://wiki.garrysmod.com/page/Classes/AttachmentData" title="Classes/AttachmentData" class="mw-redirect">AttachmentData</a> sets.
 	*/
@@ -199,7 +199,7 @@ public class MetaVarEntityImpl extends MetaVarImpl implements MetaVarEntity{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar GetColor(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarColor GetColor(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the two entities involved in a constraint ent
 	*/

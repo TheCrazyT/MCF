@@ -8,20 +8,9 @@ import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
 import com.crazyt.mcf.Library;
-import com.crazyt.mcf.BasicFunctions;
-import com.crazyt.mcf.BuildClass;
 @External
 @Library("steamworks")
-public class LibSteamworks extends BasicFunctions{
-	@BuildClass
-	public MetaCommand metaCommand;
-	@Override
-	protected MetaCommand getMetaCommand() {
-		return metaCommand;
-	};
-	public LibSteamworks(MetaCommand mc){
-		this.metaCommand = mc;
-	}
+public class LibSteamworks{
 	/**
 	Downloads preview image of supplied addon and saves it as a .cache file in garrysmod/cache folder.
 	*/

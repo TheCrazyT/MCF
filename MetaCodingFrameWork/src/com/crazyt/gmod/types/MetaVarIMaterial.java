@@ -13,7 +13,7 @@ public interface MetaVarIMaterial extends MetaVar,IMetaVarAny{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar GetColor(MetaVarNumber xVar,MetaVarNumber yVar);
+	public MetaVarColor GetColor(MetaVarNumber xVar,MetaVarNumber yVar);
 	/**
 	Returns the specified material value as a float, or nil if the value is not set.
 	*/

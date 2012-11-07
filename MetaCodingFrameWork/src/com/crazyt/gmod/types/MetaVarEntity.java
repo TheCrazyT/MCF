@@ -145,7 +145,7 @@ public interface MetaVarEntity extends MetaVar,IMetaVarAny{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar GetAttachment(MetaVarNumber attachmentIdVar);
+	public MetaVarAngPos GetAttachment(MetaVarNumber attachmentIdVar);
 	/**
 	Returns a table with <a href="http://wiki.garrysmod.com/page/Classes/AttachmentData" title="Classes/AttachmentData" class="mw-redirect">AttachmentData</a> sets.
 	*/
@@ -199,7 +199,7 @@ public interface MetaVarEntity extends MetaVar,IMetaVarAny{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar GetColor();
+	public MetaVarColor GetColor();
 	/**
 	Returns the two entities involved in a constraint ent
 	*/

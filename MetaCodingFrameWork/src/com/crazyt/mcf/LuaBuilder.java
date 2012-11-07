@@ -36,7 +36,9 @@ public class LuaBuilder implements MetaScriptBuilder{
 	}
 
 	public static void main(String args[]) throws Exception{
+		System.out.println("Running lua builder");
 		if(args.length==0){
+			System.out.println("no arguments!");
 			return;
 		}
 		
@@ -58,6 +60,7 @@ public class LuaBuilder implements MetaScriptBuilder{
 							+ clazz.getAnnotation(SourceInfo.class).subFolder()
 							+ "\\" + fileName;
 				}
+				System.out.println("Creating file:"+fileName);
 				Constructor<?> dbconstr = LuaBuilder.class.getConstructor(new Class<?>[]{PrintStream.class});
 				LuaBuilder instance=null;
 				PrintStream outStream = null;
@@ -269,6 +272,13 @@ public class LuaBuilder implements MetaScriptBuilder{
 		return this;
 	}
 
+	public MetaCommand set(MetaVar v1, MetaVar v2) {
+		finalizeConditionStatements();
+
+		println(v1._getName()+" = "+v2._getName());
+		return this;
+	}
+
 	public MetaCommand set(MetaVarString v, String s) {
 		finalizeConditionStatements();
 
@@ -470,8 +480,7 @@ public class LuaBuilder implements MetaScriptBuilder{
 		return (MetaCommand)cloneIt();
 	}
 
-	@Override
-	public void finalizeConditionStatements() {
+	private void finalizeConditionStatements() {
 		if(GlobalBuilderInfo.lastConditionStatement!=null){
 			println(GlobalBuilderInfo.lastConditionStatement);
 			increaseTab();

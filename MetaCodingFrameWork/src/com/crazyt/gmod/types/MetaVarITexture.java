@@ -19,7 +19,7 @@ public interface MetaVarITexture extends MetaVar,IMetaVarAny{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar GetColor(MetaVarNumber xVar,MetaVarNumber yVar);
+	public MetaVarColor GetColor(MetaVarNumber xVar,MetaVarNumber yVar);
 	/**
 	Returns the true unmodified height of the texture.
 	*/

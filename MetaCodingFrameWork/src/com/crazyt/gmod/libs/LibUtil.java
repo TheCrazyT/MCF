@@ -8,20 +8,9 @@ import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
 import com.crazyt.mcf.Library;
-import com.crazyt.mcf.BasicFunctions;
-import com.crazyt.mcf.BuildClass;
 @External
 @Library("util")
-public class LibUtil extends BasicFunctions{
-	@BuildClass
-	public MetaCommand metaCommand;
-	@Override
-	protected MetaCommand getMetaCommand() {
-		return metaCommand;
-	};
-	public LibUtil(MetaCommand mc){
-		this.metaCommand = mc;
-	}
+public class LibUtil{
 	/**
 	Precaches the string for networking.
 	*/
@@ -111,7 +100,7 @@ public class LibUtil extends BasicFunctions{
 	*/
 	@External
 	@ClientFunc
-	public MetaVar GetSunInfo(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarSunInfo GetSunInfo(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the matching surface index for the surface name.
 	*/
@@ -237,7 +226,7 @@ public class LibUtil extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar QuickTrace(MetaVarVector originVar,MetaVarVector directionVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarTraceRes QuickTrace(MetaVarVector originVar,MetaVarVector directionVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the absolute system path the file relative to /garrysmod/.
 	*/
@@ -279,11 +268,11 @@ public class LibUtil extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar TraceHull(MetaVarHullTrace TraceDataVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarTraceRes TraceHull(MetaVarHullTrace TraceDataVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Performs a trace with the given trace data.
 	*/
 	@External
 	@SharedFunc
-	public MetaVar TraceLine(MetaVarTrace TraceDataVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarTraceRes TraceLine(MetaVarTrace TraceDataVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 }

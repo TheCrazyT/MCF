@@ -56,6 +56,9 @@ public abstract class BasicFunctions implements MetaCommand{
 		return getMetaCommand().sub(v1, v2);
 	}
 
+	public MetaCommand set(MetaVar v1, MetaVar v2) {
+		return getMetaCommand().set(v1, v2);
+	}
 	public MetaCommand set(MetaVarString v, String s) {
 		return getMetaCommand().set(v, s);
 	}
@@ -92,9 +95,6 @@ public abstract class BasicFunctions implements MetaCommand{
 		getMetaCommand()._addHook(hook,method,object);
 	}
 	
-	public void finalizeConditionStatements(){
-		getMetaCommand().finalizeConditionStatements();
-	}
 	
 
 }

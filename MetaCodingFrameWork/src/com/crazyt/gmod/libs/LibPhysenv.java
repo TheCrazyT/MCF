@@ -8,20 +8,9 @@ import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
 import com.crazyt.mcf.Library;
-import com.crazyt.mcf.BasicFunctions;
-import com.crazyt.mcf.BuildClass;
 @External
 @Library("physenv")
-public class LibPhysenv extends BasicFunctions{
-	@BuildClass
-	public MetaCommand metaCommand;
-	@Override
-	protected MetaCommand getMetaCommand() {
-		return metaCommand;
-	};
-	public LibPhysenv(MetaCommand mc){
-		this.metaCommand = mc;
-	}
+public class LibPhysenv{
 	/**
 	Loads the given surface properties as a string, follows the file format.
 	*/
@@ -45,7 +34,7 @@ public class LibPhysenv extends BasicFunctions{
 	*/
 	@External
 	@SharedFunc
-	public MetaVar GetPerformanceSettings(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarPhysEnvPerformanceSettings GetPerformanceSettings(){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Sets the air density.
 	*/

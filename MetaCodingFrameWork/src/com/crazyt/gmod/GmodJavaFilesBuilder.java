@@ -276,7 +276,7 @@ public class GmodJavaFilesBuilder {
 		String funcUrlPat = "(?s)<td> *<a +href=\"[^\"]+\" +title=\"[^\"]+\">([^<]+)</a>\r?\n\\</td>\r?\n<td> *(?:<b>(?:[^<]+)</b>(?::|.))?\\<a +href=\"([^\"]+)\" title=\"[^\"]+\">([^<]+)</a>";
 		String argPat = "(?s)<p>[0-9]+\\.[^<]+<b>([^<]+)</b> *\\(<a href=\"([^\"]+)\" title=\"[^\"]+\"[^>]*>([^<]+)</a>\\)";
 		String namePat = "(?s)<tr>\r?\n<td><strong>Name:</strong></td>\r?\n<td>(?:[^.]+\\.)?([^<]+)</td>";
-		String returnPat = "(?s)<b>Returns:</b> <a href=\"([^\"]+)\" title=\"[^\"]+\">([^<]+)</a>";
+		String returnPat = "(?s)<b>Returns:</b> <a href=\"([^\"]+)\" title=\"[^\"]+\"[^>]*>([^<]+)</a>";
 		String descPat = "(?s)<p><b>Description:</b>(.+?)</p";
 		
 		Pattern funcUrlPattern = Pattern.compile(funcUrlPat);
@@ -572,22 +572,10 @@ public class GmodJavaFilesBuilder {
 			p2.println("import com.crazyt.mcf.External;");
 			p2.println("import com.crazyt.mcf.SimpleName;");
 			p2.println("import com.crazyt.mcf.Library;");
-			p2.println("import com.crazyt.mcf.BasicFunctions;");
-			p2.println("import com.crazyt.mcf.BuildClass;");
 			
 			p2.println("@External");
 			p2.println("@Library(\"" + k + "\")");
-			p2.println("public class Lib" + libName	+ " extends BasicFunctions{");
-			p2.println("	@BuildClass");
-			p2.println("	public MetaCommand metaCommand;");
-			p2.println("	@Override");
-			p2.println("	protected MetaCommand getMetaCommand() {");
-			p2.println("		return metaCommand;");
-			p2.println("	};");
-			p2.println("	public Lib" + libName + "(MetaCommand mc){");
-			p2.println("		this.metaCommand = mc;");
-			p2.println("	}");
-
+			p2.println("public class Lib" + libName	+ "{");
 			parseFunctions(p2,
 					"http://wiki.garrysmod.com" + librariesPaths.get(k.toLowerCase()));
 			p2.println("}");

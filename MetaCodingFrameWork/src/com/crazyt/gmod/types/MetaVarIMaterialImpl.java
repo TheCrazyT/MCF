@@ -13,7 +13,7 @@ public class MetaVarIMaterialImpl extends MetaVarImpl implements MetaVarIMateria
 	*/
 	@External
 	@SharedFunc
-	public MetaVar GetColor(MetaVarNumber xVar,MetaVarNumber yVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
+	public MetaVarColor GetColor(MetaVarNumber xVar,MetaVarNumber yVar){throw new RuntimeException("Should never be executed directly, there is probably an error in the Aspect-coding.");};
 	/**
 	Returns the specified material value as a float, or nil if the value is not set.
 	*/

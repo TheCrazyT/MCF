@@ -113,8 +113,8 @@ public aspect MethodInvocationAspect {
 		}
     	
 		try {
-			Constructor<?> cons = returnType.getConstructor(MetaCommand.class);
-			return cons.newInstance(cp);
+			Constructor<?> cons = returnType.getConstructor();
+			return cons.newInstance();
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -163,7 +163,7 @@ public aspect MethodInvocationAspect {
 				if (!thisJoinPoint.getThis()
 						.getClass().isAnnotationPresent(SourceInfo.class) && MetaVar.class.isAssignableFrom(thisJoinPoint.getThis()
 						.getClass())) {
-					name = ((MetaVar) thisJoinPoint.getThis())._getName() + "."
+					name = ((MetaVar) thisJoinPoint.getThis())._getName() + ":"
 							+ name;
 				}
 			}
