@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_EntityTakeDamage")
 public abstract class HookGAMEMODE_EntityTakeDamage extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "EntityTakeDamage";
 	public HookGAMEMODE_EntityTakeDamage(String n) {
 		super(n);
 	}

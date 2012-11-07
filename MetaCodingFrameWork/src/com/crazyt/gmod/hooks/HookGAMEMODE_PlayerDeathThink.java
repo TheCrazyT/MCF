@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_PlayerDeathThink")
 public abstract class HookGAMEMODE_PlayerDeathThink extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "PlayerDeathThink";
 	public HookGAMEMODE_PlayerDeathThink(String n) {
 		super(n);
 	}

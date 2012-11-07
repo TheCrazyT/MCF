@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_OnEntityCreated")
 public abstract class HookGAMEMODE_OnEntityCreated extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "OnEntityCreated";
 	public HookGAMEMODE_OnEntityCreated(String n) {
 		super(n);
 	}

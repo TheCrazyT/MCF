@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_PreDrawOpaqueRenderables")
 public abstract class HookGAMEMODE_PreDrawOpaqueRenderables extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "PreDrawOpaqueRenderables";
 	public HookGAMEMODE_PreDrawOpaqueRenderables(String n) {
 		super(n);
 	}

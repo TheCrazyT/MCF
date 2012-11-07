@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_PlayerCanHearPlayersVoice")
 public abstract class HookGAMEMODE_PlayerCanHearPlayersVoice extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "PlayerCanHearPlayersVoice";
 	public HookGAMEMODE_PlayerCanHearPlayersVoice(String n) {
 		super(n);
 	}

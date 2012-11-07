@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_PlayerSwitchWeapon")
 public abstract class HookGAMEMODE_PlayerSwitchWeapon extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "PlayerSwitchWeapon";
 	public HookGAMEMODE_PlayerSwitchWeapon(String n) {
 		super(n);
 	}

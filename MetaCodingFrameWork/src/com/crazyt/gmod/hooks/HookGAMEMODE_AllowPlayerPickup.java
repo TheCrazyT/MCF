@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_AllowPlayerPickup")
 public abstract class HookGAMEMODE_AllowPlayerPickup extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "AllowPlayerPickup";
 	public HookGAMEMODE_AllowPlayerPickup(String n) {
 		super(n);
 	}

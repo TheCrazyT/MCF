@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_PreDrawSkyBox")
 public abstract class HookGAMEMODE_PreDrawSkyBox extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "PreDrawSkyBox";
 	public HookGAMEMODE_PreDrawSkyBox(String n) {
 		super(n);
 	}

@@ -43,7 +43,7 @@ public class Main extends GMODBuilder implements Builder{
 
 		print("init");
 		call(AddConsoleCommand(TEXT("test"), TEXT("test"), NUM(1)))
-		.call(getHook().Add(TEXT("OnPlayerChat"), TEXT("hook"), new HookGAMEMODE_OnPlayerChat("hookFunc") {
+		.call(getHook().Add(TEXT(HookGAMEMODE_OnPlayerChat.INTERNAL_HOOK_NAME), TEXT("hook"), new HookGAMEMODE_OnPlayerChat("hookFunc") {
 			@Override
 			@SharedFunc
 			public MetaVar GAMEMODE_OnPlayerChat(
@@ -73,7 +73,6 @@ public class Main extends GMODBuilder implements Builder{
 				return null;
 			}
 		}));
-		call(blah2(null));
 	}
 	
 	public MetaVarString TEXT(String v){

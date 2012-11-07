@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_CanExitVehicle")
 public abstract class HookGAMEMODE_CanExitVehicle extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "CanExitVehicle";
 	public HookGAMEMODE_CanExitVehicle(String n) {
 		super(n);
 	}

@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_HUDPaint")
 public abstract class HookGAMEMODE_HUDPaint extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "HUDPaint";
 	public HookGAMEMODE_HUDPaint(String n) {
 		super(n);
 	}

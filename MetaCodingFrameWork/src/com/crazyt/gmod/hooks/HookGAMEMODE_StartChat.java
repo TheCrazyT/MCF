@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_StartChat")
 public abstract class HookGAMEMODE_StartChat extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "StartChat";
 	public HookGAMEMODE_StartChat(String n) {
 		super(n);
 	}

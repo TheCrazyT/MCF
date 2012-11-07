@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_ShouldCollide")
 public abstract class HookGAMEMODE_ShouldCollide extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "ShouldCollide";
 	public HookGAMEMODE_ShouldCollide(String n) {
 		super(n);
 	}

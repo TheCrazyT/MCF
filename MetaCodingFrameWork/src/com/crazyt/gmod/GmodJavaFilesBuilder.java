@@ -450,6 +450,7 @@ public class GmodJavaFilesBuilder {
 				if(disallowedFuncs.contains(funcName.toLowerCase())){
 					continue;
 				}
+				String shortFuncName = funcName.substring(funcName.lastIndexOf("_")+1);
 				PrintStream p2 = newFile(path + "hooks/Hook" + funcName + ".java");
 				p2.println("package com.crazyt.gmod.hooks;");
 				p2.println("import com.crazyt.gmod.types.*;");
@@ -459,6 +460,7 @@ public class GmodJavaFilesBuilder {
 				p2.println("import com.crazyt.mcf.SimpleName;");
 				p2.println("@Hook(\""+funcName+"\")");
 				p2.println("public abstract class Hook" + funcName + " extends MetaVarFunctionImpl{");
+				p2.println("\tpublic final static String INTERNAL_HOOK_NAME = \"" + shortFuncName + "\";");
 				p2.println("\tpublic Hook" + funcName + "(String n) {");
 				p2.println("\t\tsuper(n);");
 				p2.println("\t}");

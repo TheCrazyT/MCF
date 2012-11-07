@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_RenderScreenspaceEffects")
 public abstract class HookGAMEMODE_RenderScreenspaceEffects extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "RenderScreenspaceEffects";
 	public HookGAMEMODE_RenderScreenspaceEffects(String n) {
 		super(n);
 	}

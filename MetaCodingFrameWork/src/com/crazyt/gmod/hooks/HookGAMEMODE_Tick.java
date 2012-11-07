@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_Tick")
 public abstract class HookGAMEMODE_Tick extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "Tick";
 	public HookGAMEMODE_Tick(String n) {
 		super(n);
 	}

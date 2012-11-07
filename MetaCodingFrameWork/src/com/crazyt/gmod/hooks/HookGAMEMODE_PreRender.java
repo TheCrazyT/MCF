@@ -6,6 +6,7 @@ import com.crazyt.mcf.Hook;
 import com.crazyt.mcf.SimpleName;
 @Hook("GAMEMODE_PreRender")
 public abstract class HookGAMEMODE_PreRender extends MetaVarFunctionImpl{
+	public final static String INTERNAL_HOOK_NAME = "PreRender";
 	public HookGAMEMODE_PreRender(String n) {
 		super(n);
 	}
