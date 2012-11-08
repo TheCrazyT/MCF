@@ -7,5 +7,5 @@ import com.crazyt.mcf.SimpleName;
 import com.crazyt.mcf.Implementation;
 @External
 @Implementation(MetaVarStringImpl.class)
-public interface MetaVarString extends com.crazyt.mcf.MetaVar,com.crazyt.mcf.MetaVarString,com.crazyt.gmod.types.MetaVarVararg,IMetaVarAny{ //,IMetaVarAny{
+public interface MetaVarString extends com.crazyt.mcf.MetaVar,com.crazyt.mcf.MetaVarString,com.crazyt.gmod.types.MetaVarVararg,IMetaVarAny{
 }

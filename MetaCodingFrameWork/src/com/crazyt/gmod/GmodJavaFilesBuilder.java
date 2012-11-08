@@ -15,10 +15,13 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.text.DefaultEditorKit.CutAction;
+
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.MetaVar;
 public class GmodJavaFilesBuilder {
 	private final static Set<String> disallowedFuncs;
+	private final static HashMap<String,String> customInterfaceExtension = new HashMap<String,String>();
 	private final static HashMap<String,String> customExtension = new HashMap<String,String>();
 	private static Set<String> attributeTypes = new HashSet<String>();
 	private static HashMap<String,String> attributePaths = new HashMap<String,String>();
@@ -85,10 +88,14 @@ public class GmodJavaFilesBuilder {
 //		propertySubst.put("name","name_p");
 		
 		//TODO: implements * is just a small hack, need to improve this later
-		customExtension.put("string","com.crazyt.mcf.MetaVar,com.crazyt.mcf.MetaVarString,com.crazyt.gmod.types.MetaVarVararg,IMetaVarAny{ //");
-		customExtension.put("number","com.crazyt.mcf.MetaVarInt");
-		customExtension.put("boolean","com.crazyt.mcf.MetaVarBoolean");
-		customExtension.put("table","com.crazyt.mcf.MetaVarTable");
+		customInterfaceExtension.put("string","com.crazyt.mcf.MetaVar,com.crazyt.mcf.MetaVarString,com.crazyt.gmod.types.MetaVarVararg");
+		customInterfaceExtension.put("number","com.crazyt.mcf.MetaVarInt");
+		customInterfaceExtension.put("boolean","com.crazyt.mcf.MetaVarBoolean");
+		customInterfaceExtension.put("table","com.crazyt.mcf.MetaVarTable");
+
+		customExtension.put("string","com.crazyt.mcf.MetaVarStringImpl");
+		customExtension.put("number","com.crazyt.mcf.MetaVarIntImpl");
+		customExtension.put("boolean","com.crazyt.mcf.MetaVarBooleanImpl");
 		
 		metaVarSubst.put("any", "com.crazyt.gmod.IMetaVarAny");
 	}
@@ -601,8 +608,8 @@ public class GmodJavaFilesBuilder {
 				System.out.println("MetaVar    :" + k);
 				PrintStream p2 = newFile(path + "types/MetaVar" + attName + ".java");
 				String ext = "MetaVar";
-				if (customExtension.containsKey(k.toLowerCase())) {
-					ext = customExtension.get(k.toLowerCase());
+				if (customInterfaceExtension.containsKey(k.toLowerCase())) {
+					ext = customInterfaceExtension.get(k.toLowerCase());
 				}
 	
 				p2.println("package com.crazyt.gmod.types;");
@@ -624,6 +631,10 @@ public class GmodJavaFilesBuilder {
 				p2.println("}");
 				p2.close();
 
+				ext = "MetaVarImpl";
+				if(customExtension.containsKey(k.toLowerCase())){
+					ext = customExtension.get(k.toLowerCase());
+				}
 				PrintStream p3 = newFile(path + "types/MetaVar" + attName + "Impl.java");
 				p3.println("package com.crazyt.gmod.types;");
 				p3.println("import com.crazyt.gmod.*;");
@@ -635,7 +646,7 @@ public class GmodJavaFilesBuilder {
 				p3.println("@External");
 				p3.println("@SimpleName(\"" + k + "\")");
 				p3.println("public class MetaVar" + attName
-						+ "Impl extends MetaVarImpl implements MetaVar"
+						+ "Impl extends " + ext + " implements MetaVar"
 						+ attName + "{");
 				parseProperties(p3,
 						BASE_URL + attributePaths.get(k.toLowerCase()));

@@ -42,6 +42,12 @@ public class Main extends GMODBuilder implements Builder{
 		print("Server init");
 		call(AddCSLuaFile(TEXT("cl_init.lua")));
 		call(AddCSLuaFile(TEXT("shared.lua")));
+
+		MetaVarString x = new MetaVarStringImpl("x");
+		x.setValue("Test");
+		
+		MetaVarNumber y = new MetaVarNumberImpl("y");
+		y.setValue(5);
 		
 		call(getHook().Add(TEXT(HookGAMEMODE_OnPlayerChat.INTERNAL_HOOK_NAME), TEXT("hook2"), 
 			new HookGAMEMODE_OnPlayerChat("hookFunc2") {
@@ -88,16 +94,6 @@ public class Main extends GMODBuilder implements Builder{
 
 	}
 	
-	public MetaVarString TEXT(String v){
-		return new MetaVarStringImpl("\""+v+"\"");
-	}
-	public MetaVarNumber NUM(int v){
-		return new MetaVarNumberImpl(String.valueOf(v));
-	}
-	public MetaVarBoolean BOOL(boolean v){
-		return new MetaVarBooleanImpl(v?"true":"false");
-	}
-
 	@Override
 	protected MetaCommand getMetaCommand() {
 		return metaCommand;

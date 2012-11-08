@@ -24,7 +24,12 @@ public aspect MethodInvocationAspect {
     pointcut hooks(): 
     execution(public new(String)) && within(@Hook *);
 
-	private static Class<?> getImplementationIfExist(Class<?> clazz){
+    pointcut valueSetters(): 
+    execution(@ValueSetter void * (int)) ||
+    execution(@ValueSetter void * (String)) ||
+    execution(@ValueSetter void * (boolean));
+
+    private static Class<?> getImplementationIfExist(Class<?> clazz){
 		if(clazz.isAnnotationPresent(Implementation.class)){
 			return clazz.getAnnotation(Implementation.class).value();
 		}
@@ -59,8 +64,9 @@ public aspect MethodInvocationAspect {
 			cp = getCommandProcessor(thisJoinPoint.getThis());
 //	    	System.out.println("command:" + thisJoinPoint.getThis().getClass().getCanonicalName()+"."+thisJoinPoint.getSignature().getName());
 			MethodSignature ms = (MethodSignature)thisJoinPoint.getSignature();
-			cp._addFunctionCall(ms,thisJoinPoint.getThis().getClass().getCanonicalName()+"."+thisJoinPoint.getSignature().getName(),thisJoinPoint.getArgs());
+//			cp._addFunctionCall(ms,thisJoinPoint.getThis().getClass().getCanonicalName()+"."+thisJoinPoint.getSignature().getName(),thisJoinPoint.getArgs());
 //	    	System.out.println("end command:" + thisJoinPoint.getThis().getClass().getCanonicalName()+"."+thisJoinPoint.getSignature().getName());
+			cp._addFunctionCall(ms,thisJoinPoint.getSignature().getName(),thisJoinPoint.getArgs());
 			returnType = ms.getReturnType();
 			result = cp;
 		} catch (Throwable t) {
@@ -220,6 +226,7 @@ public aspect MethodInvocationAspect {
 			System.out.println("some aspect error happened");
 			throw new RuntimeException(t);
 		}
+
 		String name = (String) thisJoinPoint.getArgs()[0];
 		Method method = null;
 		Hook hookAnnotation = (Hook)thisJoinPoint.getSignature().getDeclaringType()
@@ -243,6 +250,39 @@ public aspect MethodInvocationAspect {
 		
     }
 
+    void around():valueSetters(){
+		MetaCommand cp = null;
+		try {
+			cp = getCommandProcessor(thisJoinPoint.getThis());
+			if (cp == null) {
+				throw new RuntimeException(
+						"command processor not found for class:"
+								+ thisJoinPoint.getSignature().getDeclaringType().getCanonicalName() + "!");
+			}
+		} catch (Throwable t) {
+			System.out.println("some aspect error happened");
+			throw new RuntimeException(t);
+		}
+
+		
+		Object args[] = thisJoinPoint.getArgs();
+		if(args.length!=1){
+			throw new RuntimeException("unexpected number of arguments!("+args.length+")");
+		}
+		
+		if (thisJoinPoint.getThis() instanceof MetaVarString && args[0] instanceof String) {
+			cp.set((MetaVarString) thisJoinPoint.getThis(), (String) args[0]);
+		} else if (thisJoinPoint.getThis() instanceof MetaVarInt && args[0] instanceof Integer) {
+			cp.set((MetaVarInt) thisJoinPoint.getThis(), (Integer) args[0]);
+		} else if (thisJoinPoint.getThis() instanceof MetaVar && args[0] instanceof MetaVar) {
+			cp.set((MetaVar) thisJoinPoint.getThis(), (MetaVar) args[0]);
+		} else if (thisJoinPoint.getThis() instanceof MetaVarBoolean && args[0] instanceof Boolean) {
+			cp.set((MetaVarBoolean) thisJoinPoint.getThis(), (Boolean) args[0]);
+		} else {
+			throw new RuntimeException("unexpected number of argument types!");
+		}
+		
+    }
 //    pointcut test():
 //    	within(@SourceInfo *);
 //    

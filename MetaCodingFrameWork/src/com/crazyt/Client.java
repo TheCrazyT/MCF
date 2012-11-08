@@ -87,16 +87,6 @@ public class Client extends GMODBuilder implements Builder{
 			}
 		}));
 	}
-	
-	public MetaVarString TEXT(String v){
-		return new MetaVarStringImpl("\""+v+"\"");
-	}
-	public MetaVarNumber NUM(int v){
-		return new MetaVarNumberImpl(String.valueOf(v));
-	}
-	public MetaVarBoolean BOOL(boolean v){
-		return new MetaVarBooleanImpl(v?"true":"false");
-	}
 
 //	@CustomMetaCommand
 //	public MetaVarString blah2(MetaVarString blah){

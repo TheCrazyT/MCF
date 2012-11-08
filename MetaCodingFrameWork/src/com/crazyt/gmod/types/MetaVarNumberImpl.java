@@ -7,7 +7,7 @@ import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
 @External
 @SimpleName("number")
-public class MetaVarNumberImpl extends MetaVarImpl implements MetaVarNumber{
+public class MetaVarNumberImpl extends com.crazyt.mcf.MetaVarIntImpl implements MetaVarNumber{
 	public MetaVarNumberImpl(String n) {
 		super(n);
 	}

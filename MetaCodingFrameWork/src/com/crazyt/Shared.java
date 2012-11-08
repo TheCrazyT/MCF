@@ -44,13 +44,6 @@ public class Shared extends GMODBuilder implements Builder{
 		print("shared init");
 	}
 	
-	public MetaVarString TEXT(String v){
-		return new MetaVarStringImpl("\""+v+"\"");
-	}
-	public MetaVarNumber NUM(int v){
-		return new MetaVarNumberImpl(String.valueOf(v));
-	}
-
 	@Override
 	protected MetaCommand getMetaCommand() {
 		return metaCommand;

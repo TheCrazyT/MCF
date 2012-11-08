@@ -14,6 +14,15 @@ import java.util.Set;
 
 import org.aspectj.lang.reflect.MethodSignature;
 
+import com.crazyt.mcf.MetaVarBoolean;
+import com.crazyt.mcf.MetaVarBooleanImpl;
+import com.crazyt.mcf.MetaVarInt;
+import com.crazyt.mcf.MetaVarIntImpl;
+import com.crazyt.mcf.MetaVarString;
+import com.crazyt.mcf.MetaVarStringImpl;
+
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 
 public class LuaBuilder implements MetaScriptBuilder{
 
@@ -286,6 +295,13 @@ public class LuaBuilder implements MetaScriptBuilder{
 		return this;
 	}
 
+	public MetaCommand set(MetaVarBoolean v, boolean s) {
+		finalizeConditionStatements();
+
+		println(v._getName()+" = " + (s?"true":"false"));
+		return this;
+	}
+
 	public MetaCommand set(MetaVarInt v, int i) {
 		finalizeConditionStatements();
 
@@ -338,9 +354,7 @@ public class LuaBuilder implements MetaScriptBuilder{
 	public void _addFunctionCall(MethodSignature sig,String functionName, Object[] args) {
 		finalizeConditionStatements();
 
-		int lio = functionName.lastIndexOf('.');
-		String name = "";
-		name += functionName.substring(lio + 1) + "(";
+		String name = functionName + "(";
 		for (Object o : args) {
 			// println("\tArg:"+o.getClass().getCanonicalName()+":"+getVarName(o));
 			name += getVarName(o) + ",";
@@ -494,5 +508,25 @@ public class LuaBuilder implements MetaScriptBuilder{
 		} catch (CloneNotSupportedException e) {
 			return null;
 		}
+	}
+
+	@Override
+	public void setValue(boolean value) {
+		throw new NotImplementedException();
+	}
+	
+	@Override
+	public MetaVarString TEXT(String v){
+		return new MetaVarStringImpl("\""+v+"\"");
+	}
+	
+	@Override
+	public MetaVarInt NUM(int v){
+		return new MetaVarIntImpl(String.valueOf(v));
+	}
+
+	@Override
+	public MetaVarBoolean BOOL(boolean v){
+		return new MetaVarBooleanImpl(v?"true":"false");
 	}
 }

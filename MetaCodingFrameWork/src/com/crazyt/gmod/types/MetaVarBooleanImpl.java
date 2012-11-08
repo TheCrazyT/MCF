@@ -7,7 +7,7 @@ import com.crazyt.mcf.External;
 import com.crazyt.mcf.SimpleName;
 @External
 @SimpleName("boolean")
-public class MetaVarBooleanImpl extends MetaVarImpl implements MetaVarBoolean{
+public class MetaVarBooleanImpl extends com.crazyt.mcf.MetaVarBooleanImpl implements MetaVarBoolean{
 	public MetaVarBooleanImpl(String n) {
 		super(n);
 	}
