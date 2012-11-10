@@ -10,7 +10,7 @@ import com.crazyt.mcf.SourceInfo;
 
 public aspect MethodInvocationAspect {
 	public static boolean executeMode = false;
-	public static MetaCommand metaCommand = null;
+	public static MetaScriptBuilder metaCommand = null;
 
     pointcut mcfCommands(): 
 	execution(@CustomMetaCommand * * (..)) && !within(com.crazyt.mcf..*);
@@ -36,13 +36,13 @@ public aspect MethodInvocationAspect {
 		return clazz;
 	}
 
-	private MetaCommand getCommandProcessor(Object o){
+	private MetaScriptBuilder getCommandProcessor(Object o){
 		if(metaCommand == null){
 			Class<?> clazz = o.getClass();
 			for(Field f:clazz.getDeclaredFields()){
 				if(f.isAnnotationPresent(BuildClass.class)){
 					try {
-						metaCommand =(MetaCommand)f.get(o);
+						metaCommand =(MetaScriptBuilder)f.get(o);
 					} catch (IllegalArgumentException e) {
 					} catch (IllegalAccessException e) {
 					}
@@ -58,7 +58,7 @@ public aspect MethodInvocationAspect {
     		return proceed();
     	}
     	Class<?> returnType = null;
-    	MetaCommand cp = null;
+    	MetaScriptBuilder cp = null;
 		Object result = null;
 		try {
 			cp = getCommandProcessor(thisJoinPoint.getThis());
@@ -150,7 +150,7 @@ public aspect MethodInvocationAspect {
     		return proceed();
     	}
     	Class<?> returnType = null;
-    	MetaCommand cp = null;
+    	MetaScriptBuilder cp = null;
 		try {
 			cp = getCommandProcessor(thisJoinPoint.getThis());
 			if(cp==null){
@@ -214,7 +214,7 @@ public aspect MethodInvocationAspect {
     after() returning:hooks(){
 		executeMode = false;
 
-		MetaCommand cp = null;
+		MetaScriptBuilder cp = null;
 		try {
 			cp = getCommandProcessor(thisJoinPoint.getThis());
 			if (cp == null) {

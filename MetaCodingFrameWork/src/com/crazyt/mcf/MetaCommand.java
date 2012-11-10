@@ -43,22 +43,10 @@ public interface MetaCommand extends MetaVar,MetaConditionCommands{
 	
 	public abstract MetaVarString TEXT(String v);
 	
+	public abstract MetaVarString concat(MetaVarString v1,MetaVarString v2);
+	
 	public abstract MetaVarInt NUM(int v);
 	
 	public abstract MetaVarBoolean BOOL(boolean v);
 
-	/**
-	 * Don't use this, its only used internal.
-	 */
-	public abstract void _addFunctionCall(MethodSignature sig,String functionName,Object[] args);
-
-	/**
-	 * Don't use this, its only used internal.
-	 */
-	public abstract void _addExternalFunctionCall(MethodSignature sig,String functionName,Object[] args);
-
-	/**
-	 * Don't use this, its only used internal.
-	 */
-	public abstract void _addHook(String hookName,Method method,Object obj);
 }

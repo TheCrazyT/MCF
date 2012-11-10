@@ -42,6 +42,13 @@ public class Client extends GMODBuilder implements Builder{
 		super.build();
 
 		print("init");
+		
+		MetaVarString s1 = new MetaVarStringImpl("s1");
+		MetaVarString s2 = new MetaVarStringImpl("s2");
+		MetaVarString s3 = new MetaVarStringImpl("s3");
+		set(s1,"kk");
+		set(s2,"xx");
+		set(s3,concat(s1,s2));
 		call(AddConsoleCommand(TEXT("test"), TEXT("test"), NUM(1)))
 		.call(getHook().Add(TEXT(HookGAMEMODE_OnPlayerChat.INTERNAL_HOOK_NAME), TEXT("hook"), new HookGAMEMODE_OnPlayerChat("hookFunc") {
 			@Override

@@ -105,24 +105,6 @@ public abstract class BasicFunctions implements MetaCommand{
 	}
 
 	@Override
-	public void _addFunctionCall(MethodSignature sig, String functionName,
-			Object[] args) {
-		getMetaCommand()._addFunctionCall(sig, functionName, args);
-	}
-
-	@Override
-	public void _addExternalFunctionCall(MethodSignature sig,
-			String functionName, Object[] args) {
-		getMetaCommand()._addExternalFunctionCall(sig, functionName, args);
-	}
-
-	@Override
-	public void _addHook(String hook,
-			Method method, Object object) {
-		getMetaCommand()._addHook(hook,method,object);
-	}
-	
-	@Override
 	public MetaVarString TEXT(String v){
 		return getMetaCommand().TEXT(v);
 	}
@@ -137,4 +119,8 @@ public abstract class BasicFunctions implements MetaCommand{
 		return getMetaCommand().BOOL(v);
 	}
 
+	@Override
+	public MetaVarString concat(MetaVarString v1, MetaVarString v2) {
+		return getMetaCommand().concat(v1, v2);
+	}
 }

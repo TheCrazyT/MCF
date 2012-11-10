@@ -529,4 +529,9 @@ public class LuaBuilder implements MetaScriptBuilder{
 	public MetaVarBoolean BOOL(boolean v){
 		return new MetaVarBooleanImpl(v?"true":"false");
 	}
+
+	@Override
+	public MetaVarString concat(MetaVarString v1, MetaVarString v2) {
+		return new MetaVarStringImpl(v1._getName() + ".." + v2._getName());
+	}
 }
