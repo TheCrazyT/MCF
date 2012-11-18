@@ -1,27 +1,7 @@
 package com.crazyt.mcf;
 
-import java.lang.reflect.Method;
 
-import org.aspectj.lang.reflect.MethodSignature;
-
-import com.crazyt.mcf.MetaVarBoolean;
-import com.crazyt.mcf.MetaVarBooleanImpl;
-import com.crazyt.mcf.MetaVarInt;
-import com.crazyt.mcf.MetaVarIntImpl;
-import com.crazyt.mcf.MetaVarString;
-import com.crazyt.mcf.MetaVarStringImpl;
-
-public interface MetaCommand extends MetaVar,MetaConditionCommands{
-
-	public abstract MetaCommand  forCmd(MetaVarInt v, MetaVarInt from,
-			MetaVarInt to);
-	
-	public abstract MetaCommand  forCmd(MetaVarInt v, Integer from,
-			Integer to);
-
-	public abstract MetaCommand forPair(MetaVar v1,MetaVar v2,MetaVarTable table);
-
-	public abstract MetaCommand  end();
+public interface MetaCommand extends MetaVar,MetaConditionCommands,MetaLoops{
 
 	public abstract MetaCommand  add(MetaVarInt v1, MetaVarInt v2);
 

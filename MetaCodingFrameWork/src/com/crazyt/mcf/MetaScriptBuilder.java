@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 
 import org.aspectj.lang.reflect.MethodSignature;
 
-public interface MetaScriptBuilder extends Cloneable,MetaConditionLogic,MetaConditionResult,MetaCommandInitiator,MetaCommand,MetaCondition{
+public interface MetaScriptBuilder extends Cloneable,MetaLoops,MetaLoopDo,MetaConditionLogic,MetaConditionResult,MetaCommandInitiator,MetaCommand,MetaCondition{
 	/**
 	 * Don't use this, its only used internal.
 	 */

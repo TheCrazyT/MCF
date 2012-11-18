@@ -16,6 +16,8 @@ import com.crazyt.gmod.types.MetaVarVector;
 import com.crazyt.gmod.types.MetaVarVectorImpl;
 import com.crazyt.mcf.BuildClass;
 import com.crazyt.mcf.Builder;
+import com.crazyt.mcf.IDo;
+import com.crazyt.mcf.IThen;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.SimpleName;
@@ -59,35 +61,37 @@ public class Main extends GMODBuilder implements Builder{
 						@SimpleName("teamOnlyVar") MetaVarBoolean teamOnlyVar,
 						@SimpleName("playerIsDeadVar") MetaVarBoolean playerIsDeadVar) {
 					call(getChat().AddText(TEXT("chatting ...")));
-					MetaVarEntity ent = new MetaVarEntityImpl("ent");
-					MetaVarNumber i = new MetaVarNumberImpl("ent");
-					MetaVarNumber v1 = new MetaVarNumberImpl("v");
-					cond(textVar,"test5").e();
-					{
-						MetaVarTable table = new MetaVarTableImpl("table");
-						forCmd(v1,NUM(0),NUM(10));
-						{
-							/*
-							  	barrel=ents.Create("prop_physics")
-								barrel:SetModel("models/props_c17/oildrum001.mdl")
-								barrel:SetPos(Vector(0,0,0))
-								barrel:Spawn()
-
-							 */
-							MetaVarVector vec = new MetaVarVectorImpl("vec");
-							set(ent,getEnts().Create(TEXT("prop_physics")));
-							call(ent.SetPos(vec));
-							call(ent.Spawn());
-						}
-						end();
-						forPair(i,ent,getEnts().FindByClass(TEXT("prop_physics*")));
-						{
-							call(getTable().insert(table, NUM(0), ent));
-						}
-						end();
-						call(getHalo().Add(table, Color(NUM(255), NUM(0), NUM(0), NUM(255)), NUM(5),NUM(5),NUM(2),BOOL(false),BOOL(false)));
-					}
-					end();
+					final MetaVarEntity ent = new MetaVarEntityImpl("ent");
+					final MetaVarNumber i = new MetaVarNumberImpl("i");
+					final MetaVarNumber v1 = new MetaVarNumberImpl("v");
+					cond(textVar,"test5").e().then(new IThen() {
+						@Override
+						public void then() {
+							final MetaVarTable table = new MetaVarTableImpl("table");
+							forCmd(v1,NUM(0),NUM(10)).doLoop(new IDo() {
+								@Override
+								public void loop() {
+									/*
+								  	barrel=ents.Create("prop_physics")
+									barrel:SetModel("models/props_c17/oildrum001.mdl")
+									barrel:SetPos(Vector(0,0,0))
+									barrel:Spawn()
+	
+								 */
+								MetaVarVector vec = new MetaVarVectorImpl("vec");
+								set(ent,getEnts().Create(TEXT("prop_physics")));
+								call(ent.SetPos(vec));
+								call(ent.Spawn());
+								}
+							});
+							forPair(i,ent,getEnts().FindByClass(TEXT("prop_physics*"))).doLoop(new IDo() {
+								@Override
+								public void loop() {
+									call(getTable().insert(table, NUM(0), ent));
+								}
+							});
+							call(getHalo().Add(table, Color(NUM(255), NUM(0), NUM(0), NUM(255)), NUM(5),NUM(5),NUM(2),BOOL(false),BOOL(false)));
+					}});
 					return null;
 				}
 			}));

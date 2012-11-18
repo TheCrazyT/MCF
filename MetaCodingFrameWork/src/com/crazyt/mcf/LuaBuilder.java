@@ -14,13 +14,6 @@ import java.util.Set;
 
 import org.aspectj.lang.reflect.MethodSignature;
 
-import com.crazyt.mcf.MetaVarBoolean;
-import com.crazyt.mcf.MetaVarBooleanImpl;
-import com.crazyt.mcf.MetaVarInt;
-import com.crazyt.mcf.MetaVarIntImpl;
-import com.crazyt.mcf.MetaVarString;
-import com.crazyt.mcf.MetaVarStringImpl;
-
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 
@@ -233,78 +226,51 @@ public class LuaBuilder implements MetaScriptBuilder{
 			throw new Exception(e);
 		}
 	}
-	public MetaCommand forPair(MetaVar v1,MetaVar v2,MetaVarTable table){
-		finalizeConditionStatements();
-
+	public MetaLoopDo forPair(MetaVar v1,MetaVar v2,MetaVarTable table){
 		println("for " + v1._getName() + "," + v2._getName() + " in pairs("
 				+ table._getName() + ") do");
 		increaseTab();
 		return this;
 	}
-	public MetaCommand forCmd(MetaVarInt v, MetaVarInt from, MetaVarInt to) {
-		finalizeConditionStatements();
-		
+	public MetaLoopDo forCmd(MetaVarInt v, MetaVarInt from, MetaVarInt to) {
 		println("for " + v._getName() + "=" + from._getName() + ","
 				+ to._getName() + ",1 do");
 		increaseTab();
 		return this;
 	}
 
-	public MetaCommand forCmd(MetaVarInt v, Integer from, Integer to) {
-		finalizeConditionStatements();
-		
+	public MetaLoopDo forCmd(MetaVarInt v, Integer from, Integer to) {
 		println("for " + v._getName() + "=" + from + "," + to + ",1 do");
 		increaseTab();
 		return this;
 	}
 
-	public MetaCommand end() {
-		finalizeConditionStatements();
-		
-		decreaseTab();
-		println("end");
-		return this;
-	}
-
-
 	public MetaCommand add(MetaVarInt v1, MetaVarInt v2) {
-		finalizeConditionStatements();
-
 		println(v1._getName()+"="+v1._getName()+"+"+v2._getName());
 		return this;
 	}
 
 	public MetaCommand sub(MetaVarInt v1, MetaVarInt v2) {
-		finalizeConditionStatements();
-
 		println(v1._getName()+"="+v1._getName()+"-"+v2._getName());
 		return this;
 	}
 
 	public MetaCommand set(MetaVar v1, MetaVar v2) {
-		finalizeConditionStatements();
-
 		println(v1._getName()+" = "+v2._getName());
 		return this;
 	}
 
 	public MetaCommand set(MetaVarString v, String s) {
-		finalizeConditionStatements();
-
 		println(v._getName()+" = \""+s+"\"");
 		return this;
 	}
 
 	public MetaCommand set(MetaVarBoolean v, boolean s) {
-		finalizeConditionStatements();
-
 		println(v._getName()+" = " + (s?"true":"false"));
 		return this;
 	}
 
 	public MetaCommand set(MetaVarInt v, int i) {
-		finalizeConditionStatements();
-
 		println(v._getName()+" = "+i);
 		return this;
 	}
@@ -314,15 +280,11 @@ public class LuaBuilder implements MetaScriptBuilder{
 	}
 
 	public MetaCommand print(MetaVar v) {
-		finalizeConditionStatements();
-
 		println("print("+v._getName()+")");
 		return this;
 	}
 	
 	public MetaCommand print(String v) {
-		finalizeConditionStatements();
-
 		println("print(\""+v+"\")");
 		return this;
 	}
@@ -352,8 +314,6 @@ public class LuaBuilder implements MetaScriptBuilder{
 	
 	@Override
 	public void _addFunctionCall(MethodSignature sig,String functionName, Object[] args) {
-		finalizeConditionStatements();
-
 		String name = functionName + "(";
 		for (Object o : args) {
 			// println("\tArg:"+o.getClass().getCanonicalName()+":"+getVarName(o));
@@ -371,8 +331,6 @@ public class LuaBuilder implements MetaScriptBuilder{
 
 	@Override
 	public MetaCommand call(MetaVar mc) {
-		finalizeConditionStatements();
-		
 		println(mc._getName());
 		return this;
 	}
@@ -398,7 +356,6 @@ public class LuaBuilder implements MetaScriptBuilder{
 	@Override
 	public void _addExternalFunctionCall(MethodSignature sig,
 			String functionName, Object[] args) {
-		finalizeConditionStatements();
 
 		String name = functionName + "(";
 		for (Object o : args) {
@@ -416,35 +373,30 @@ public class LuaBuilder implements MetaScriptBuilder{
 	@Override
 	public MetaConditionResult g() {
 		_setName(condVar1._getName() + ">" + condVar2._getName());
-		GlobalBuilderInfo.lastConditionStatement = "if(" + _getName() + ") then";
 		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaConditionResult s() {
 		_setName(condVar1._getName() + "<" + condVar2._getName());
-		GlobalBuilderInfo.lastConditionStatement = "if(" + _getName() + ") then";
 		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaConditionResult e() {
 		_setName(condVar1._getName() + "==" + condVar2._getName());
-		GlobalBuilderInfo.lastConditionStatement = "if(" + _getName() + ") then";
 		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaConditionResult ge() {
 		_setName(condVar1._getName() + ">=" + condVar2._getName());
-		GlobalBuilderInfo.lastConditionStatement = "if(" + _getName() + ") then";
 		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
 	public MetaConditionResult se() {
 		_setName(condVar1._getName() + "<" + condVar2._getName());
-		GlobalBuilderInfo.lastConditionStatement = "if(" + _getName() + ") then";
 		return (MetaConditionResult)cloneIt();
 	}
 
@@ -477,29 +429,17 @@ public class LuaBuilder implements MetaScriptBuilder{
 	}
 
 	@Override
-	public MetaCommand and() {
-		GlobalBuilderInfo.lastConditionStatement = null;
-		println("if((" + condVar1._getName() + ") && ("
-				+ condVar2._getName() + ")) then");
-		increaseTab();
-		return (MetaCommand)cloneIt();
+	public MetaConditionResult and() {
+		_setName("((" + condVar1._getName() + ") && ("
+				+ condVar2._getName() + "))");
+		return (MetaConditionResult)cloneIt();
 	}
 
 	@Override
-	public MetaCommand or() {
-		GlobalBuilderInfo.lastConditionStatement = null;
-		println("if((" + condVar1._getName() + ") || ("
-				+ condVar2._getName() + ")) then");
-		increaseTab();
-		return (MetaCommand)cloneIt();
-	}
-
-	private void finalizeConditionStatements() {
-		if(GlobalBuilderInfo.lastConditionStatement!=null){
-			println(GlobalBuilderInfo.lastConditionStatement);
-			increaseTab();
-		}
-		GlobalBuilderInfo.lastConditionStatement = null;
+	public MetaConditionResult or() {
+		_setName("((" + condVar1._getName() + ") || ("
+				+ condVar2._getName() + "))");
+		return (MetaConditionResult)cloneIt();
 	}
 
 	private Object cloneIt(){
@@ -533,5 +473,23 @@ public class LuaBuilder implements MetaScriptBuilder{
 	@Override
 	public MetaVarString concat(MetaVarString v1, MetaVarString v2) {
 		return new MetaVarStringImpl(v1._getName() + ".." + v2._getName());
+	}
+
+	@Override
+	public MetaCommand then(IThen then) {
+		println("if(" + _getName() + ") then");
+		increaseTab();
+		then.then();
+		decreaseTab();
+		println("end");
+		return this;
+	}
+
+	@Override
+	public MetaCommand doLoop(IDo loop) {
+		loop.loop();
+		decreaseTab();
+		println("end");
+		return this;
 	}
 }

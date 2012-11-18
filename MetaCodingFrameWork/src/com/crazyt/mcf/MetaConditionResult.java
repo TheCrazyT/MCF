@@ -1,4 +1,4 @@
 package com.crazyt.mcf;
 
-public interface MetaConditionResult extends MetaVarBoolean,MetaCommand{
+public interface MetaConditionResult extends MetaVarBoolean,MetaConditionThen{
 }

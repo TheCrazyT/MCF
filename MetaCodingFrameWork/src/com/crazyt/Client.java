@@ -16,6 +16,8 @@ import com.crazyt.gmod.types.MetaVarTable;
 import com.crazyt.gmod.types.MetaVarTableImpl;
 import com.crazyt.mcf.BuildClass;
 import com.crazyt.mcf.Builder;
+import com.crazyt.mcf.IDo;
+import com.crazyt.mcf.IThen;
 import com.crazyt.mcf.MetaCommand;
 import com.crazyt.mcf.MetaVar;
 import com.crazyt.mcf.MetaVarInt;
@@ -58,37 +60,51 @@ public class Client extends GMODBuilder implements Builder{
 					@SimpleName("textVar") MetaVarString textVar,
 					@SimpleName("teamOnlyVar") MetaVarBoolean teamOnlyVar,
 					@SimpleName("playerIsDeadVar") MetaVarBoolean playerIsDeadVar) {
-				MetaVarInt i = new MetaVarIntImpl("i");
-				MetaVarString v1 = new MetaVarStringImpl("v1");
-				MetaVarPlayer v2 = new MetaVarPlayerImpl("p");
+				final MetaVarInt i = new MetaVarIntImpl("i");
+				final MetaVarString v1 = new MetaVarStringImpl("v1");
+				final MetaVarPlayer v2 = new MetaVarPlayerImpl("p");
 				
-				cond(textVar,"test").e();
-					print("hello there!");
-				end();
-				cond(textVar,"players").e();
-				{
-					forPair(v1,v2,getPlayer().GetHumans());
-					{
-						call(getChat().AddText(v2.Name()));
+				cond(textVar,"test").e().then(new IThen() {
+					@Override
+					public void then() {
+						print("hello there!");
 					}
-					end();
-				}
-				end();
-				cond(textVar,"test2").e()
-					.print("hello there!")
-				.end();
-				cond(cond(textVar,"test2").e(),cond(textVar,"test3").e()).and()
-					.print("hello there!")
-				.end();
-				cond(textVar,"count").e();
-				{
-					forCmd(i, 0, 10);
-					{
-						print(i);
+				});
+				cond(textVar,"players").e().then(new IThen() {
+					@Override
+					public void then() {
+						forPair(v1,v2,getPlayer().GetHumans()).doLoop(new IDo() {
+							@Override
+							public void loop() {
+								call(getChat().AddText(v2.Name()));
+							}
+						});
 					}
-					end();
-				}
-				end();
+				});
+				cond(textVar,"test2").e().then(new IThen() {
+					@Override
+					public void then() {
+						print("hello there!");
+					}
+				});
+				cond(cond(textVar,"test2").e(),cond(textVar,"test3").e()).and().then(new IThen() {
+					@Override
+					public void then() {
+						print("hello there!");
+					}
+				});
+				cond(textVar,"count").e().then(new IThen() {
+					@Override
+					public void then() {
+						forCmd(i, 0, 10).doLoop(new IDo() {
+							
+							@Override
+							public void loop() {
+								print(i);
+							}
+						});
+					}
+				});
 				
 				return null;
 			}

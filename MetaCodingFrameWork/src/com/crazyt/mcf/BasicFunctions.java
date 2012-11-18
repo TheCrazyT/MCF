@@ -1,8 +1,5 @@
 package com.crazyt.mcf;
 
-import java.lang.reflect.Method;
-
-import org.aspectj.lang.reflect.MethodSignature;
 
 public abstract class BasicFunctions implements MetaCommand{
 
@@ -19,23 +16,18 @@ public abstract class BasicFunctions implements MetaCommand{
 	}
 
 	@Override
-	public MetaCommand forCmd(MetaVarInt v, MetaVarInt from, MetaVarInt to) {
+	public MetaLoopDo forCmd(MetaVarInt v, MetaVarInt from, MetaVarInt to) {
 		return getMetaCommand().forCmd(v, from, to);
 	}
 
 	@Override
-	public MetaCommand forCmd(MetaVarInt v, Integer from, Integer to) {
+	public MetaLoopDo forCmd(MetaVarInt v, Integer from, Integer to) {
 		return getMetaCommand().forCmd(v, from, to);
 	}
 
 	@Override
-	public MetaCommand forPair(MetaVar v1,MetaVar v2,MetaVarTable table) {
+	public MetaLoopDo forPair(MetaVar v1,MetaVar v2,MetaVarTable table) {
 		return getMetaCommand().forPair(v1,v2,table);
-	}
-
-	@Override
-	public MetaCommand end() {
-		return getMetaCommand().end();
 	}
 
 	@Override
